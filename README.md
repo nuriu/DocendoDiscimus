@@ -1,0 +1,2 @@
+# DocendoDiscimus
+> SOA Dönem Projesi.
