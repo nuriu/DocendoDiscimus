@@ -1,9 +1,8 @@
 <h1 align="center">
 	<br>
-	<img width="500" src="https://cdn.rawgit.com/nuriu/DocendoDiscimus/dev/logo.png" alt="Logo">
+	Docendo Discimus
 	<br>
 	<br>
-	DocendoDiscimus
 	<br>
 </h1>
 
