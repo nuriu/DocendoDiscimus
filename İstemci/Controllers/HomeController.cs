@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using İstemci.DDService;
 
 namespace İstemci.Controllers
 {
@@ -6,6 +7,8 @@ namespace İstemci.Controllers
     {
         public ActionResult Index()
         {
+            DDServiceClient servis = new DDServiceClient();
+            ViewBag.Data = servis.GetData(8);
             return View();
         }
     }
