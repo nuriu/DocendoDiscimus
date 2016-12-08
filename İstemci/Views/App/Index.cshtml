@@ -1,42 +1,51 @@
 ﻿@{
     ViewBag.Title = "Anasayfa";
 }
-
+<div class="row"></div>
 <div class="row">
-    <div class="col s12">
-        <div class="card deep-purple darken-1">
+    <div class="col s12 m6 l6" style="color:white;">
+        <h2>Başlayın.</h2>
+        <p class="flow-text">Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel.</p>
+        <p class="flow-text">Placerat suscipit, orci nisl iaculis eros, a tincidunt nisi odio eget lorem nulla condimentum tempor mattis ut vitae feugiat augue cras ut metus a risus iaculis scelerisque eu ac ante.</p>
+        <p class="flow-text">Fusce non varius purus aenean nec magna felis fusce vestibulum velit mollis odio sollicitudin lacinia aliquam posuere, sapien elementum lobortis tincidunt, turpis dui ornare nisl, sollicitudin interdum turpis nunc eget.</p>
+        <p class="flow-text">Sem nulla eu ultricies orci praesent id augue nec lorem pretium congue sit amet ac nunc fusce iaculis lorem eu diam hendrerit at mattis purus dignissim vivamus mauris tellus, fringilla.</p>
+        <p><a class="waves-effect waves-light btn purple darken-1" href="#">Kayıt Ol &raquo;</a></p>
+    </div>
+    <div class="col s12 m6 l6">
+        <div class="card purple darken-3">
             <div class="card-content white-text">
-                <span class="card-title">Card Title</span>
-                <p>
-                    @ViewBag.Data
-                </p>
+                <span class="card-title">Giriş Yap</span>
+                <div class="row">
+                    <form class="col s12">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="kullanici_adi" type="text" class="validate" length="50">
+                                <label for="kullanici_adi">Kullanıcı Adı</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="parola" type="password" class="validate" length="64">
+                                <label for="parola">Parola</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
             </div>
             <div class="card-action">
-                <a href="#">This is a link</a>
-                <a href="#">This is a link</a>
+                <a href="#" onclick="temizle()">TEMİZLE</a>
+                <a href="#">GİRİŞ YAP</a>
             </div>
         </div>
     </div>
 </div>
 
-<div class="row">
-    <div class="col s4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="waves-effect waves-light btn purple darken-1" href="#">Learn more &raquo;</a></p>
-    </div>
-    <div class="col s4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="waves-effect waves-light btn purple darken-1" href="#">Learn more &raquo;</a></p>
-    </div>
-    <div class="col s4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="waves-effect waves-light btn purple darken-1" href="#">Learn more &raquo;</a></p>
-    </div>
-</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('input#kullanici_adi, input#parola').characterCounter();
+    });
+    function temizle() {
+        $(':input').removeAttr('checked').removeAttr('selected').not(':button, :submit, :reset, :hidden, :radio, :checkbox').val('');
+    }
+</script>
