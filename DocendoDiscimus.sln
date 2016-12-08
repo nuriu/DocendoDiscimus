@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servis", "Servis\Servis.csproj", "{62E03103-ABA4-4E9C-8050-9F40F4345EA6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "servis", "servis\servis.csproj", "{62E03103-ABA4-4E9C-8050-9F40F4345EA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "İstemci", "İstemci\İstemci.csproj", "{C2158CAD-69A7-41DA-A53D-79846F24A687}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "istemci", "istemci\istemci.csproj", "{C2158CAD-69A7-41DA-A53D-79846F24A687}"
 	ProjectSection(ProjectDependencies) = postProject
 		{62E03103-ABA4-4E9C-8050-9F40F4345EA6} = {62E03103-ABA4-4E9C-8050-9F40F4345EA6}
 	EndProjectSection

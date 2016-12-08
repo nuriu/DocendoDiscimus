@@ -1,11 +1,12 @@
 <h1 align="center">
 	<br>
-	[DD](https://raw.githubusercontent.com/nuriu/ajanda/master/İstemci/Content/icon/ms-icon-310x310.png) DocendoDiscimus
+	<img width="500" src="https://cdn.rawgit.com/nuriu/DocendoDiscimus/dev/logo.png" alt="Logo">
 	<br>
 	<br>
+	DocendoDiscimus
 	<br>
 </h1>
 
 > SOA Dönem Projesi.
 
-[DocendoDiscimus](https://raw.githubusercontent.com/nuriu/ajanda/master/1.png)
+![DocendoDiscimus](1.png)
