@@ -1,0 +1,628 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DDDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cevap">
+          <Key>
+            <PropertyRef Name="Kimlik" />
+          </Key>
+          <Property Name="Kimlik" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Metin" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="KullaniciKimligi" Type="int" Nullable="false" />
+          <Property Name="SoruKimligi" Type="int" Nullable="false" />
+          <Property Name="Onay" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Etiket">
+          <Key>
+            <PropertyRef Name="Kimlik" />
+          </Key>
+          <Property Name="Kimlik" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EtiketAdi" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="RenkKodu" Type="nvarchar" MaxLength="7" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DDDB.dbo.FavoriCevap' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="FavoriCevap">
+          <Key>
+            <PropertyRef Name="KullaniciKimligi" />
+            <PropertyRef Name="CevapKimligi" />
+          </Key>
+          <Property Name="KullaniciKimligi" Type="int" Nullable="false" />
+          <Property Name="CevapKimligi" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DDDB.dbo.FavoriSoru' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="FavoriSoru">
+          <Key>
+            <PropertyRef Name="KullaniciKimligi" />
+            <PropertyRef Name="SoruKimligi" />
+          </Key>
+          <Property Name="KullaniciKimligi" Type="int" Nullable="false" />
+          <Property Name="SoruKimligi" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kategori">
+          <Key>
+            <PropertyRef Name="Kimlik" />
+          </Key>
+          <Property Name="Kimlik" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KategoriAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kullanici">
+          <Key>
+            <PropertyRef Name="Kimlik" />
+          </Key>
+          <Property Name="Kimlik" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KullaniciAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Parola" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Eposta" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="KullaniciTuru" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Soru">
+          <Key>
+            <PropertyRef Name="Kimlik" />
+          </Key>
+          <Property Name="Kimlik" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Baslik" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="KullaniciKimligi" Type="int" Nullable="false" />
+          <Property Name="KategoriKimligi" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DDDB.dbo.SoruEtiket' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SoruEtiket">
+          <Key>
+            <PropertyRef Name="SoruKimligi" />
+            <PropertyRef Name="EtiketKimligi" />
+          </Key>
+          <Property Name="SoruKimligi" Type="int" Nullable="false" />
+          <Property Name="EtiketKimligi" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Yorum">
+          <Key>
+            <PropertyRef Name="Kimlik" />
+          </Key>
+          <Property Name="Kimlik" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Metin" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="KullaniciKimligi" Type="int" Nullable="false" />
+          <Property Name="CevapKimligi" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Cevap_Kullanici">
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+          <End Role="Cevap" Type="Self.Cevap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanici">
+              <PropertyRef Name="Kimlik" />
+            </Principal>
+            <Dependent Role="Cevap">
+              <PropertyRef Name="KullaniciKimligi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cevap_Soru">
+          <End Role="Soru" Type="Self.Soru" Multiplicity="1" />
+          <End Role="Cevap" Type="Self.Cevap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Soru">
+              <PropertyRef Name="Kimlik" />
+            </Principal>
+            <Dependent Role="Cevap">
+              <PropertyRef Name="SoruKimligi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavoriCevap_Cevap">
+          <End Role="Cevap" Type="Self.Cevap" Multiplicity="1" />
+          <End Role="FavoriCevap" Type="Self.FavoriCevap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cevap">
+              <PropertyRef Name="Kimlik" />
+            </Principal>
+            <Dependent Role="FavoriCevap">
+              <PropertyRef Name="CevapKimligi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavoriCevap_Kullanici">
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+          <End Role="FavoriCevap" Type="Self.FavoriCevap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanici">
+              <PropertyRef Name="Kimlik" />
+            </Principal>
+            <Dependent Role="FavoriCevap">
+              <PropertyRef Name="KullaniciKimligi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavoriSoru_Kullanici">
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+          <End Role="FavoriSoru" Type="Self.FavoriSoru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanici">
+              <PropertyRef Name="Kimlik" />
+            </Principal>
+            <Dependent Role="FavoriSoru">
+              <PropertyRef Name="KullaniciKimligi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavoriSoru_Soru">
+          <End Role="Soru" Type="Self.Soru" Multiplicity="1" />
+          <End Role="FavoriSoru" Type="Self.FavoriSoru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Soru">
+              <PropertyRef Name="Kimlik" />
+            </Principal>
+            <Dependent Role="FavoriSoru">
+              <PropertyRef Name="SoruKimligi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Soru_Kategori">
+          <End Role="Kategori" Type="Self.Kategori" Multiplicity="1" />
+          <End Role="Soru" Type="Self.Soru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategori">
+              <PropertyRef Name="Kimlik" />
+            </Principal>
+            <Dependent Role="Soru">
+              <PropertyRef Name="KategoriKimligi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Soru_Kullanici">
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+          <End Role="Soru" Type="Self.Soru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanici">
+              <PropertyRef Name="Kimlik" />
+            </Principal>
+            <Dependent Role="Soru">
+              <PropertyRef Name="KullaniciKimligi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoruEtiket_Etiket">
+          <End Role="Etiket" Type="Self.Etiket" Multiplicity="1" />
+          <End Role="SoruEtiket" Type="Self.SoruEtiket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Etiket">
+              <PropertyRef Name="Kimlik" />
+            </Principal>
+            <Dependent Role="SoruEtiket">
+              <PropertyRef Name="EtiketKimligi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoruEtiket_Soru">
+          <End Role="Soru" Type="Self.Soru" Multiplicity="1" />
+          <End Role="SoruEtiket" Type="Self.SoruEtiket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Soru">
+              <PropertyRef Name="Kimlik" />
+            </Principal>
+            <Dependent Role="SoruEtiket">
+              <PropertyRef Name="SoruKimligi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Yorum_Cevap">
+          <End Role="Cevap" Type="Self.Cevap" Multiplicity="1" />
+          <End Role="Yorum" Type="Self.Yorum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cevap">
+              <PropertyRef Name="Kimlik" />
+            </Principal>
+            <Dependent Role="Yorum">
+              <PropertyRef Name="CevapKimligi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Yorum_Kullanici">
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+          <End Role="Yorum" Type="Self.Yorum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanici">
+              <PropertyRef Name="Kimlik" />
+            </Principal>
+            <Dependent Role="Yorum">
+              <PropertyRef Name="KullaniciKimligi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DDDBModelStoreContainer">
+          <EntitySet Name="Cevap" EntityType="Self.Cevap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Etiket" EntityType="Self.Etiket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kategori" EntityType="Self.Kategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kullanici" EntityType="Self.Kullanici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Soru" EntityType="Self.Soru" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Yorum" EntityType="Self.Yorum" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FavoriCevap" EntityType="Self.FavoriCevap" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [FavoriCevap].[KullaniciKimligi] AS [KullaniciKimligi], 
+    [FavoriCevap].[CevapKimligi] AS [CevapKimligi]
+    FROM [dbo].[FavoriCevap] AS [FavoriCevap]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="FavoriSoru" EntityType="Self.FavoriSoru" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [FavoriSoru].[KullaniciKimligi] AS [KullaniciKimligi], 
+    [FavoriSoru].[SoruKimligi] AS [SoruKimligi]
+    FROM [dbo].[FavoriSoru] AS [FavoriSoru]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SoruEtiket" EntityType="Self.SoruEtiket" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SoruEtiket].[SoruKimligi] AS [SoruKimligi], 
+    [SoruEtiket].[EtiketKimligi] AS [EtiketKimligi]
+    FROM [dbo].[SoruEtiket] AS [SoruEtiket]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Cevap_Kullanici" Association="Self.FK_Cevap_Kullanici">
+            <End Role="Kullanici" EntitySet="Kullanici" />
+            <End Role="Cevap" EntitySet="Cevap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cevap_Soru" Association="Self.FK_Cevap_Soru">
+            <End Role="Soru" EntitySet="Soru" />
+            <End Role="Cevap" EntitySet="Cevap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoriCevap_Cevap" Association="Self.FK_FavoriCevap_Cevap">
+            <End Role="Cevap" EntitySet="Cevap" />
+            <End Role="FavoriCevap" EntitySet="FavoriCevap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoriCevap_Kullanici" Association="Self.FK_FavoriCevap_Kullanici">
+            <End Role="Kullanici" EntitySet="Kullanici" />
+            <End Role="FavoriCevap" EntitySet="FavoriCevap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoriSoru_Kullanici" Association="Self.FK_FavoriSoru_Kullanici">
+            <End Role="Kullanici" EntitySet="Kullanici" />
+            <End Role="FavoriSoru" EntitySet="FavoriSoru" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoriSoru_Soru" Association="Self.FK_FavoriSoru_Soru">
+            <End Role="Soru" EntitySet="Soru" />
+            <End Role="FavoriSoru" EntitySet="FavoriSoru" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Soru_Kategori" Association="Self.FK_Soru_Kategori">
+            <End Role="Kategori" EntitySet="Kategori" />
+            <End Role="Soru" EntitySet="Soru" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Soru_Kullanici" Association="Self.FK_Soru_Kullanici">
+            <End Role="Kullanici" EntitySet="Kullanici" />
+            <End Role="Soru" EntitySet="Soru" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoruEtiket_Etiket" Association="Self.FK_SoruEtiket_Etiket">
+            <End Role="Etiket" EntitySet="Etiket" />
+            <End Role="SoruEtiket" EntitySet="SoruEtiket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoruEtiket_Soru" Association="Self.FK_SoruEtiket_Soru">
+            <End Role="Soru" EntitySet="Soru" />
+            <End Role="SoruEtiket" EntitySet="SoruEtiket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Yorum_Cevap" Association="Self.FK_Yorum_Cevap">
+            <End Role="Cevap" EntitySet="Cevap" />
+            <End Role="Yorum" EntitySet="Yorum" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Yorum_Kullanici" Association="Self.FK_Yorum_Kullanici">
+            <End Role="Kullanici" EntitySet="Kullanici" />
+            <End Role="Yorum" EntitySet="Yorum" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DDDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cevap">
+          <Key>
+            <PropertyRef Name="Kimlik" />
+          </Key>
+          <Property Name="Kimlik" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Metin" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="KullaniciKimligi" Type="Int32" Nullable="false" />
+          <Property Name="SoruKimligi" Type="Int32" Nullable="false" />
+          <Property Name="Onay" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Kullanici" Relationship="Self.FK_Cevap_Kullanici" FromRole="Cevap" ToRole="Kullanici" />
+          <NavigationProperty Name="Soru" Relationship="Self.FK_Cevap_Soru" FromRole="Cevap" ToRole="Soru" />
+          <NavigationProperty Name="Yorum" Relationship="Self.FK_Yorum_Cevap" FromRole="Cevap" ToRole="Yorum" />
+          <NavigationProperty Name="Kullanici1" Relationship="Self.FavoriCevap" FromRole="Cevap" ToRole="Kullanici" />
+        </EntityType>
+        <EntityType Name="Etiket">
+          <Key>
+            <PropertyRef Name="Kimlik" />
+          </Key>
+          <Property Name="Kimlik" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EtiketAdi" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RenkKodu" Type="String" MaxLength="7" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Soru" Relationship="Self.SoruEtiket" FromRole="Etiket" ToRole="Soru" />
+        </EntityType>
+        <EntityType Name="Kategori">
+          <Key>
+            <PropertyRef Name="Kimlik" />
+          </Key>
+          <Property Name="Kimlik" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KategoriAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Soru" Relationship="Self.FK_Soru_Kategori" FromRole="Kategori" ToRole="Soru" />
+        </EntityType>
+        <EntityType Name="Kullanici">
+          <Key>
+            <PropertyRef Name="Kimlik" />
+          </Key>
+          <Property Name="Kimlik" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Parola" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Eposta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="KullaniciTuru" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Cevap" Relationship="Self.FK_Cevap_Kullanici" FromRole="Kullanici" ToRole="Cevap" />
+          <NavigationProperty Name="Soru" Relationship="Self.FK_Soru_Kullanici" FromRole="Kullanici" ToRole="Soru" />
+          <NavigationProperty Name="Yorum" Relationship="Self.FK_Yorum_Kullanici" FromRole="Kullanici" ToRole="Yorum" />
+          <NavigationProperty Name="Cevap1" Relationship="Self.FavoriCevap" FromRole="Kullanici" ToRole="Cevap" />
+          <NavigationProperty Name="Soru1" Relationship="Self.FavoriSoru" FromRole="Kullanici" ToRole="Soru" />
+        </EntityType>
+        <EntityType Name="Soru">
+          <Key>
+            <PropertyRef Name="Kimlik" />
+          </Key>
+          <Property Name="Kimlik" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Baslik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="KullaniciKimligi" Type="Int32" Nullable="false" />
+          <Property Name="KategoriKimligi" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cevap" Relationship="Self.FK_Cevap_Soru" FromRole="Soru" ToRole="Cevap" />
+          <NavigationProperty Name="Kategori" Relationship="Self.FK_Soru_Kategori" FromRole="Soru" ToRole="Kategori" />
+          <NavigationProperty Name="Kullanici" Relationship="Self.FK_Soru_Kullanici" FromRole="Soru" ToRole="Kullanici" />
+          <NavigationProperty Name="Kullanici1" Relationship="Self.FavoriSoru" FromRole="Soru" ToRole="Kullanici" />
+          <NavigationProperty Name="Etiket" Relationship="Self.SoruEtiket" FromRole="Soru" ToRole="Etiket" />
+        </EntityType>
+        <EntityType Name="Yorum">
+          <Key>
+            <PropertyRef Name="Kimlik" />
+          </Key>
+          <Property Name="Kimlik" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Metin" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="KullaniciKimligi" Type="Int32" Nullable="false" />
+          <Property Name="CevapKimligi" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cevap" Relationship="Self.FK_Yorum_Cevap" FromRole="Yorum" ToRole="Cevap" />
+          <NavigationProperty Name="Kullanici" Relationship="Self.FK_Yorum_Kullanici" FromRole="Yorum" ToRole="Kullanici" />
+        </EntityType>
+        <Association Name="FK_Cevap_Kullanici">
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+          <End Role="Cevap" Type="Self.Cevap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanici">
+              <PropertyRef Name="Kimlik" />
+            </Principal>
+            <Dependent Role="Cevap">
+              <PropertyRef Name="KullaniciKimligi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cevap_Soru">
+          <End Role="Soru" Type="Self.Soru" Multiplicity="1" />
+          <End Role="Cevap" Type="Self.Cevap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Soru">
+              <PropertyRef Name="Kimlik" />
+            </Principal>
+            <Dependent Role="Cevap">
+              <PropertyRef Name="SoruKimligi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Yorum_Cevap">
+          <End Role="Cevap" Type="Self.Cevap" Multiplicity="1" />
+          <End Role="Yorum" Type="Self.Yorum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cevap">
+              <PropertyRef Name="Kimlik" />
+            </Principal>
+            <Dependent Role="Yorum">
+              <PropertyRef Name="CevapKimligi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Soru_Kategori">
+          <End Role="Kategori" Type="Self.Kategori" Multiplicity="1" />
+          <End Role="Soru" Type="Self.Soru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategori">
+              <PropertyRef Name="Kimlik" />
+            </Principal>
+            <Dependent Role="Soru">
+              <PropertyRef Name="KategoriKimligi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Soru_Kullanici">
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+          <End Role="Soru" Type="Self.Soru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanici">
+              <PropertyRef Name="Kimlik" />
+            </Principal>
+            <Dependent Role="Soru">
+              <PropertyRef Name="KullaniciKimligi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Yorum_Kullanici">
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+          <End Role="Yorum" Type="Self.Yorum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanici">
+              <PropertyRef Name="Kimlik" />
+            </Principal>
+            <Dependent Role="Yorum">
+              <PropertyRef Name="KullaniciKimligi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FavoriCevap">
+          <End Role="Cevap" Type="Self.Cevap" Multiplicity="*" />
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="*" />
+        </Association>
+        <Association Name="FavoriSoru">
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="*" />
+          <End Role="Soru" Type="Self.Soru" Multiplicity="*" />
+        </Association>
+        <Association Name="SoruEtiket">
+          <End Role="Etiket" Type="Self.Etiket" Multiplicity="*" />
+          <End Role="Soru" Type="Self.Soru" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="DDDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cevap" EntityType="Self.Cevap" />
+          <EntitySet Name="Etiket" EntityType="Self.Etiket" />
+          <EntitySet Name="Kategori" EntityType="Self.Kategori" />
+          <EntitySet Name="Kullanici" EntityType="Self.Kullanici" />
+          <EntitySet Name="Soru" EntityType="Self.Soru" />
+          <EntitySet Name="Yorum" EntityType="Self.Yorum" />
+          <AssociationSet Name="FK_Cevap_Kullanici" Association="Self.FK_Cevap_Kullanici">
+            <End Role="Kullanici" EntitySet="Kullanici" />
+            <End Role="Cevap" EntitySet="Cevap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cevap_Soru" Association="Self.FK_Cevap_Soru">
+            <End Role="Soru" EntitySet="Soru" />
+            <End Role="Cevap" EntitySet="Cevap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Yorum_Cevap" Association="Self.FK_Yorum_Cevap">
+            <End Role="Cevap" EntitySet="Cevap" />
+            <End Role="Yorum" EntitySet="Yorum" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Soru_Kategori" Association="Self.FK_Soru_Kategori">
+            <End Role="Kategori" EntitySet="Kategori" />
+            <End Role="Soru" EntitySet="Soru" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Soru_Kullanici" Association="Self.FK_Soru_Kullanici">
+            <End Role="Kullanici" EntitySet="Kullanici" />
+            <End Role="Soru" EntitySet="Soru" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Yorum_Kullanici" Association="Self.FK_Yorum_Kullanici">
+            <End Role="Kullanici" EntitySet="Kullanici" />
+            <End Role="Yorum" EntitySet="Yorum" />
+          </AssociationSet>
+          <AssociationSet Name="FavoriCevap" Association="Self.FavoriCevap">
+            <End Role="Cevap" EntitySet="Cevap" />
+            <End Role="Kullanici" EntitySet="Kullanici" />
+          </AssociationSet>
+          <AssociationSet Name="FavoriSoru" Association="Self.FavoriSoru">
+            <End Role="Kullanici" EntitySet="Kullanici" />
+            <End Role="Soru" EntitySet="Soru" />
+          </AssociationSet>
+          <AssociationSet Name="SoruEtiket" Association="Self.SoruEtiket">
+            <End Role="Etiket" EntitySet="Etiket" />
+            <End Role="Soru" EntitySet="Soru" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DDDBModelStoreContainer" CdmEntityContainer="DDDBEntities">
+          <EntitySetMapping Name="Cevap">
+            <EntityTypeMapping TypeName="DDDBModel.Cevap">
+              <MappingFragment StoreEntitySet="Cevap">
+                <ScalarProperty Name="Kimlik" ColumnName="Kimlik" />
+                <ScalarProperty Name="Metin" ColumnName="Metin" />
+                <ScalarProperty Name="KullaniciKimligi" ColumnName="KullaniciKimligi" />
+                <ScalarProperty Name="SoruKimligi" ColumnName="SoruKimligi" />
+                <ScalarProperty Name="Onay" ColumnName="Onay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Etiket">
+            <EntityTypeMapping TypeName="DDDBModel.Etiket">
+              <MappingFragment StoreEntitySet="Etiket">
+                <ScalarProperty Name="Kimlik" ColumnName="Kimlik" />
+                <ScalarProperty Name="EtiketAdi" ColumnName="EtiketAdi" />
+                <ScalarProperty Name="RenkKodu" ColumnName="RenkKodu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kategori">
+            <EntityTypeMapping TypeName="DDDBModel.Kategori">
+              <MappingFragment StoreEntitySet="Kategori">
+                <ScalarProperty Name="Kimlik" ColumnName="Kimlik" />
+                <ScalarProperty Name="KategoriAdi" ColumnName="KategoriAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kullanici">
+            <EntityTypeMapping TypeName="DDDBModel.Kullanici">
+              <MappingFragment StoreEntitySet="Kullanici">
+                <ScalarProperty Name="Kimlik" ColumnName="Kimlik" />
+                <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+                <ScalarProperty Name="Parola" ColumnName="Parola" />
+                <ScalarProperty Name="Eposta" ColumnName="Eposta" />
+                <ScalarProperty Name="KullaniciTuru" ColumnName="KullaniciTuru" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Soru">
+            <EntityTypeMapping TypeName="DDDBModel.Soru">
+              <MappingFragment StoreEntitySet="Soru">
+                <ScalarProperty Name="Kimlik" ColumnName="Kimlik" />
+                <ScalarProperty Name="Baslik" ColumnName="Baslik" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="KullaniciKimligi" ColumnName="KullaniciKimligi" />
+                <ScalarProperty Name="KategoriKimligi" ColumnName="KategoriKimligi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Yorum">
+            <EntityTypeMapping TypeName="DDDBModel.Yorum">
+              <MappingFragment StoreEntitySet="Yorum">
+                <ScalarProperty Name="Kimlik" ColumnName="Kimlik" />
+                <ScalarProperty Name="Metin" ColumnName="Metin" />
+                <ScalarProperty Name="KullaniciKimligi" ColumnName="KullaniciKimligi" />
+                <ScalarProperty Name="CevapKimligi" ColumnName="CevapKimligi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FavoriCevap" TypeName="DDDBModel.FavoriCevap" StoreEntitySet="FavoriCevap">
+            <EndProperty Name="Cevap">
+              <ScalarProperty Name="Kimlik" ColumnName="CevapKimligi" />
+            </EndProperty>
+            <EndProperty Name="Kullanici">
+              <ScalarProperty Name="Kimlik" ColumnName="KullaniciKimligi" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FavoriSoru" TypeName="DDDBModel.FavoriSoru" StoreEntitySet="FavoriSoru">
+            <EndProperty Name="Kullanici">
+              <ScalarProperty Name="Kimlik" ColumnName="KullaniciKimligi" />
+            </EndProperty>
+            <EndProperty Name="Soru">
+              <ScalarProperty Name="Kimlik" ColumnName="SoruKimligi" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="SoruEtiket" TypeName="DDDBModel.SoruEtiket" StoreEntitySet="SoruEtiket">
+            <EndProperty Name="Etiket">
+              <ScalarProperty Name="Kimlik" ColumnName="EtiketKimligi" />
+            </EndProperty>
+            <EndProperty Name="Soru">
+              <ScalarProperty Name="Kimlik" ColumnName="SoruKimligi" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
