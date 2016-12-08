@@ -2,13 +2,14 @@
     ViewBag.Title = "Anasayfa";
 }
 <div class="row"></div>
+<div class="row"></div>
 <div class="row">
     <div class="col s12 m6 l6" style="color:white;">
         <h2>Başlayın.</h2>
         <p class="flow-text">Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel.</p>
         <p class="flow-text">Placerat suscipit, orci nisl iaculis eros, a tincidunt nisi odio eget lorem nulla condimentum tempor mattis ut vitae feugiat augue cras ut metus a risus iaculis scelerisque eu ac ante.</p>
         <p class="flow-text">Fusce non varius purus aenean nec magna felis fusce vestibulum velit mollis odio sollicitudin lacinia aliquam posuere, sapien elementum lobortis tincidunt, turpis dui ornare nisl, sollicitudin interdum turpis nunc eget.</p>
-        <p class="flow-text">Sem nulla eu ultricies orci praesent id augue nec lorem pretium congue sit amet ac nunc fusce iaculis lorem eu diam hendrerit at mattis purus dignissim vivamus mauris tellus, fringilla.</p>
+        <p class="flow-text">Sem nulla eu ultricies orci praesent id augue nec lorem pretium congue sit amet ac nunc fusce iaculis lorem eu diam hendrerit at mattis purus dignissim.</p>
         <p><a class="waves-effect waves-light btn purple darken-1" href="#">Kayıt Ol &raquo;</a></p>
     </div>
     <div class="col s12 m6 l6">
@@ -46,6 +47,6 @@
         $('input#kullanici_adi, input#parola').characterCounter();
     });
     function temizle() {
-        $(':input').removeAttr('checked').removeAttr('selected').not(':button, :submit, :reset, :hidden, :radio, :checkbox').val('');
+        $(':input').removeAttr('checked').removeAttr('selected').not(':button, :submit, :reset, :hidden, :radio, :checkbox').val('').blur();
     }
 </script>
