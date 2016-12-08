@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Servis
 {
-    public class Service1 : IService1
+    public class DDService : IDDService
     {
         public DDDBEntities db = new DDDBEntities();
         public string GetData(int value)

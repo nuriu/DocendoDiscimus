@@ -9,7 +9,7 @@ using System.Text;
 namespace Servis
 {
     [ServiceContract]
-    public interface IService1
+    public interface IDDService
     {
         [OperationContract]
         string GetData(int value);

@@ -22,13 +22,26 @@
             </div>
         </nav>
     </div>
+
     <div class="container">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Docendo Discimus</p>
-        </footer>
     </div>
+
+    <footer class="page-footer deep-purple darken-1">
+        <div class="container">
+            <div class="row">
+                <div class="col l12 s12">
+                    <h5 class="white-text">"Docendo Discimus"</h5>
+                    <p class="grey-text text-lighten-4">Öğretirken öğreniriz anlamına gelen bir Latince deyiş.<br /><br />Genç Seneca (c. 4 BC – 65 AD) Lucilius'a yazdığı bir mektupta bu sözü kullanır (epistulae morales I, 7, 8).</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                &copy; @DateTime.Now.Year - Docendo Discimus - Developed by Nuri U.
+            </div>
+        </div>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
