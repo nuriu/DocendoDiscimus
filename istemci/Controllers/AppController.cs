@@ -13,16 +13,22 @@ namespace İstemci.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(string kayit_eposta, string kayit_kullanici_adi, string kayit_parola)
+        public ActionResult Index(string kullanici_adi, string parola)
         {
-
             DDServiceClient servis = new DDServiceClient();
 
-            bool a = servis.KullaniciKayitEt(kayit_eposta, kayit_kullanici_adi, kayit_parola);
+            bool durum = servis.KullaniciGirisiYap(kullanici_adi, parola);
 
             servis.Close();
 
-            return View();
+            if (durum)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
     }
 }

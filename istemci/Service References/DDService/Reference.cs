@@ -20,6 +20,12 @@ namespace İstemci.DDService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/KullaniciKayitEt", ReplyAction="http://tempuri.org/IDDService/KullaniciKayitEtResponse")]
         System.Threading.Tasks.Task<bool> KullaniciKayitEtAsync(string ePosta, string kullaniciAdi, string parola);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/KullaniciGirisiYap", ReplyAction="http://tempuri.org/IDDService/KullaniciGirisiYapResponse")]
+        bool KullaniciGirisiYap(string kullaniciAdi, string parola);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/KullaniciGirisiYap", ReplyAction="http://tempuri.org/IDDService/KullaniciGirisiYapResponse")]
+        System.Threading.Tasks.Task<bool> KullaniciGirisiYapAsync(string kullaniciAdi, string parola);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -55,6 +61,14 @@ namespace İstemci.DDService {
         
         public System.Threading.Tasks.Task<bool> KullaniciKayitEtAsync(string ePosta, string kullaniciAdi, string parola) {
             return base.Channel.KullaniciKayitEtAsync(ePosta, kullaniciAdi, parola);
+        }
+        
+        public bool KullaniciGirisiYap(string kullaniciAdi, string parola) {
+            return base.Channel.KullaniciGirisiYap(kullaniciAdi, parola);
+        }
+        
+        public System.Threading.Tasks.Task<bool> KullaniciGirisiYapAsync(string kullaniciAdi, string parola) {
+            return base.Channel.KullaniciGirisiYapAsync(kullaniciAdi, parola);
         }
     }
 }

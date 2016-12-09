@@ -13,6 +13,22 @@ namespace Servis
     {
         public DDDBEntities db = new DDDBEntities();
 
+        public bool KullaniciGirisiYap(string kullaniciAdi, string parola)
+        {
+            bool durum = false;
+
+            foreach (var kullanici in db.Kullanici)
+            {
+                if (kullaniciAdi == kullanici.KullaniciAdi && parola == kullanici.Parola)
+                {
+                    durum = true;
+                    break;
+                }
+            }
+
+            return durum;
+        }
+
         public bool KullaniciKayitEt(string ePosta, string kullaniciAdi, string parola)
         {
             try

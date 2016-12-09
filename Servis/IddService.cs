@@ -13,5 +13,8 @@ namespace Servis
     {
         [OperationContract]
         bool KullaniciKayitEt(string ePosta, string kullaniciAdi, string parola);
+
+        [OperationContract]
+        bool KullaniciGirisiYap(string kullaniciAdi, string parola);
     }
 }

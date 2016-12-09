@@ -13,26 +13,27 @@
             <div class="card-content white-text">
                 <span class="card-title">Giriş Yap</span>
                 <div class="row">
-                    <form class="col s12">
+                    @using (Html.BeginForm("Index", "App", null, FormMethod.Post, htmlAttributes: new { @class = "col s12" }))
+                    {
+                    @Html.AntiForgeryToken()
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="kullanici_adi" type="text" class="validate" length="50">
+                                <input id="kullanici_adi" name="kullanici_adi" type="text" class="validate" length="50">
                                 <label for="kullanici_adi">Kullanıcı Adı</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="parola" type="password" class="validate" length="64">
+                                <input id="parola" name="parola" type="password" class="validate" length="64">
                                 <label for="parola">Parola</label>
                             </div>
                         </div>
-                    </form>
+                        <div class="card-action">
+                            <a href="#" onclick="temizle()">TEMİZLE</a>
+                            <a href="#" onclick="$(this).closest('form').submit(); return false;">GİRİŞ YAP</a>
+                        </div>
+                    }
                 </div>
-
-            </div>
-            <div class="card-action">
-                <a href="#" onclick="temizle()">TEMİZLE</a>
-                <a href="#">GİRİŞ YAP</a>
             </div>
         </div>
     </div>
@@ -40,32 +41,32 @@
 
 <!-- Modal -->
 <div id="kayitOlModal" class="modal bottom-sheet">
-@using (Html.BeginForm("Index", "App", null, FormMethod.Post, htmlAttributes: new { @class = "col s12" }))
-{
+    @using (Html.BeginForm("Index", "Home", null, FormMethod.Post, htmlAttributes: new { @class = "col s12" }))
+    {
     <div class="modal-content">
         <h4>Kayıt Formu</h4>
-            @Html.AntiForgeryToken()
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="kayit_eposta" name="kayit_eposta" type="email" class="validate" length="50">
-                    <label for="kayit_eposta">Eposta</label>
-                </div>
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="kayit_eposta" name="kayit_eposta" type="email" class="validate" length="50">
+                <label for="kayit_eposta">Eposta</label>
             </div>
-            <div class="row">
-                <div class="input-field col s6">
-                    <input id="kayit_kullanici_adi" name="kayit_kullanici_adi" type="text" class="validate" length="50">
-                    <label for="kayit_kullanici_adi">Kullanıcı Adı</label>
-                </div>
-                <div class="input-field col s6">
-                    <input id="kayit_parola" name="kayit_parola" type="password" class="validate" length="64">
-                    <label for="kayit_parola">Parola</label>
-                </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="kayit_kullanici_adi" name="kayit_kullanici_adi" type="text" class="validate" length="50">
+                <label for="kayit_kullanici_adi">Kullanıcı Adı</label>
             </div>
+            <div class="input-field col s6">
+                <input id="kayit_parola" name="kayit_parola" type="password" class="validate" length="64">
+                <label for="kayit_parola">Parola</label>
+            </div>
+        </div>
     </div>
     <div class="modal-footer">
         <input class="modal-action modal-close waves-effect waves-light btn purple darken-1" type="submit" value="KAYIT OL" />
     </div>
-}
+    }
 </div>
 
 <script type="text/javascript">
