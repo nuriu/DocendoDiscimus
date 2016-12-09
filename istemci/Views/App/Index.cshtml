@@ -40,31 +40,32 @@
 
 <!-- Modal -->
 <div id="kayitOlModal" class="modal bottom-sheet">
+@using (Html.BeginForm("Index", "App", null, FormMethod.Post, htmlAttributes: new { @class = "col s12" }))
+{
     <div class="modal-content">
         <h4>Kayıt Formu</h4>
-
-        <form class="col s12">
+            @Html.AntiForgeryToken()
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="kayit_eposta" type="email" class="validate" length="50">
+                    <input id="kayit_eposta" name="kayit_eposta" type="email" class="validate" length="50">
                     <label for="kayit_eposta">Eposta</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="kayit_kullanici_adi" type="text" class="validate" length="50">
+                    <input id="kayit_kullanici_adi" name="kayit_kullanici_adi" type="text" class="validate" length="50">
                     <label for="kayit_kullanici_adi">Kullanıcı Adı</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="kayit_parola" type="password" class="validate" length="64">
+                    <input id="kayit_parola" name="kayit_parola" type="password" class="validate" length="64">
                     <label for="kayit_parola">Parola</label>
                 </div>
             </div>
-        </form>
     </div>
     <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-light btn purple darken-1">KAYIT OL</a>
+        <input class="modal-action modal-close waves-effect waves-light btn purple darken-1" type="submit" value="KAYIT OL" />
     </div>
+}
 </div>
 
 <script type="text/javascript">

@@ -12,6 +12,6 @@ namespace Servis
     public interface IDDService
     {
         [OperationContract]
-        string GetData(int value);
+        bool KullaniciKayitEt(string ePosta, string kullaniciAdi, string parola);
     }
 }

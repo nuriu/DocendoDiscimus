@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Servis
+namespace Servis.Model
 {
     using System;
     using System.Collections.Generic;

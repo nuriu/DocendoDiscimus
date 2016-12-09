@@ -72,12 +72,12 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DDMODEL.Context.tt">
+    <Content Include="Model\DDMODEL.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DDMODEL.edmx</DependentUpon>
       <LastGenOutput>DDMODEL.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="DDMODEL.tt">
+    <Content Include="Model\DDMODEL.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DDMODEL.edmx</DependentUpon>
       <LastGenOutput>DDMODEL.cs</LastGenOutput>
@@ -86,20 +86,20 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cevap.cs">
+    <Compile Include="Model\Cevap.cs">
       <DependentUpon>DDMODEL.tt</DependentUpon>
     </Compile>
-    <Compile Include="DDMODEL.Context.cs">
+    <Compile Include="Model\DDMODEL.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DDMODEL.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DDMODEL.cs">
+    <Compile Include="Model\DDMODEL.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DDMODEL.tt</DependentUpon>
     </Compile>
-    <Compile Include="DDMODEL.Designer.cs">
+    <Compile Include="Model\DDMODEL.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DDMODEL.edmx</DependentUpon>
@@ -107,21 +107,21 @@
     <Compile Include="DDService.svc.cs">
       <DependentUpon>DDService.svc</DependentUpon>
     </Compile>
-    <Compile Include="Etiket.cs">
+    <Compile Include="Model\Etiket.cs">
       <DependentUpon>DDMODEL.tt</DependentUpon>
     </Compile>
     <Compile Include="IDDService.cs" />
-    <Compile Include="Kategori.cs">
+    <Compile Include="Model\Kategori.cs">
       <DependentUpon>DDMODEL.tt</DependentUpon>
     </Compile>
-    <Compile Include="Kullanici.cs">
+    <Compile Include="Model\Kullanici.cs">
       <DependentUpon>DDMODEL.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Soru.cs">
+    <Compile Include="Model\Soru.cs">
       <DependentUpon>DDMODEL.tt</DependentUpon>
     </Compile>
-    <Compile Include="Yorum.cs">
+    <Compile Include="Model\Yorum.cs">
       <DependentUpon>DDMODEL.tt</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -130,11 +130,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <EntityDeploy Include="DDMODEL.edmx">
+    <EntityDeploy Include="Model\DDMODEL.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DDMODEL.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="DDMODEL.edmx.diagram">
+    <Content Include="Model\DDMODEL.edmx.diagram">
       <DependentUpon>DDMODEL.edmx</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">

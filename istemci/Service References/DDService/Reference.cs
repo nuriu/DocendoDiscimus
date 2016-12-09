@@ -15,11 +15,11 @@ namespace İstemci.DDService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="DDService.IDDService")]
     public interface IDDService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/GetData", ReplyAction="http://tempuri.org/IDDService/GetDataResponse")]
-        string GetData(int value);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/KullaniciKayitEt", ReplyAction="http://tempuri.org/IDDService/KullaniciKayitEtResponse")]
+        bool KullaniciKayitEt(string ePosta, string kullaniciAdi, string parola);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/GetData", ReplyAction="http://tempuri.org/IDDService/GetDataResponse")]
-        System.Threading.Tasks.Task<string> GetDataAsync(int value);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/KullaniciKayitEt", ReplyAction="http://tempuri.org/IDDService/KullaniciKayitEtResponse")]
+        System.Threading.Tasks.Task<bool> KullaniciKayitEtAsync(string ePosta, string kullaniciAdi, string parola);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -49,12 +49,12 @@ namespace İstemci.DDService {
                 base(binding, remoteAddress) {
         }
         
-        public string GetData(int value) {
-            return base.Channel.GetData(value);
+        public bool KullaniciKayitEt(string ePosta, string kullaniciAdi, string parola) {
+            return base.Channel.KullaniciKayitEt(ePosta, kullaniciAdi, parola);
         }
         
-        public System.Threading.Tasks.Task<string> GetDataAsync(int value) {
-            return base.Channel.GetDataAsync(value);
+        public System.Threading.Tasks.Task<bool> KullaniciKayitEtAsync(string ePosta, string kullaniciAdi, string parola) {
+            return base.Channel.KullaniciKayitEtAsync(ePosta, kullaniciAdi, parola);
         }
     }
 }
