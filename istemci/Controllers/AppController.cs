@@ -5,30 +5,13 @@ namespace İstemci.Controllers
 {
     public class AppController : Controller
     {
-        [HttpGet]
         public ActionResult Index()
         {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Index(string kullanici_adi, string parola)
-        {
-            DDServiceClient servis = new DDServiceClient();
-
-            bool durum = servis.KullaniciGirisiYap(kullanici_adi, parola);
-
-            servis.Close();
-
-            if (durum)
+            if (Request.Cookies["KullaniciKimligi"] != null)
             {
                 return View();
             }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            return RedirectToAction("Index", "Home");
         }
     }
 }

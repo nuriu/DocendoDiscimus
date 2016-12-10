@@ -29,11 +29,11 @@
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
 </head>
-<body id="karsilama">
+<body>
     <div class="navbar-fixed">
         <nav class="deep-purple darken-1">
             <div class="nav-wrapper">
-                <a href="#!" class="brand-logo center"><img src="~/Content/logo.png" alt="Docendo Discimus" /></a>
+                <a href="#!" class="brand-logo center">DD</a>
             </div>
         </nav>
     </div>
@@ -60,14 +60,7 @@
 
     @Scripts.Render("~/bundles/jquery")
 
-
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('.modal').modal();
-        });
-    </script>
 
     @RenderSection("scripts", required: false)
 </body>

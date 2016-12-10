@@ -3,7 +3,7 @@
     height: 92vh;
 }
 
-body {
+body#karsilama {
     background: linear-gradient( rgba(20,20,20, .5), rgba(20,20,20, .75)),url(../../Content/vfun94cuy4o-david-marcu.jpg);
     background-position: center;
     background-repeat: no-repeat;

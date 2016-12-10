@@ -7,34 +7,31 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Servis.Model
+namespace Servis
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Soru
+    public partial class Cevap
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Soru()
+        public Cevap()
         {
-            this.Cevap = new HashSet<Cevap>();
+            this.Yorum = new HashSet<Yorum>();
             this.Kullanici1 = new HashSet<Kullanici>();
-            this.Etiket = new HashSet<Etiket>();
         }
     
         public int Kimlik { get; set; }
-        public string Baslik { get; set; }
-        public string Aciklama { get; set; }
+        public string Metin { get; set; }
         public int KullaniciKimligi { get; set; }
-        public int KategoriKimligi { get; set; }
+        public int SoruKimligi { get; set; }
+        public bool Onay { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cevap> Cevap { get; set; }
-        public virtual Kategori Kategori { get; set; }
         public virtual Kullanici Kullanici { get; set; }
+        public virtual Soru Soru { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Yorum> Yorum { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Kullanici> Kullanici1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Etiket> Etiket { get; set; }
     }
 }

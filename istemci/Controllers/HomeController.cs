@@ -9,24 +9,54 @@ namespace İstemci.Controllers
 {
     public class HomeController : Controller
     {
-        [HttpGet]
         public ActionResult Index()
         {
+            if (Request.Cookies["KullaniciKimligi"] != null)
+            {
+                return RedirectToAction("Index", "App");
+            }
+
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Index(string kayit_eposta, string kayit_kullanici_adi, string kayit_parola)
+        public JsonResult Kayit(string ePosta, string kullaniciAdi, string parola)
         {
-
             DDServiceClient servis = new DDServiceClient();
 
-            bool durum = servis.KullaniciKayitEt(kayit_eposta, kayit_kullanici_adi, kayit_parola);
+            bool durum = servis.KullaniciKayitEt(ePosta, kullaniciAdi, parola);
 
-            servis.Close();
+            if (durum)
+            {
+                return Json("Kayıt başarılı.");
+            }
+            else
+            {
+                return Json("Kayıt başarısız.");
+            }
+        }
 
-            return View();
+
+        public JsonResult Giris(string kullaniciAdi, string parola)
+        {
+            DDServiceClient servis = new DDServiceClient();
+
+            int kullaniciKimligi = servis.KullaniciGirisiYap(kullaniciAdi, parola);
+
+            if (kullaniciKimligi != 0)
+            {
+                Response.Cookies["KullaniciKimligi"].Value = kullaniciKimligi.ToString();
+                Response.Cookies["KullaniciKimligi"].Expires = DateTime.Now.AddDays(1);
+
+                HttpCookie sonZiyaret = new HttpCookie("SonZiyaret", DateTime.Now.ToString());
+                sonZiyaret.Expires = DateTime.Now.AddDays(1);
+                Response.Cookies.Add(sonZiyaret);
+
+                return Json("Giriş başarılı.");
+            }
+            else
+            {
+                return Json("Giriş başarısız.");
+            }
         }
     }
 }

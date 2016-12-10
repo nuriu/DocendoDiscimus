@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Anasayfa";
+    ViewBag.Title = "Hoşgeldiniz";
 }
 <div class="row" id="karsilamaIcerik">
     <div class="col s12 m12 l6" style="color:white;">
@@ -30,7 +30,7 @@
                         </div>
                         <div class="card-action">
                             <a href="#" onclick="temizle()">TEMİZLE</a>
-                            <a href="#" onclick="$(this).closest('form').submit(); return false;">GİRİŞ YAP</a>
+                            <a href="#" onclick="giris()">GİRİŞ YAP</a>
                         </div>
                     }
                 </div>
@@ -41,39 +41,66 @@
 
 <!-- Modal -->
 <div id="kayitOlModal" class="modal bottom-sheet">
-    @using (Html.BeginForm("Index", "Home", null, FormMethod.Post, htmlAttributes: new { @class = "col s12" }))
-    {
     <div class="modal-content">
         <h4>Kayıt Formu</h4>
-        @Html.AntiForgeryToken()
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="kayit_eposta" name="kayit_eposta" type="email" class="validate" length="50">
-                <label for="kayit_eposta">Eposta</label>
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="kayit_eposta" name="kayit_eposta" type="email" class="validate" length="50">
+                    <label for="kayit_eposta">Eposta</label>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s6">
-                <input id="kayit_kullanici_adi" name="kayit_kullanici_adi" type="text" class="validate" length="50">
-                <label for="kayit_kullanici_adi">Kullanıcı Adı</label>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="kayit_kullanici_adi" name="kayit_kullanici_adi" type="text" class="validate" length="50">
+                    <label for="kayit_kullanici_adi">Kullanıcı Adı</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="kayit_parola" name="kayit_parola" type="password" class="validate" length="64">
+                    <label for="kayit_parola">Parola</label>
+                </div>
             </div>
-            <div class="input-field col s6">
-                <input id="kayit_parola" name="kayit_parola" type="password" class="validate" length="64">
-                <label for="kayit_parola">Parola</label>
-            </div>
-        </div>
+        </form>
     </div>
     <div class="modal-footer">
-        <input class="modal-action modal-close waves-effect waves-light btn purple darken-1" type="submit" value="KAYIT OL" />
+        <a href="#" class="modal-action modal-close waves-effect waves-light btn purple darken-1" onclick="kayit()">KAYIT OL</a>
     </div>
-    }
 </div>
 
 <script type="text/javascript">
     $(document).ready(function () {
         $('input#kullanici_adi, input#parola').characterCounter();
     });
+
     function temizle() {
         $(':input').removeAttr('checked').removeAttr('selected').not(':button, :submit, :reset, :hidden, :radio, :checkbox').val('').blur();
+    }
+
+    function kayit() {
+        var veri = {
+            ePosta: $("#kayit_eposta").val(),
+            kullaniciAdi: $("#kayit_kullanici_adi").val(),
+            parola: $("#kayit_parola").val()
+        };
+        $.post("/Home/Kayit", veri, function (sonuc) {
+            if (sonuc == 'Kayıt başarılı.')
+                window.location = "/";
+            else
+                alert("Kayıt başarısız!");
+        });
+    }
+
+    function giris() {
+        var veri = {
+            kullaniciAdi: $("#kullanici_adi").val(),
+            parola: $("#parola").val()
+        };
+
+        $.post("/Home/Giris", veri, function (sonuc) {
+            if (sonuc == 'Giriş başarılı.')
+                window.location = "/App";
+            else
+                alert("Giriş başarısız!");
+        });
     }
 </script>
