@@ -82,8 +82,8 @@
             kullaniciAdi: $("#kayit_kullanici_adi").val(),
             parola: $("#kayit_parola").val()
         };
-        $.post("/Home/Kayit", veri, function (sonuc) {
-            if (sonuc == 'Kayıt başarılı.')
+        $.post("/Home/Kayit", veri, function (cevap) {
+            if (cevap == 'Kayıt başarılı.')
                 window.location = "/";
             else
                 alert("Kayıt başarısız!");
@@ -96,8 +96,8 @@
             parola: $("#parola").val()
         };
 
-        $.post("/Home/Giris", veri, function (sonuc) {
-            if (sonuc == 'Giriş başarılı.')
+        $.post("/Home/Giris", veri, function (cevap) {
+            if (cevap == 'Giriş başarılı.')
                 window.location = "/App";
             else
                 alert("Giriş başarısız!");

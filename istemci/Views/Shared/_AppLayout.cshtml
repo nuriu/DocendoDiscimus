@@ -21,26 +21,79 @@
     <link rel="manifest" href="/Content/icon/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/Content/icon/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#EE6E73">
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <style>
+    header, main, footer {
+      padding-left: 100px;
+    }
+
+    @@media only screen and (max-width : 992px) {
+      header, main, footer {
+        padding-left: 0;
+      }
+    }
+    </style>
 </head>
 <body>
-    <div class="navbar-fixed">
-        <nav class="deep-purple darken-1">
-            <div class="nav-wrapper">
-                <a href="#!" class="brand-logo center">DD</a>
+    <header>
+        <nav class="top-nav deep-purple darken-1">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a>
+                    <a class="page-title">@ViewBag.Title</a>
+                </div>
             </div>
         </nav>
-    </div>
+        <ul id="nav-mobile" class="side-nav fixed">
+            <li>
+                <div class="userView">
+                    <div class="background">
+                        <img src="http://materializecss.com/images/office.jpg">
+                    </div>
+                    <a href="#!user"><img class="circle" src="http://materializecss.com/images/yuna.jpg"></a>
+                    <a href="#!name"><span class="white-text name">@ViewBag.KullaniciAdi</span></a>
+                    <a href="#!email"><span class="white-text email">@ViewBag.KullaniciPosta</span></a>
+                </div>
+            </li>
+            <li><a class="subheader">Site</a></li>
+            <li>
+                <a class="waves-effect" href="#!">
+                    <i class="material-icons">home</i>Anasayfa
+                </a>
+            </li>
+            <li>
+                <a class="waves-effect" href="#!">
+                    <i class="material-icons">question_answer</i>Soru Sor
+                </a>
+            </li>
+            <li><div class="divider"></div></li>
+            <li><a class="subheader">Kullanıcı</a></li>
+            <li>
+                <a class="waves-effect" href="#!">
+                    <i class="material-icons">account_box</i>Profil
+                </a>
+            </li>
+            <li>
+                <a class="waves-effect" href="#!">
+                    <i class="material-icons">exit_to_app</i>Çıkış
+                </a>
+            </li>
+        </ul>
+    </header>
 
-    <div class="container" id="icerik">
-        @RenderBody()
-    </div>
+    <main>
+        <div class="container">
+            <div class="row">
+                @RenderBody()
+            </div>
+        </div>
+    </main>
 
     <footer class="page-footer deep-purple darken-1">
         <div class="container">
@@ -61,6 +114,10 @@
     @Scripts.Render("~/bundles/jquery")
 
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
+    <script type="text/javascript">
+        $(".button-collapse").sideNav();
+    </script>
 
     @RenderSection("scripts", required: false)
 </body>
