@@ -166,7 +166,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Anasayfa.cshtml" />
     <None Include="Service References\DDService\DDService.wsdl" />
     <None Include="Service References\DDService\DDService.xsd">
       <SubType>Designer</SubType>
@@ -175,7 +175,8 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="Views\Shared\_AppLayout.cshtml" />
-    <Content Include="Views\App\Index.cshtml" />
+    <Content Include="Views\App\Anasayfa.cshtml" />
+    <Content Include="Views\App\Profil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -5,13 +5,22 @@ namespace İstemci.Controllers
 {
     public class AppController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Anasayfa()
         {
             if (Request.Cookies["KullaniciKimligi"] != null)
             {
                 return View();
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Anasayfa", "Home");
+        }
+
+        public ActionResult Profil()
+        {
+            if (Request.Cookies["KullaniciKimligi"] != null)
+            {
+                return View();
+            }
+            return RedirectToAction("Anasayfa", "Home");
         }
     }
 }

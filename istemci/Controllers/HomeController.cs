@@ -9,11 +9,11 @@ namespace İstemci.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Anasayfa()
         {
             if (Request.Cookies["KullaniciKimligi"] != null)
             {
-                return RedirectToAction("Index", "App");
+                return RedirectToAction("Anasayfa", "App");
             }
 
             return View();

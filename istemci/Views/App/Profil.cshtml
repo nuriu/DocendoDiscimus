@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Profil";
+    Layout = "~/Views/Shared/_AppLayout.cshtml";
+}
+
+<div class="col s12 m12 l12">
+    <div id="profil" class="section scrollspy">
+
+        <h3 class="header deep-purple-text text-darken-1">Merhaba!</h3>
+        <p class="caption">Aşağıdaki alanda sistemde kayıtlı olan bilgilerinizi güncelleyebilirsiniz.</p>
+        <br />
+        <div class="card deep-purple darken-1">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1429051781835-9f2c0a9df6e4?dpr=1&auto=format&fit=crop&w=800&h=200&q=80&cs=tinysrgb&crop=">
+                <span class="card-title">@ViewBag.KullaniciAdi</span>
+            </div>
+            <div class="card-content white-text">
+                <div class="row">
+                    <form class="col s12">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input placeholder="Placeholder" id="isim" type="text" class="validate">
+                                <label for="isim">İsim</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input placeholder="Placeholder" id="soyisim" type="text" class="validate">
+                                <label for="soyisim">Soyisim</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input placeholder="Placeholder" id="eposta" type="email" class="validate">
+                                <label for="eposta">Eposta</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input placeholder="Placeholder" id="parola" type="password" class="validate">
+                                <label for="parola">Parola</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="card-action">
+                <a href="#" onclick="temizle()">Temizle</a>
+                <a href="#" onclick="kaydet()">Kaydet</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function temizle() {
+        $(':input').removeAttr('checked').removeAttr('selected').not(':button, :submit, :reset, :hidden, :radio, :checkbox').val('').blur();
+    }
+
+    function kaydet() {
+        Materialize.toast('Kaydet tuşuna basıldı!', 3000, 'rounded');
+    }
+</script>
