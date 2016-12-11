@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Servis.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -16,5 +17,11 @@ namespace Servis
 
         [OperationContract]
         int KullaniciGirisiYap(string kullaniciAdi, string parola);
+
+        [OperationContract]
+        Kullanici KullaniciBilgileriniGetir(int kimlik);
+
+        [OperationContract]
+        bool KullaniciBilgileriniGuncelle(int kimlik, string ePosta, string isim, string soyisim, string parola, string avatarLink);
     }
 }

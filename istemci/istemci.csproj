@@ -167,6 +167,9 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Anasayfa.cshtml" />
+    <Content Include="Views\Shared\_AppLayout.cshtml" />
+    <Content Include="Views\App\Anasayfa.cshtml" />
+    <Content Include="Views\App\Profil.cshtml" />
     <None Include="Service References\DDService\DDService.wsdl" />
     <None Include="Service References\DDService\DDService.xsd">
       <SubType>Designer</SubType>
@@ -174,9 +177,12 @@
     <None Include="Service References\DDService\DDService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Views\Shared\_AppLayout.cshtml" />
-    <Content Include="Views\App\Anasayfa.cshtml" />
-    <Content Include="Views\App\Profil.cshtml" />
+    <None Include="Service References\DDService\DDService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Service References\DDService\İstemci.DDService.Kullanici.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

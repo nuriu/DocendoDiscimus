@@ -13,29 +13,35 @@
         <div class="card deep-purple darken-1">
             <div class="card-image">
                 <img src="https://images.unsplash.com/photo-1429051781835-9f2c0a9df6e4?dpr=1&auto=format&fit=crop&w=800&h=200&q=80&cs=tinysrgb&crop=">
-                <span class="card-title">@ViewBag.KullaniciAdi</span>
+                <span class="card-title">@ViewBag.Kullanici.Isim @ViewBag.Kullanici.Soyisim</span>
             </div>
             <div class="card-content white-text">
                 <div class="row">
                     <form class="col s12">
                         <div class="row">
                             <div class="input-field col s6">
-                                <input placeholder="Placeholder" id="isim" type="text" class="validate">
+                                <input placeholder="@ViewBag.Kullanici.Isim" value="@ViewBag.Kullanici.Isim" id="isim" type="text" class="validate">
                                 <label for="isim">İsim</label>
                             </div>
                             <div class="input-field col s6">
-                                <input placeholder="Placeholder" id="soyisim" type="text" class="validate">
+                                <input placeholder="@ViewBag.Kullanici.Soyisim" value="@ViewBag.Kullanici.Soyisim" id="soyisim" type="text" class="validate">
                                 <label for="soyisim">Soyisim</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s6">
-                                <input placeholder="Placeholder" id="eposta" type="email" class="validate">
+                                <input placeholder="@ViewBag.Kullanici.Eposta" value="@ViewBag.Kullanici.Eposta" id="eposta" type="email" class="validate">
                                 <label for="eposta">Eposta</label>
                             </div>
                             <div class="input-field col s6">
-                                <input placeholder="Placeholder" id="parola" type="password" class="validate">
+                                <input placeholder="Yeni Parolanız" id="parola" type="password" class="validate">
                                 <label for="parola">Parola</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input placeholder="@ViewBag.Kullanici.AvatarLink" value="@ViewBag.Kullanici.AvatarLink" id="avatarLink" type="text" class="validate">
+                                <label for="avatarLink">Avatar Bağlantısı</label>
                             </div>
                         </div>
                     </form>
@@ -55,6 +61,20 @@
     }
 
     function kaydet() {
-        Materialize.toast('Kaydet tuşuna basıldı!', 3000, 'rounded');
+        var veri = {
+            isim: $("#isim").val(),
+            soyisim: $("#soyisim").val(),
+            eposta: $("#eposta").val(),
+            parola: $("#parola").val(),
+            avatarLink: $('#avatarLink').val()
+        };
+        $.post("/App/KullaniciBilgileriniGuncelle", veri, function (cevap) {
+            if (cevap == 'Güncelleme başarılı.') {
+                Materialize.toast('Bilgiler başarıyla güncellendi!', 3000, 'rounded');
+                window.location = "/App/Profil";
+            }
+            else
+                Materialize.toast('Güncelleme başarısız! Boş alan bırakmadan tekrar deneyiniz!', 3000, 'rounded');
+        });
     }
 </script>
