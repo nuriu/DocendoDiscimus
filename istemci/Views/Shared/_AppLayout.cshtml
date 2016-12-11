@@ -29,15 +29,15 @@
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
     <style>
-    header, main, footer {
-      padding-left: 100px;
-    }
+        header, main, footer {
+            padding-left: 100px;
+        }
 
-    @@media only screen and (max-width : 992px) {
-      header, main, footer {
-        padding-left: 0;
-      }
-    }
+        @@media only screen and (max-width : 992px) {
+            header, main, footer {
+                padding-left: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -80,7 +80,7 @@
                 </a>
             </li>
             <li>
-                <a class="waves-effect" href="#!">
+                <a class="waves-effect" href="#!" onclick="cikis()">
                     <i class="material-icons">exit_to_app</i>Çıkış
                 </a>
             </li>
@@ -117,6 +117,13 @@
 
     <script type="text/javascript">
         $(".button-collapse").sideNav();
+
+        function cikis() {
+            $.post("/Home/Cikis", "", function (sonuc) {
+                if (sonuc == 'Çıkış yapıldı.')
+                    window.location = "/";
+            });
+        }
     </script>
 
     @RenderSection("scripts", required: false)

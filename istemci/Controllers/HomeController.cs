@@ -58,5 +58,17 @@ namespace İstemci.Controllers
                 return Json("Giriş başarısız.");
             }
         }
+
+        public JsonResult Cikis(string kullaniciAdi, string parola)
+        {
+            Response.Cookies["KullaniciKimligi"].Value = null;
+            Response.Cookies["KullaniciKimligi"].Expires = DateTime.Now.AddDays(-1);
+
+            HttpCookie sonZiyaret = new HttpCookie("SonZiyaret", DateTime.Now.ToString());
+            sonZiyaret.Expires = DateTime.Now.AddDays(1);
+            Response.Cookies.Add(sonZiyaret);
+
+            return Json("Çıkış yapıldı.");
+        }
     }
 }
