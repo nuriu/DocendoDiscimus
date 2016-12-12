@@ -1,7 +1,7 @@
-﻿using Servis.Model;
+﻿using servis.Model;
 using System.ServiceModel;
 
-namespace Servis
+namespace servis
 {
     [ServiceContract]
     public interface IDDService

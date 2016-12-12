@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c3c2b2eb-65bc-43c3-86b5-5f1b54183df6" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="963b9e29-4a7e-4e9a-a989-fed3859cca21" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,11 +22,11 @@
     <MetadataSource Address="http://localhost:8301/DDService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="DDService.wsdl" MetadataType="Wsdl" ID="ab8a36eb-4f62-4405-b832-5ba9d1ad3a70" SourceId="1" SourceUrl="http://localhost:8301/DDService.svc?wsdl" />
-    <MetadataFile FileName="DDService.xsd" MetadataType="Schema" ID="8f758217-f48e-4774-8aee-e5fbcc4e3fda" SourceId="1" SourceUrl="http://localhost:8301/DDService.svc?xsd=xsd0" />
-    <MetadataFile FileName="DDService1.xsd" MetadataType="Schema" ID="84854923-0524-4a5e-8ee7-ce495bd81be2" SourceId="1" SourceUrl="http://localhost:8301/DDService.svc?xsd=xsd2" />
-    <MetadataFile FileName="DDService.disco" MetadataType="Disco" ID="8c5abca5-9954-4027-ab5a-f1a4370392e9" SourceId="1" SourceUrl="http://localhost:8301/DDService.svc?disco" />
-    <MetadataFile FileName="DDService2.xsd" MetadataType="Schema" ID="597b9fe7-4fe2-4f48-a11d-9c393cfe9bea" SourceId="1" SourceUrl="http://localhost:8301/DDService.svc?xsd=xsd1" />
+    <MetadataFile FileName="DDService.wsdl" MetadataType="Wsdl" ID="d4c5a0b9-0f70-4927-904e-a5f1ac8524b9" SourceId="1" SourceUrl="http://localhost:8301/DDService.svc?wsdl" />
+    <MetadataFile FileName="DDService.xsd" MetadataType="Schema" ID="466c63e2-5d87-4eea-a815-7b8abf1dc2e5" SourceId="1" SourceUrl="http://localhost:8301/DDService.svc?xsd=xsd0" />
+    <MetadataFile FileName="DDService1.xsd" MetadataType="Schema" ID="685c386a-ffe4-46b2-a4a4-2a92a0375e56" SourceId="1" SourceUrl="http://localhost:8301/DDService.svc?xsd=xsd2" />
+    <MetadataFile FileName="DDService.disco" MetadataType="Disco" ID="224818ba-dc61-4c07-a920-e85e3c3c4125" SourceId="1" SourceUrl="http://localhost:8301/DDService.svc?disco" />
+    <MetadataFile FileName="DDService2.xsd" MetadataType="Schema" ID="8f09578b-5580-4234-bd55-b3ba87422251" SourceId="1" SourceUrl="http://localhost:8301/DDService.svc?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

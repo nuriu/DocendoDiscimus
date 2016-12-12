@@ -1,18 +1,18 @@
-namespace Servis.Migrations
+namespace servis.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Servis.Model.DDDBEntities>
+    internal sealed class Configuration : DbMigrationsConfiguration<servis.Model.DDDBEntities>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Servis.Model.DDDBEntities context)
+        protected override void Seed(servis.Model.DDDBEntities context)
         {
             //  This method will be called after migrating to the latest version.
 

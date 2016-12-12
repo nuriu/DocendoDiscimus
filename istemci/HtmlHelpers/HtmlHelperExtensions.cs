@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace İstemci.HtmlHelpers
+namespace istemci.HtmlHelpers
 {
     public static class HtmlHelperExtensions
     {

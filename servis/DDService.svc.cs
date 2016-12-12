@@ -1,8 +1,8 @@
-﻿using Servis.Model;
+﻿using servis.Model;
 using System.Linq;
 using System.Data.Entity;
 
-namespace Servis
+namespace servis
 {
     public class DDService : IDDService
     {

@@ -1,6 +1,6 @@
 ﻿using System.Web.Optimization;
 
-namespace İstemci
+namespace istemci
 {
     public class BundleConfig
     {

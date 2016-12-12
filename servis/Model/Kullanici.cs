@@ -1,4 +1,4 @@
-namespace Servis.Model
+namespace servis.Model
 {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;

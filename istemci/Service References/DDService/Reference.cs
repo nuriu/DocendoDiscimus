@@ -8,14 +8,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace İstemci.DDService {
+namespace istemci.DDService {
     using System.Runtime.Serialization;
     using System;
     
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Kullanici", Namespace="http://schemas.datacontract.org/2004/07/Servis.Model")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Kullanici", Namespace="http://schemas.datacontract.org/2004/07/servis.Model")]
     [System.SerializableAttribute()]
     public partial class Kullanici : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -187,10 +187,10 @@ namespace İstemci.DDService {
         System.Threading.Tasks.Task<int> KullaniciGirisiYapAsync(string kullaniciAdi, string parola);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/KullaniciBilgileriniGetir", ReplyAction="http://tempuri.org/IDDService/KullaniciBilgileriniGetirResponse")]
-        İstemci.DDService.Kullanici KullaniciBilgileriniGetir(int kimlik);
+        istemci.DDService.Kullanici KullaniciBilgileriniGetir(int kimlik);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/KullaniciBilgileriniGetir", ReplyAction="http://tempuri.org/IDDService/KullaniciBilgileriniGetirResponse")]
-        System.Threading.Tasks.Task<İstemci.DDService.Kullanici> KullaniciBilgileriniGetirAsync(int kimlik);
+        System.Threading.Tasks.Task<istemci.DDService.Kullanici> KullaniciBilgileriniGetirAsync(int kimlik);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/KullaniciBilgileriniGuncelle", ReplyAction="http://tempuri.org/IDDService/KullaniciBilgileriniGuncelleResponse")]
         bool KullaniciBilgileriniGuncelle(int kimlik, string ePosta, string isim, string soyisim, string parola, string avatarLink);
@@ -200,12 +200,12 @@ namespace İstemci.DDService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IDDServiceChannel : İstemci.DDService.IDDService, System.ServiceModel.IClientChannel {
+    public interface IDDServiceChannel : istemci.DDService.IDDService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class DDServiceClient : System.ServiceModel.ClientBase<İstemci.DDService.IDDService>, İstemci.DDService.IDDService {
+    public partial class DDServiceClient : System.ServiceModel.ClientBase<istemci.DDService.IDDService>, istemci.DDService.IDDService {
         
         public DDServiceClient() {
         }
@@ -242,11 +242,11 @@ namespace İstemci.DDService {
             return base.Channel.KullaniciGirisiYapAsync(kullaniciAdi, parola);
         }
         
-        public İstemci.DDService.Kullanici KullaniciBilgileriniGetir(int kimlik) {
+        public istemci.DDService.Kullanici KullaniciBilgileriniGetir(int kimlik) {
             return base.Channel.KullaniciBilgileriniGetir(kimlik);
         }
         
-        public System.Threading.Tasks.Task<İstemci.DDService.Kullanici> KullaniciBilgileriniGetirAsync(int kimlik) {
+        public System.Threading.Tasks.Task<istemci.DDService.Kullanici> KullaniciBilgileriniGetirAsync(int kimlik) {
             return base.Channel.KullaniciBilgileriniGetirAsync(kimlik);
         }
         

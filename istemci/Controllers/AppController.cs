@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
-using İstemci.DDService;
+using istemci.DDService;
 
-namespace İstemci.Controllers
+namespace istemci.Controllers
 {
     public class AppController : Controller
     {
