@@ -12,7 +12,7 @@ namespace servis
         {
             try
             {
-                Kullanici kullanici = (from k in db.Kullanici where k.Kimlik == kimlik select k).SingleOrDefault();
+                Kullanici kullanici = (from k in db.Kullanicilar where k.Kimlik == kimlik select k).SingleOrDefault();
 
                 return kullanici;
             }
@@ -26,7 +26,7 @@ namespace servis
         {
             try
             {
-                var kullanici = (from k in db.Kullanici where k.Kimlik == kimlik select k).SingleOrDefault();
+                var kullanici = (from k in db.Kullanicilar where k.Kimlik == kimlik select k).SingleOrDefault();
 
                 if (kullanici != null)
                 {
@@ -53,7 +53,7 @@ namespace servis
         {
             try
             {
-                int kontrol = (from k in db.Kullanici where k.KullaniciAdi == kullaniciAdi && k.Parola == parola select k.Kimlik).SingleOrDefault();
+                int kontrol = (from k in db.Kullanicilar where k.KullaniciAdi == kullaniciAdi && k.Parola == parola select k.Kimlik).SingleOrDefault();
 
                 return kontrol;
             }
@@ -67,7 +67,7 @@ namespace servis
         {
             try
             {
-                var kontrol = (from k in db.Kullanici where k.KullaniciAdi == kullaniciAdi select k).SingleOrDefault();
+                var kontrol = (from k in db.Kullanicilar where k.KullaniciAdi == kullaniciAdi select k).SingleOrDefault();
 
                 if (kontrol == null)
                 {
@@ -78,7 +78,7 @@ namespace servis
                         Parola = parola
                     };
 
-                    db.Kullanici.Add(kayitEdilecekKullanici);
+                    db.Kullanicilar.Add(kayitEdilecekKullanici);
                     db.SaveChanges();
                 }
             }

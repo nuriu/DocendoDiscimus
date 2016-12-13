@@ -9,7 +9,7 @@ namespace servis.Model
         {
         }
 
-        public virtual DbSet<Kullanici> Kullanici { get; set; }
+        public virtual DbSet<Kullanici> Kullanicilar { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
