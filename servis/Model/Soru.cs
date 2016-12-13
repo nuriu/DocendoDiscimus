@@ -26,7 +26,6 @@ namespace servis.Model
         [StringLength(1500)]
         public string Metin { get; set; }
 
-        [DataMember]
         public virtual ICollection<Cevap> Cevaplar { get; set; }
     }
 }

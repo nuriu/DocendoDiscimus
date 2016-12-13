@@ -31,6 +31,18 @@ namespace istemci.Controllers
             return RedirectToAction("Anasayfa", "Home");
         }
 
+        public ActionResult Sor()
+        {
+            if (Request.Cookies["KullaniciKimligi"] != null)
+            {
+                ViewBag.Title = "Soru Sor";
+                ViewBag.Kullanici = servis.KullaniciBilgileriniGetir(int.Parse(Request.Cookies["KullaniciKimligi"].Value));
+
+                return View();
+            }
+            return RedirectToAction("Anasayfa", "Home");
+        }
+
         public JsonResult KullaniciBilgileriniGuncelle(string isim, string soyisim, string eposta, string parola, string avatarLink)
         {
             DDServiceClient servis = new DDServiceClient();

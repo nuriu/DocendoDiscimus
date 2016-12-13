@@ -17,7 +17,7 @@ namespace servis.Model
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Soru>().HasRequired(s => s.Soran).WithMany(k => k.SorduguSorular);
+            //modelBuilder.Entity<Soru>().HasRequired(s => s.Soran).WithMany(k => k.SorduguSorular);
             modelBuilder.Entity<Cevap>().HasRequired(c => c.VerildigiSoru).WithMany(s => s.Cevaplar);
             modelBuilder.Entity<Yorum>().HasRequired(y => y.YapildigiCevap).WithMany(c => c.Yorumlar);
         }

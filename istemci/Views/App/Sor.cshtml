@@ -1,0 +1,74 @@
+﻿@{
+    Layout = "~/Views/Shared/_AppLayout.cshtml";
+}
+
+<div class="col s12 m12 l12">
+    <div id="profil" class="section scrollspy">
+
+        <h3 class="header deep-purple-text text-darken-1">Buyrun!</h3>
+        <p class="caption">Aşağıdaki alan ile birlikte sisteme soru ekleyebilirsiniz.</p>
+        <br />
+        <div class="card deep-purple darken-1">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/uploads/14128324071271c853818/3765c625?dpr=1&auto=compress,format&fit=crop&w=800&h=200&q=80&cs=tinysrgb&crop=">
+            </div>
+            <div class="card-content white-text">
+                <div class="row">
+                    <form class="col s12">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="baslik" name="Başlık" type="text" class="validate">
+                                <label for="baslik">Başlık</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <textarea id="icerik" name="İçerik" class="materialize-textarea"></textarea>
+                                <label for="icerik">Açıklamanız</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="card-action">
+                <a href="#" onclick="temizle()">Temizle</a>
+                <a href="#" onclick="sor()">Sor</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function temizle() {
+        $(':input').removeAttr('checked').removeAttr('selected').not(':button, :submit, :reset, :hidden, :radio, :checkbox').val('').blur();
+    }
+
+    function sor() {
+        var kontrol = true;
+        $('input, textarea').each(function () {
+            if ($.trim($(this).val()) == "") {
+                Materialize.toast(this.name + ' alanı boş bırakılamaz!', 3000, 'red rounded');
+                kontrol = false;
+                $(this).addClass("invalid");
+            } else {
+                $(this).removeClass("invalid");
+            }
+        });
+
+        if (kontrol == true) {
+            var veri = {
+                baslik: $("#baslik").val(),
+                icerik: $("#icerik").val()
+            };
+            $.post("/App/SoruSor", veri, function (cevap) {
+                if (cevap == 'Soru ekleme başarılı.') {
+                    Materialize.toast('Soru başarıyla eklendi!', 3000, 'green rounded');
+                    window.location = "/App";
+                }
+                else
+                    Materialize.toast('Soru ekleme başarısız!', 3000, 'red rounded');
+            });
+        }
+    }
+</script>
+
