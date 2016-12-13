@@ -1,7 +1,5 @@
 ﻿using istemci.DDService;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
@@ -11,11 +9,14 @@ namespace istemci.Controllers
     {
         public ActionResult Anasayfa()
         {
+            /*
             if (Request.Cookies["KullaniciKimligi"] != null)
             {
                 return RedirectToAction("Anasayfa", "App");
             }
+            */
 
+            ViewBag.Title = "Hoşgeldiniz";
             return View();
         }
 

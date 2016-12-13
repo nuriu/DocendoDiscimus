@@ -11,6 +11,7 @@ namespace istemci.Controllers
         {
             if (Request.Cookies["KullaniciKimligi"] != null)
             {
+                ViewBag.Title = "Anasayfa";
                 ViewBag.Kullanici = servis.KullaniciBilgileriniGetir(int.Parse(Request.Cookies["KullaniciKimligi"].Value));
 
                 return View();
@@ -22,6 +23,7 @@ namespace istemci.Controllers
         {
             if (Request.Cookies["KullaniciKimligi"] != null)
             {
+                ViewBag.Title = "Profil";
                 ViewBag.Kullanici = servis.KullaniciBilgileriniGetir(int.Parse(Request.Cookies["KullaniciKimligi"].Value));
 
                 return View();
