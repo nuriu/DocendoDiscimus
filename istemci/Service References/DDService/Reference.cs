@@ -44,7 +44,16 @@ namespace istemci.DDService {
         private string ParolaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private istemci.DDService.Soru[] SorduguSorularField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SoyisimField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private istemci.DDService.Cevap[] VerdigiCevaplarField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private istemci.DDService.Yorum[] YaptigiYorumlarField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -148,6 +157,19 @@ namespace istemci.DDService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public istemci.DDService.Soru[] SorduguSorular {
+            get {
+                return this.SorduguSorularField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SorduguSorularField, value) != true)) {
+                    this.SorduguSorularField = value;
+                    this.RaisePropertyChanged("SorduguSorular");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Soyisim {
             get {
                 return this.SoyisimField;
@@ -156,6 +178,343 @@ namespace istemci.DDService {
                 if ((object.ReferenceEquals(this.SoyisimField, value) != true)) {
                     this.SoyisimField = value;
                     this.RaisePropertyChanged("Soyisim");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public istemci.DDService.Cevap[] VerdigiCevaplar {
+            get {
+                return this.VerdigiCevaplarField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VerdigiCevaplarField, value) != true)) {
+                    this.VerdigiCevaplarField = value;
+                    this.RaisePropertyChanged("VerdigiCevaplar");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public istemci.DDService.Yorum[] YaptigiYorumlar {
+            get {
+                return this.YaptigiYorumlarField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.YaptigiYorumlarField, value) != true)) {
+                    this.YaptigiYorumlarField = value;
+                    this.RaisePropertyChanged("YaptigiYorumlar");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Soru", Namespace="http://schemas.datacontract.org/2004/07/servis.Model")]
+    [System.SerializableAttribute()]
+    public partial class Soru : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BaslikField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private istemci.DDService.Cevap[] CevaplarField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int KimlikField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MetinField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private istemci.DDService.Kullanici SoranField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Baslik {
+            get {
+                return this.BaslikField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BaslikField, value) != true)) {
+                    this.BaslikField = value;
+                    this.RaisePropertyChanged("Baslik");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public istemci.DDService.Cevap[] Cevaplar {
+            get {
+                return this.CevaplarField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CevaplarField, value) != true)) {
+                    this.CevaplarField = value;
+                    this.RaisePropertyChanged("Cevaplar");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Kimlik {
+            get {
+                return this.KimlikField;
+            }
+            set {
+                if ((this.KimlikField.Equals(value) != true)) {
+                    this.KimlikField = value;
+                    this.RaisePropertyChanged("Kimlik");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Metin {
+            get {
+                return this.MetinField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MetinField, value) != true)) {
+                    this.MetinField = value;
+                    this.RaisePropertyChanged("Metin");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public istemci.DDService.Kullanici Soran {
+            get {
+                return this.SoranField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SoranField, value) != true)) {
+                    this.SoranField = value;
+                    this.RaisePropertyChanged("Soran");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Cevap", Namespace="http://schemas.datacontract.org/2004/07/servis.Model")]
+    [System.SerializableAttribute()]
+    public partial class Cevap : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int KimlikField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MetinField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private istemci.DDService.Soru VerildigiSoruField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private istemci.DDService.Kullanici YazanField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private istemci.DDService.Yorum[] YorumlarField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Kimlik {
+            get {
+                return this.KimlikField;
+            }
+            set {
+                if ((this.KimlikField.Equals(value) != true)) {
+                    this.KimlikField = value;
+                    this.RaisePropertyChanged("Kimlik");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Metin {
+            get {
+                return this.MetinField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MetinField, value) != true)) {
+                    this.MetinField = value;
+                    this.RaisePropertyChanged("Metin");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public istemci.DDService.Soru VerildigiSoru {
+            get {
+                return this.VerildigiSoruField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VerildigiSoruField, value) != true)) {
+                    this.VerildigiSoruField = value;
+                    this.RaisePropertyChanged("VerildigiSoru");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public istemci.DDService.Kullanici Yazan {
+            get {
+                return this.YazanField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.YazanField, value) != true)) {
+                    this.YazanField = value;
+                    this.RaisePropertyChanged("Yazan");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public istemci.DDService.Yorum[] Yorumlar {
+            get {
+                return this.YorumlarField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.YorumlarField, value) != true)) {
+                    this.YorumlarField = value;
+                    this.RaisePropertyChanged("Yorumlar");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Yorum", Namespace="http://schemas.datacontract.org/2004/07/servis.Model")]
+    [System.SerializableAttribute()]
+    public partial class Yorum : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int KimlikField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MetinField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private istemci.DDService.Kullanici YapanField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private istemci.DDService.Cevap YapildigiCevapField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Kimlik {
+            get {
+                return this.KimlikField;
+            }
+            set {
+                if ((this.KimlikField.Equals(value) != true)) {
+                    this.KimlikField = value;
+                    this.RaisePropertyChanged("Kimlik");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Metin {
+            get {
+                return this.MetinField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MetinField, value) != true)) {
+                    this.MetinField = value;
+                    this.RaisePropertyChanged("Metin");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public istemci.DDService.Kullanici Yapan {
+            get {
+                return this.YapanField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.YapanField, value) != true)) {
+                    this.YapanField = value;
+                    this.RaisePropertyChanged("Yapan");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public istemci.DDService.Cevap YapildigiCevap {
+            get {
+                return this.YapildigiCevapField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.YapildigiCevapField, value) != true)) {
+                    this.YapildigiCevapField = value;
+                    this.RaisePropertyChanged("YapildigiCevap");
                 }
             }
         }

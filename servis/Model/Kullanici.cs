@@ -1,12 +1,13 @@
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
+
 namespace servis.Model
 {
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Runtime.Serialization;
-
     [DataContract]
     [Table("Kullanici")]
-    public partial class Kullanici
+    public class Kullanici
     {
         [DataMember]
         [Key]
@@ -41,5 +42,14 @@ namespace servis.Model
         [DataMember]
         [StringLength(250)]
         public string AvatarLink { get; set; }
+
+        [DataMember]
+        public virtual ICollection<Soru> SorduguSorular { get; set; }
+
+        [DataMember]
+        public virtual ICollection<Cevap> VerdigiCevaplar { get; set; }
+
+        [DataMember]
+        public virtual ICollection<Yorum> YaptigiYorumlar { get; set; }
     }
 }

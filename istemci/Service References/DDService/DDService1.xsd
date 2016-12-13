@@ -9,8 +9,58 @@
       <xs:element minOccurs="0" name="KullaniciAdi" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="KullaniciTuru" type="xs:boolean" />
       <xs:element minOccurs="0" name="Parola" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SorduguSorular" nillable="true" type="tns:ArrayOfSoru" />
       <xs:element minOccurs="0" name="Soyisim" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VerdigiCevaplar" nillable="true" type="tns:ArrayOfCevap" />
+      <xs:element minOccurs="0" name="YaptigiYorumlar" nillable="true" type="tns:ArrayOfYorum" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Kullanici" nillable="true" type="tns:Kullanici" />
+  <xs:complexType name="ArrayOfSoru">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Soru" nillable="true" type="tns:Soru" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSoru" nillable="true" type="tns:ArrayOfSoru" />
+  <xs:complexType name="Soru">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Baslik" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Cevaplar" nillable="true" type="tns:ArrayOfCevap" />
+      <xs:element minOccurs="0" name="Kimlik" type="xs:int" />
+      <xs:element minOccurs="0" name="Metin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Soran" nillable="true" type="tns:Kullanici" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Soru" nillable="true" type="tns:Soru" />
+  <xs:complexType name="ArrayOfCevap">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Cevap" nillable="true" type="tns:Cevap" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCevap" nillable="true" type="tns:ArrayOfCevap" />
+  <xs:complexType name="Cevap">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Kimlik" type="xs:int" />
+      <xs:element minOccurs="0" name="Metin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VerildigiSoru" nillable="true" type="tns:Soru" />
+      <xs:element minOccurs="0" name="Yazan" nillable="true" type="tns:Kullanici" />
+      <xs:element minOccurs="0" name="Yorumlar" nillable="true" type="tns:ArrayOfYorum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Cevap" nillable="true" type="tns:Cevap" />
+  <xs:complexType name="ArrayOfYorum">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Yorum" nillable="true" type="tns:Yorum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfYorum" nillable="true" type="tns:ArrayOfYorum" />
+  <xs:complexType name="Yorum">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Kimlik" type="xs:int" />
+      <xs:element minOccurs="0" name="Metin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Yapan" nillable="true" type="tns:Kullanici" />
+      <xs:element minOccurs="0" name="YapildigiCevap" nillable="true" type="tns:Cevap" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Yorum" nillable="true" type="tns:Yorum" />
 </xs:schema>
