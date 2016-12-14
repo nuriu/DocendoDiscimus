@@ -73,6 +73,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DDService.svc" />
+    <Content Include="Model\DDDBEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DDDBEntities.edmx</DependentUpon>
+      <LastGenOutput>DDDBEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\DDDBEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DDDBEntities.edmx</DependentUpon>
+      <LastGenOutput>DDDBEntities.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -85,19 +95,55 @@
       <DependentUpon>201612111359316_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\TCevap.cs" />
-    <Compile Include="Models\TKullanici.cs" />
-    <Compile Include="Models\DDDBEntities.cs" />
-    <Compile Include="Models\TSoru.cs" />
-    <Compile Include="Models\TYorum.cs" />
-    <Compile Include="Models\ViewModels\Kullanici.cs" />
+    <Compile Include="Model\Cevap.cs">
+      <DependentUpon>DDDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DDDBEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DDDBEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DDDBEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DDDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DDDBEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DDDBEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FavoriCevaplar.cs">
+      <DependentUpon>DDDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FavoriSorular.cs">
+      <DependentUpon>DDDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Kullanici.cs">
+      <DependentUpon>DDDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Soru.cs">
+      <DependentUpon>DDDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Yorum.cs">
+      <DependentUpon>DDDBEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\VMKullanici.cs" />
+    <Compile Include="ViewModel\VMSoru.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <EntityDeploy Include="Model\DDDBEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DDDBEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Model\DDDBEntities.edmx.diagram">
+      <DependentUpon>DDDBEntities.edmx</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

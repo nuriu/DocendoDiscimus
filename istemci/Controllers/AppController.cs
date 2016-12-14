@@ -13,6 +13,7 @@ namespace istemci.Controllers
             {
                 ViewBag.Title = "Anasayfa";
                 ViewBag.Kullanici = servis.KullaniciBilgileriniGetir(int.Parse(Request.Cookies["KullaniciKimligi"].Value));
+                ViewBag.Sorular = servis.SorulariGetir();
 
                 return View();
             }
@@ -45,8 +46,6 @@ namespace istemci.Controllers
 
         public JsonResult KullaniciBilgileriniGuncelle(string isim, string soyisim, string eposta, string parola, string avatarLink)
         {
-            DDServiceClient servis = new DDServiceClient();
-
             bool durum = servis.KullaniciBilgileriniGuncelle(int.Parse(Request.Cookies["KullaniciKimligi"].Value), eposta, isim, soyisim, parola, avatarLink);
 
             if (durum)
@@ -56,6 +55,20 @@ namespace istemci.Controllers
             else
             {
                 return Json("Güncelleme başarısız.");
+            }
+        }
+
+        public JsonResult SoruSor(string baslik, string icerik)
+        {
+            bool durum = servis.SoruEkle(int.Parse(Request.Cookies["KullaniciKimligi"].Value), baslik, icerik);
+
+            if (durum)
+            {
+                return Json("Soru ekleme başarılı.");
+            }
+            else
+            {
+                return Json("Soru ekleme başarısız.");
             }
         }
     }

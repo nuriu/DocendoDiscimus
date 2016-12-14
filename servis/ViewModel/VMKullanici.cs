@@ -1,9 +1,9 @@
 ﻿using servis.Model;
 using System.Collections.Generic;
 
-namespace servis.Models.ViewModels
+namespace servis.ViewModel
 {
-    public class Kullanici
+    public class VMKullanici
     {
         public int Kimlik { get; set; }
 
@@ -21,9 +21,9 @@ namespace servis.Models.ViewModels
 
         public string AvatarLink { get; set; }
 
-        public static Kullanici VeriyiIsle(TKullanici tk)
+        public static VMKullanici VeriyiIsle(Kullanici tk)
         {
-            Kullanici kullanici = new Kullanici()
+            VMKullanici kullanici = new VMKullanici()
             {
                 Kimlik = tk.Kimlik,
                 Eposta = tk.Eposta,
@@ -38,9 +38,9 @@ namespace servis.Models.ViewModels
             return kullanici;
         }
 
-        public static TKullanici VeriyiIsle(Kullanici k)
+        public static Kullanici VeriyiIsle(VMKullanici k)
         {
-            TKullanici TK = new TKullanici()
+            Kullanici TK = new Kullanici()
             {
                 Kimlik = k.Kimlik,
                 Eposta = k.Eposta,
@@ -55,9 +55,9 @@ namespace servis.Models.ViewModels
             return TK;
         }
 
-        public static List<Kullanici> VeriyiIsle(List<TKullanici> tkliste)
+        public static List<VMKullanici> VeriyiIsle(List<Kullanici> tkliste)
         {
-            List<Kullanici> kullaniciListesi = new List<Kullanici>();
+            List<VMKullanici> kullaniciListesi = new List<VMKullanici>();
 
             foreach (var kullanici in tkliste)
             {
@@ -67,9 +67,9 @@ namespace servis.Models.ViewModels
             return kullaniciListesi;
         }
 
-        public static List<TKullanici> VeriyiIsle(List<Kullanici> kliste)
+        public static List<Kullanici> VeriyiIsle(List<VMKullanici> kliste)
         {
-            List<TKullanici> kullaniciListesi = new List<TKullanici>();
+            List<Kullanici> kullaniciListesi = new List<Kullanici>();
 
             foreach (var kullanici in kliste)
             {

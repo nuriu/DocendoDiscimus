@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:8301/DDService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/servis.Models.ViewModels" />
+  <xs:import schemaLocation="http://localhost:8301/DDService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/servis.ViewModel" />
+  <xs:import schemaLocation="http://localhost:8301/DDService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/servis.Model" />
   <xs:element name="KullaniciKayitEt">
     <xs:complexType>
       <xs:sequence>
@@ -28,7 +29,7 @@
   <xs:element name="KullaniciGirisiYapResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/servis.Models.ViewModels" minOccurs="0" name="KullaniciGirisiYapResult" nillable="true" type="q1:Kullanici" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/servis.ViewModel" minOccurs="0" name="KullaniciGirisiYapResult" nillable="true" type="q1:VMKullanici" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -42,7 +43,7 @@
   <xs:element name="KullaniciBilgileriniGetirResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/servis.Models.ViewModels" minOccurs="0" name="KullaniciBilgileriniGetirResult" nillable="true" type="q2:Kullanici" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/servis.ViewModel" minOccurs="0" name="KullaniciBilgileriniGetirResult" nillable="true" type="q2:VMKullanici" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -62,6 +63,60 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="KullaniciBilgileriniGuncelleResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SoruEkle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="soran" type="xs:int" />
+        <xs:element minOccurs="0" name="baslik" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="metin" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SoruEkleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SoruEkleResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SoruBilgileriniGetir">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kimlik" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SoruBilgileriniGetirResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/servis.ViewModel" minOccurs="0" name="SoruBilgileriniGetirResult" nillable="true" type="q3:VMSoru" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SorulariGetir">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SorulariGetirResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/servis.ViewModel" minOccurs="0" name="SorulariGetirResult" nillable="true" type="q4:ArrayOfVMSoru" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dbSorulariGetir">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dbSorulariGetirResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/servis.Model" minOccurs="0" name="dbSorulariGetirResult" nillable="true" type="q5:ArrayOfSoru" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

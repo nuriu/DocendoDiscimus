@@ -1,5 +1,6 @@
 ﻿using servis.Model;
-using servis.Models.ViewModels;
+using servis.ViewModel;
+using System.Collections.Generic;
 using System.ServiceModel;
 
 namespace servis
@@ -11,12 +12,21 @@ namespace servis
         bool KullaniciKayitEt(string ePosta, string kullaniciAdi, string parola);
 
         [OperationContract]
-        Kullanici KullaniciGirisiYap(string kullaniciAdi, string parola);
+        VMKullanici KullaniciGirisiYap(string kullaniciAdi, string parola);
 
         [OperationContract]
-        Kullanici KullaniciBilgileriniGetir(int kimlik);
+        VMKullanici KullaniciBilgileriniGetir(int kimlik);
 
         [OperationContract]
         bool KullaniciBilgileriniGuncelle(int kimlik, string ePosta, string isim, string soyisim, string parola, string avatarLink);
+
+        [OperationContract]
+        bool SoruEkle(int soran, string baslik, string metin);
+
+        [OperationContract]
+        VMSoru SoruBilgileriniGetir(int kimlik);
+
+        [OperationContract]
+        List<VMSoru> SorulariGetir();
     }
 }

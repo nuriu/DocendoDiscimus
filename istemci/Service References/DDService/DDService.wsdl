@@ -4,7 +4,8 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8301/DDService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8301/DDService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:8301/DDService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/servis.Models.ViewModels" />
+      <xsd:import schemaLocation="http://localhost:8301/DDService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/servis.ViewModel" />
+      <xsd:import schemaLocation="http://localhost:8301/DDService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/servis.Model" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IDDService_KullaniciKayitEt_InputMessage">
@@ -31,6 +32,30 @@
   <wsdl:message name="IDDService_KullaniciBilgileriniGuncelle_OutputMessage">
     <wsdl:part name="parameters" element="tns:KullaniciBilgileriniGuncelleResponse" />
   </wsdl:message>
+  <wsdl:message name="IDDService_SoruEkle_InputMessage">
+    <wsdl:part name="parameters" element="tns:SoruEkle" />
+  </wsdl:message>
+  <wsdl:message name="IDDService_SoruEkle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SoruEkleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDDService_SoruBilgileriniGetir_InputMessage">
+    <wsdl:part name="parameters" element="tns:SoruBilgileriniGetir" />
+  </wsdl:message>
+  <wsdl:message name="IDDService_SoruBilgileriniGetir_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SoruBilgileriniGetirResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDDService_SorulariGetir_InputMessage">
+    <wsdl:part name="parameters" element="tns:SorulariGetir" />
+  </wsdl:message>
+  <wsdl:message name="IDDService_SorulariGetir_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SorulariGetirResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDDService_dbSorulariGetir_InputMessage">
+    <wsdl:part name="parameters" element="tns:dbSorulariGetir" />
+  </wsdl:message>
+  <wsdl:message name="IDDService_dbSorulariGetir_OutputMessage">
+    <wsdl:part name="parameters" element="tns:dbSorulariGetirResponse" />
+  </wsdl:message>
   <wsdl:portType name="IDDService">
     <wsdl:operation name="KullaniciKayitEt">
       <wsdl:input wsaw:Action="http://tempuri.org/IDDService/KullaniciKayitEt" message="tns:IDDService_KullaniciKayitEt_InputMessage" />
@@ -47,6 +72,22 @@
     <wsdl:operation name="KullaniciBilgileriniGuncelle">
       <wsdl:input wsaw:Action="http://tempuri.org/IDDService/KullaniciBilgileriniGuncelle" message="tns:IDDService_KullaniciBilgileriniGuncelle_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDDService/KullaniciBilgileriniGuncelleResponse" message="tns:IDDService_KullaniciBilgileriniGuncelle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SoruEkle">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDDService/SoruEkle" message="tns:IDDService_SoruEkle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDDService/SoruEkleResponse" message="tns:IDDService_SoruEkle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SoruBilgileriniGetir">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDDService/SoruBilgileriniGetir" message="tns:IDDService_SoruBilgileriniGetir_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDDService/SoruBilgileriniGetirResponse" message="tns:IDDService_SoruBilgileriniGetir_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SorulariGetir">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDDService/SorulariGetir" message="tns:IDDService_SorulariGetir_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDDService/SorulariGetirResponse" message="tns:IDDService_SorulariGetir_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="dbSorulariGetir">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDDService/dbSorulariGetir" message="tns:IDDService_dbSorulariGetir_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDDService/dbSorulariGetirResponse" message="tns:IDDService_dbSorulariGetir_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IDDService" type="tns:IDDService">
@@ -80,6 +121,42 @@
     </wsdl:operation>
     <wsdl:operation name="KullaniciBilgileriniGuncelle">
       <soap:operation soapAction="http://tempuri.org/IDDService/KullaniciBilgileriniGuncelle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SoruEkle">
+      <soap:operation soapAction="http://tempuri.org/IDDService/SoruEkle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SoruBilgileriniGetir">
+      <soap:operation soapAction="http://tempuri.org/IDDService/SoruBilgileriniGetir" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SorulariGetir">
+      <soap:operation soapAction="http://tempuri.org/IDDService/SorulariGetir" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dbSorulariGetir">
+      <soap:operation soapAction="http://tempuri.org/IDDService/dbSorulariGetir" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

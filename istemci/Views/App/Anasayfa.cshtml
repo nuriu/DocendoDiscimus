@@ -2,6 +2,8 @@
     Layout = "~/Views/Shared/_AppLayout.cshtml";
 }
 
+@using istemci.DDService;
+
 <div class="col s12 m10 l10">
     <div id="sorular" class="section scrollspy">
 
@@ -9,15 +11,19 @@
         <p class="caption">Aşağıdaki alana sistemde bulunan son soruları görebilirsiniz.</p>
         <br />
         <ul class="collection">
-            <li class="collection-item avatar">
-                <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
-                <span class="title">Title</span>
-                <p>
-                    First Line <br>
-                    Second Line
-                </p>
-                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-            </li>
+            @foreach (var soru in ((ICollection<VMSoru>)ViewBag.Sorular).Reverse())
+            {
+                DDServiceClient s = new DDServiceClient();
+                ViewBag.Soran = s.KullaniciBilgileriniGetir(soru.Soran_Kimlik);
+                <li class="collection-item avatar">
+                    <img src="@ViewBag.Soran.AvatarLink" alt="" class="circle responsive-img">
+                    <span class="title">@ViewBag.Soran.Isim @ViewBag.Soran.Soyisim <small>(@ViewBag.Soran.Eposta)</small></span>
+                    <p class="deep-purple-text text-darken-1" style="font-size:1.5rem;padding:0.75rem;">
+                        @soru.Baslik
+                    </p>
+                    <a href="#!" class="secondary-content"><i class="medium material-icons deep-purple-text text-darken-1">play_arrow</i></a>
+                </li>
+            }
         </ul>
     </div>
 </div>

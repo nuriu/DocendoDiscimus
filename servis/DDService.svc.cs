@@ -1,7 +1,9 @@
 ﻿using servis.Model;
+using servis.ViewModel;
 using System.Linq;
 using System.Data.Entity;
-using servis.Models.ViewModels;
+using System;
+using System.Collections.Generic;
 
 namespace servis
 {
@@ -9,13 +11,13 @@ namespace servis
     {
         public DDDBEntities db = new DDDBEntities();
 
-        public Kullanici KullaniciBilgileriniGetir(int kimlik)
+        public VMKullanici KullaniciBilgileriniGetir(int kimlik)
         {
             try
             {
-                TKullanici kullanici = (from k in db.Kullanicilar where k.Kimlik == kimlik select k).SingleOrDefault();
+                var kullanici = (from k in db.Kullanici where k.Kimlik == kimlik select k).SingleOrDefault();
 
-                return Kullanici.VeriyiIsle(kullanici);
+                return VMKullanici.VeriyiIsle(kullanici);
             }
             catch
             {
@@ -27,7 +29,7 @@ namespace servis
         {
             try
             {
-                var kullanici = (from k in db.Kullanicilar where k.Kimlik == kimlik select k).SingleOrDefault();
+                var kullanici = (from k in db.Kullanici where k.Kimlik == kimlik select k).SingleOrDefault();
 
                 if (kullanici != null)
                 {
@@ -50,13 +52,13 @@ namespace servis
             }
         }
 
-        public Kullanici KullaniciGirisiYap(string kullaniciAdi, string parola)
+        public VMKullanici KullaniciGirisiYap(string kullaniciAdi, string parola)
         {
             try
             {
-                var girisYapanKullanici = (from k in db.Kullanicilar where k.KullaniciAdi == kullaniciAdi && k.Parola == parola select k).SingleOrDefault();
+                var girisYapanKullanici = (from k in db.Kullanici where k.KullaniciAdi == kullaniciAdi && k.Parola == parola select k).SingleOrDefault();
 
-                return Kullanici.VeriyiIsle(girisYapanKullanici);
+                return VMKullanici.VeriyiIsle(girisYapanKullanici);
             }
             catch
             {
@@ -68,7 +70,7 @@ namespace servis
         {
             try
             {
-                var kontrol = (from k in db.Kullanicilar where k.KullaniciAdi == kullaniciAdi select k).SingleOrDefault();
+                var kontrol = (from k in db.Kullanici where k.KullaniciAdi == kullaniciAdi select k).SingleOrDefault();
 
                 if (kontrol == null)
                 {
@@ -79,7 +81,7 @@ namespace servis
                         Parola = parola
                     };
 
-                    db.Kullanicilar.Add(Kullanici.VeriyiIsle(kayitEdilecekKullanici));
+                    db.Kullanici.Add(kayitEdilecekKullanici);
                     db.SaveChanges();
                 }
             }
@@ -89,6 +91,47 @@ namespace servis
             }
 
             return true;
+        }
+
+        public bool SoruEkle(int soran, string baslik, string metin)
+        {
+            try
+            {
+                Soru eklenecekSoru = new Soru
+                {
+                    Soran_Kimlik = soran,
+                    Baslik = baslik,
+                    Metin = metin,
+                    SorulmaTarihi = DateTime.Now
+                };
+
+                db.Soru.Add(eklenecekSoru);
+                db.SaveChanges();
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public VMSoru SoruBilgileriniGetir(int kimlik)
+        {
+            try
+            {
+                var soru = (from s in db.Soru where s.Kimlik == kimlik select s).SingleOrDefault();
+
+                return VMSoru.VeriyiIsle(soru);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public List<VMSoru> SorulariGetir()
+        {
+            return VMSoru.VeriyiIsle(db.Soru.ToList());
         }
     }
 }
