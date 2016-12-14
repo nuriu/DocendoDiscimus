@@ -1,4 +1,5 @@
 ﻿using servis.Model;
+using servis.Models.ViewModels;
 using System.ServiceModel;
 
 namespace servis
@@ -10,7 +11,7 @@ namespace servis
         bool KullaniciKayitEt(string ePosta, string kullaniciAdi, string parola);
 
         [OperationContract]
-        int KullaniciGirisiYap(string kullaniciAdi, string parola);
+        Kullanici KullaniciGirisiYap(string kullaniciAdi, string parola);
 
         [OperationContract]
         Kullanici KullaniciBilgileriniGetir(int kimlik);

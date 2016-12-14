@@ -1,6 +1,7 @@
 ﻿using servis.Model;
 using System.Linq;
 using System.Data.Entity;
+using servis.Models.ViewModels;
 
 namespace servis
 {
@@ -12,9 +13,9 @@ namespace servis
         {
             try
             {
-                Kullanici kullanici = (from k in db.Kullanicilar where k.Kimlik == kimlik select k).SingleOrDefault();
+                TKullanici kullanici = (from k in db.Kullanicilar where k.Kimlik == kimlik select k).SingleOrDefault();
 
-                return kullanici;
+                return Kullanici.VeriyiIsle(kullanici);
             }
             catch
             {
@@ -49,17 +50,17 @@ namespace servis
             }
         }
 
-        public int KullaniciGirisiYap(string kullaniciAdi, string parola)
+        public Kullanici KullaniciGirisiYap(string kullaniciAdi, string parola)
         {
             try
             {
-                int kontrol = (from k in db.Kullanicilar where k.KullaniciAdi == kullaniciAdi && k.Parola == parola select k.Kimlik).SingleOrDefault();
+                var girisYapanKullanici = (from k in db.Kullanicilar where k.KullaniciAdi == kullaniciAdi && k.Parola == parola select k).SingleOrDefault();
 
-                return kontrol;
+                return Kullanici.VeriyiIsle(girisYapanKullanici);
             }
             catch
             {
-                return 0;
+                return null;
             }
         }
 
@@ -78,7 +79,7 @@ namespace servis
                         Parola = parola
                     };
 
-                    db.Kullanicilar.Add(kayitEdilecekKullanici);
+                    db.Kullanicilar.Add(Kullanici.VeriyiIsle(kayitEdilecekKullanici));
                     db.SaveChanges();
                 }
             }

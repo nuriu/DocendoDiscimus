@@ -7,8 +7,15 @@ namespace servis.Model
 
     [DataContract]
     [Table("Kullanici")]
-    public class Kullanici
+    public class TKullanici
     {
+        public TKullanici()
+        {
+            this.SorduguSorular = new HashSet<TSoru>();
+            this.VerdigiCevaplar = new HashSet<TCevap>();
+            this.YaptigiYorumlar = new HashSet<TYorum>();
+        }
+
         [DataMember]
         [Key]
         public int Kimlik { get; set; }
@@ -43,12 +50,10 @@ namespace servis.Model
         [StringLength(250)]
         public string AvatarLink { get; set; }
 
-        /*
-        public virtual ICollection<Soru> SorduguSorular { get; set; }
+        public virtual ICollection<TSoru> SorduguSorular { get; set; }
 
-        public virtual ICollection<Cevap> VerdigiCevaplar { get; set; }
+        public virtual ICollection<TCevap> VerdigiCevaplar { get; set; }
 
-        public virtual ICollection<Yorum> YaptigiYorumlar { get; set; }
-        */
+        public virtual ICollection<TYorum> YaptigiYorumlar { get; set; }
     }
 }

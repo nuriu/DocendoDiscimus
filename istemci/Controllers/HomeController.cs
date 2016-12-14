@@ -41,11 +41,11 @@ namespace istemci.Controllers
         {
             DDServiceClient servis = new DDServiceClient();
 
-            int kullaniciKimligi = servis.KullaniciGirisiYap(kullaniciAdi, parola);
+            var girisYapanKullanici = servis.KullaniciGirisiYap(kullaniciAdi, parola);
 
-            if (kullaniciKimligi != 0)
+            if (girisYapanKullanici != null)
             {
-                Response.Cookies["KullaniciKimligi"].Value = kullaniciKimligi.ToString();
+                Response.Cookies["KullaniciKimligi"].Value = girisYapanKullanici.Kimlik.ToString();
                 Response.Cookies["KullaniciKimligi"].Expires = DateTime.Now.AddDays(1);
 
                 HttpCookie sonZiyaret = new HttpCookie("SonZiyaret", DateTime.Now.ToString());

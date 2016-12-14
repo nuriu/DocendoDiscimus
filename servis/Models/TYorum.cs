@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
@@ -6,24 +6,26 @@ using System.Runtime.Serialization;
 namespace servis.Model
 {
     [DataContract]
-    [Table("Cevap")]
-    public class Cevap
+    [Table("Yorum")]
+    public class TYorum
     {
         [DataMember]
         [Key]
         public int Kimlik { get; set; }
 
         [DataMember]
-        public Kullanici Yazan { get; set; }
+        public TKullanici Yapan { get; set; }
 
         [DataMember]
-        public Soru VerildigiSoru { get; set; }
+        public TCevap YapildigiCevap { get; set; }
 
         [DataMember]
         [Required]
-        [StringLength(500)]
+        [StringLength(150)]
         public string Metin { get; set; }
 
-        public virtual ICollection<Yorum> Yorumlar { get; set; }
+        [DataMember]
+        [Required]
+        public DateTime YapilmaTarihi { get; set; }
     }
 }

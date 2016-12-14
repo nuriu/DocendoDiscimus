@@ -15,7 +15,7 @@ namespace istemci.DDService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Kullanici", Namespace="http://schemas.datacontract.org/2004/07/servis.Model")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Kullanici", Namespace="http://schemas.datacontract.org/2004/07/servis.Models.ViewModels")]
     [System.SerializableAttribute()]
     public partial class Kullanici : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -181,10 +181,10 @@ namespace istemci.DDService {
         System.Threading.Tasks.Task<bool> KullaniciKayitEtAsync(string ePosta, string kullaniciAdi, string parola);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/KullaniciGirisiYap", ReplyAction="http://tempuri.org/IDDService/KullaniciGirisiYapResponse")]
-        int KullaniciGirisiYap(string kullaniciAdi, string parola);
+        istemci.DDService.Kullanici KullaniciGirisiYap(string kullaniciAdi, string parola);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/KullaniciGirisiYap", ReplyAction="http://tempuri.org/IDDService/KullaniciGirisiYapResponse")]
-        System.Threading.Tasks.Task<int> KullaniciGirisiYapAsync(string kullaniciAdi, string parola);
+        System.Threading.Tasks.Task<istemci.DDService.Kullanici> KullaniciGirisiYapAsync(string kullaniciAdi, string parola);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/KullaniciBilgileriniGetir", ReplyAction="http://tempuri.org/IDDService/KullaniciBilgileriniGetirResponse")]
         istemci.DDService.Kullanici KullaniciBilgileriniGetir(int kimlik);
@@ -234,11 +234,11 @@ namespace istemci.DDService {
             return base.Channel.KullaniciKayitEtAsync(ePosta, kullaniciAdi, parola);
         }
         
-        public int KullaniciGirisiYap(string kullaniciAdi, string parola) {
+        public istemci.DDService.Kullanici KullaniciGirisiYap(string kullaniciAdi, string parola) {
             return base.Channel.KullaniciGirisiYap(kullaniciAdi, parola);
         }
         
-        public System.Threading.Tasks.Task<int> KullaniciGirisiYapAsync(string kullaniciAdi, string parola) {
+        public System.Threading.Tasks.Task<istemci.DDService.Kullanici> KullaniciGirisiYapAsync(string kullaniciAdi, string parola) {
             return base.Channel.KullaniciGirisiYapAsync(kullaniciAdi, parola);
         }
         

@@ -85,11 +85,12 @@
       <DependentUpon>201612111359316_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Model\Cevap.cs" />
-    <Compile Include="Model\Kullanici.cs" />
-    <Compile Include="Model\DDDBEntities.cs" />
-    <Compile Include="Model\Soru.cs" />
-    <Compile Include="Model\Yorum.cs" />
+    <Compile Include="Models\TCevap.cs" />
+    <Compile Include="Models\TKullanici.cs" />
+    <Compile Include="Models\DDDBEntities.cs" />
+    <Compile Include="Models\TSoru.cs" />
+    <Compile Include="Models\TYorum.cs" />
+    <Compile Include="Models\ViewModels\Kullanici.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
