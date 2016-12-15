@@ -117,7 +117,10 @@
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 
     <script type="text/javascript">
-        $(".button-collapse").sideNav();
+        $(document).ready(function () {
+            $(".button-collapse").sideNav();
+            $('.collapsible').collapsible();
+        });
 
         function cikis() {
             $.post("/Home/Cikis", "", function (sonuc) {

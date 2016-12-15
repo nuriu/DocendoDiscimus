@@ -19,7 +19,7 @@
                 <span class="white-text">@ViewBag.Soru.SorulmaTarihi</span>
             </div>
             <hr class="blue-grey-text text-lighten-1" /><br />
-            <span class="white-text" style="padding-left:1rem;">
+            <span class="white-text flow-text" style="padding-left:1rem;">
                 @ViewBag.Soru.Metin
             </span><br />
             <hr class="blue-grey-text text-lighten-1" style="margin-top:2rem;" />
@@ -42,7 +42,7 @@
                 <div class="left-align" style="padding-left:1rem; padding-top:1.5rem;">
                     <div class="white-text valign-wrapper">
                         <img src="@ViewBag.Kullanici.AvatarLink" alt="" class="circle" width="50" />
-                        <span class="valign" style="padding-left:1rem;"> @ViewBag.Kullanici.Isim @ViewBag.Kullanici.Soyisim <small style="padding-left:0.5rem;">olarak cevap yazıyorsunuz;</small></span>
+                        <span class="valign" style="padding-left:1rem;"> @ViewBag.Kullanici.Isim @ViewBag.Kullanici.Soyisim <small style="padding-left:0.25rem;">olarak cevap yazıyorsunuz;</small></span>
                     </div>
                 </div>
             </div>
@@ -60,6 +60,44 @@
                     <a href="#" class="btn btn-floating btn-large waves-effect waves-light deep-green darken-1" onclick="cevapla()"><i class="material-icons">add</i></a>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12">
+        <h5 class="blue-grey-text text-darken-1 left-align">
+            Cevaplar
+        </h5>
+        <hr class="blue-grey-text text-lighten-1" />
+        <div class="card-panel blue-grey darken-2">
+            <ul class="collapsible" data-collapsible="accordion">
+                <li>
+                    <div class="collapsible-header" style="padding-top:10px;">
+                        <div class="row left-align">
+                            <img src="@ViewBag.Kullanici.AvatarLink" alt="" class="circle" width="50" style="padding-left:1rem;" />
+                            <span class="valign" style="padding-left:0.25rem;"> @ViewBag.Kullanici.Isim @ViewBag.Kullanici.Soyisim <small style="padding-left:0.25rem;">yazdı;</small></span>
+                        </div>
+                        <div class="row" style="padding-left:1rem;padding-right:1rem;padding-top:-2rem;">
+                            <p class="flow-text" style="text-align:justify;">
+                                Cevap içeriği.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="collapsible-body white" style="padding-left:2rem;">
+                        <ul class="collection">
+                            <li class="collection-item avatar">
+                                <img src="@ViewBag.Sorucu.AvatarLink" alt="" class="circle">
+                                <span class="title">@ViewBag.Sorucu.Isim @ViewBag.Sorucu.Soyisim</span>
+                                <p>
+                                    Yorum içeriği.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+
         </div>
     </div>
 </div>
