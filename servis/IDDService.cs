@@ -37,5 +37,14 @@ namespace servis
 
         [OperationContract]
         List<VMCevap> SorununCevaplariniGetir(int kimlik);
+
+        [OperationContract]
+        bool YorumEkle(int eklenecekCevabinKimligi, int ekleyeninKimligi, string metin);
+
+        [OperationContract]
+        VMYorum YorumBilgileriniGetir(int kimlik);
+
+        [OperationContract]
+        List<VMYorum> CevabinYorumlariniGetir(int kimlik);
     }
 }

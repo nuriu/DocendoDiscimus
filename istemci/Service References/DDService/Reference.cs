@@ -404,6 +404,115 @@ namespace istemci.DDService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="VMYorum", Namespace="http://schemas.datacontract.org/2004/07/servis.ViewModel")]
+    [System.SerializableAttribute()]
+    public partial class VMYorum : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int KimlikField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MetinField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Yapan_KimlikField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int YapildigiCevap_KimlikField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime YapilmaTarihiField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Kimlik {
+            get {
+                return this.KimlikField;
+            }
+            set {
+                if ((this.KimlikField.Equals(value) != true)) {
+                    this.KimlikField = value;
+                    this.RaisePropertyChanged("Kimlik");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Metin {
+            get {
+                return this.MetinField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MetinField, value) != true)) {
+                    this.MetinField = value;
+                    this.RaisePropertyChanged("Metin");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Yapan_Kimlik {
+            get {
+                return this.Yapan_KimlikField;
+            }
+            set {
+                if ((this.Yapan_KimlikField.Equals(value) != true)) {
+                    this.Yapan_KimlikField = value;
+                    this.RaisePropertyChanged("Yapan_Kimlik");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int YapildigiCevap_Kimlik {
+            get {
+                return this.YapildigiCevap_KimlikField;
+            }
+            set {
+                if ((this.YapildigiCevap_KimlikField.Equals(value) != true)) {
+                    this.YapildigiCevap_KimlikField = value;
+                    this.RaisePropertyChanged("YapildigiCevap_Kimlik");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime YapilmaTarihi {
+            get {
+                return this.YapilmaTarihiField;
+            }
+            set {
+                if ((this.YapilmaTarihiField.Equals(value) != true)) {
+                    this.YapilmaTarihiField = value;
+                    this.RaisePropertyChanged("YapilmaTarihi");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="DDService.IDDService")]
     public interface IDDService {
@@ -467,6 +576,24 @@ namespace istemci.DDService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/SorununCevaplariniGetir", ReplyAction="http://tempuri.org/IDDService/SorununCevaplariniGetirResponse")]
         System.Threading.Tasks.Task<istemci.DDService.VMCevap[]> SorununCevaplariniGetirAsync(int kimlik);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/YorumEkle", ReplyAction="http://tempuri.org/IDDService/YorumEkleResponse")]
+        bool YorumEkle(int eklenecekCevabinKimligi, int ekleyeninKimligi, string metin);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/YorumEkle", ReplyAction="http://tempuri.org/IDDService/YorumEkleResponse")]
+        System.Threading.Tasks.Task<bool> YorumEkleAsync(int eklenecekCevabinKimligi, int ekleyeninKimligi, string metin);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/YorumBilgileriniGetir", ReplyAction="http://tempuri.org/IDDService/YorumBilgileriniGetirResponse")]
+        istemci.DDService.VMYorum YorumBilgileriniGetir(int kimlik);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/YorumBilgileriniGetir", ReplyAction="http://tempuri.org/IDDService/YorumBilgileriniGetirResponse")]
+        System.Threading.Tasks.Task<istemci.DDService.VMYorum> YorumBilgileriniGetirAsync(int kimlik);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/CevabinYorumlariniGetir", ReplyAction="http://tempuri.org/IDDService/CevabinYorumlariniGetirResponse")]
+        istemci.DDService.VMYorum[] CevabinYorumlariniGetir(int kimlik);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/CevabinYorumlariniGetir", ReplyAction="http://tempuri.org/IDDService/CevabinYorumlariniGetirResponse")]
+        System.Threading.Tasks.Task<istemci.DDService.VMYorum[]> CevabinYorumlariniGetirAsync(int kimlik);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -574,6 +701,30 @@ namespace istemci.DDService {
         
         public System.Threading.Tasks.Task<istemci.DDService.VMCevap[]> SorununCevaplariniGetirAsync(int kimlik) {
             return base.Channel.SorununCevaplariniGetirAsync(kimlik);
+        }
+        
+        public bool YorumEkle(int eklenecekCevabinKimligi, int ekleyeninKimligi, string metin) {
+            return base.Channel.YorumEkle(eklenecekCevabinKimligi, ekleyeninKimligi, metin);
+        }
+        
+        public System.Threading.Tasks.Task<bool> YorumEkleAsync(int eklenecekCevabinKimligi, int ekleyeninKimligi, string metin) {
+            return base.Channel.YorumEkleAsync(eklenecekCevabinKimligi, ekleyeninKimligi, metin);
+        }
+        
+        public istemci.DDService.VMYorum YorumBilgileriniGetir(int kimlik) {
+            return base.Channel.YorumBilgileriniGetir(kimlik);
+        }
+        
+        public System.Threading.Tasks.Task<istemci.DDService.VMYorum> YorumBilgileriniGetirAsync(int kimlik) {
+            return base.Channel.YorumBilgileriniGetirAsync(kimlik);
+        }
+        
+        public istemci.DDService.VMYorum[] CevabinYorumlariniGetir(int kimlik) {
+            return base.Channel.CevabinYorumlariniGetir(kimlik);
+        }
+        
+        public System.Threading.Tasks.Task<istemci.DDService.VMYorum[]> CevabinYorumlariniGetirAsync(int kimlik) {
+            return base.Channel.CevabinYorumlariniGetirAsync(kimlik);
         }
     }
 }

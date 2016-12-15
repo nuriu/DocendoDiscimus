@@ -181,5 +181,48 @@ namespace servis
             return VMCevap.VeriyiIsle((from c in db.Cevap where c.VerildigiSoru_Kimlik == kimlik select c).ToList());
         }
         #endregion
+
+        #region YORUM
+        public bool YorumEkle(int eklenecekCevabinKimligi, int ekleyeninKimligi, string metin)
+        {
+            try
+            {
+                Yorum eklenecekYorum = new Yorum
+                {
+                    Yapan_Kimlik = ekleyeninKimligi,
+                    YapildigiCevap_Kimlik = eklenecekCevabinKimligi,
+                    YapilmaTarihi = DateTime.Now,
+                    Metin = metin
+                };
+
+                db.Yorum.Add(eklenecekYorum);
+                db.SaveChanges();
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public VMYorum YorumBilgileriniGetir(int kimlik)
+        {
+            try
+            {
+                var yorum = (from y in db.Yorum where y.Kimlik == kimlik select y).SingleOrDefault();
+
+                return VMYorum.VeriyiIsle(yorum);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public List<VMYorum> CevabinYorumlariniGetir(int kimlik)
+        {
+            return VMYorum.VeriyiIsle((from y in db.Yorum where y.YapildigiCevap_Kimlik == kimlik select y).ToList());
+        }
+        #endregion
     }
 }

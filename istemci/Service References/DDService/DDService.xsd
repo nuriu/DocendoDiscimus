@@ -151,4 +151,48 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="YorumEkle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="eklenecekCevabinKimligi" type="xs:int" />
+        <xs:element minOccurs="0" name="ekleyeninKimligi" type="xs:int" />
+        <xs:element minOccurs="0" name="metin" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="YorumEkleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="YorumEkleResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="YorumBilgileriniGetir">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kimlik" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="YorumBilgileriniGetirResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/servis.ViewModel" minOccurs="0" name="YorumBilgileriniGetirResult" nillable="true" type="q7:VMYorum" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CevabinYorumlariniGetir">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kimlik" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CevabinYorumlariniGetirResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/servis.ViewModel" minOccurs="0" name="CevabinYorumlariniGetirResult" nillable="true" type="q8:ArrayOfVMYorum" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

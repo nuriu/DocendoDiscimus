@@ -46,4 +46,20 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfVMCevap" nillable="true" type="tns:ArrayOfVMCevap" />
+  <xs:complexType name="VMYorum">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Kimlik" type="xs:int" />
+      <xs:element minOccurs="0" name="Metin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Yapan_Kimlik" type="xs:int" />
+      <xs:element minOccurs="0" name="YapildigiCevap_Kimlik" type="xs:int" />
+      <xs:element minOccurs="0" name="YapilmaTarihi" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VMYorum" nillable="true" type="tns:VMYorum" />
+  <xs:complexType name="ArrayOfVMYorum">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VMYorum" nillable="true" type="tns:VMYorum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVMYorum" nillable="true" type="tns:ArrayOfVMYorum" />
 </xs:schema>

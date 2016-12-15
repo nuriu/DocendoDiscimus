@@ -67,6 +67,24 @@
   <wsdl:message name="IDDService_SorununCevaplariniGetir_OutputMessage">
     <wsdl:part name="parameters" element="tns:SorununCevaplariniGetirResponse" />
   </wsdl:message>
+  <wsdl:message name="IDDService_YorumEkle_InputMessage">
+    <wsdl:part name="parameters" element="tns:YorumEkle" />
+  </wsdl:message>
+  <wsdl:message name="IDDService_YorumEkle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:YorumEkleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDDService_YorumBilgileriniGetir_InputMessage">
+    <wsdl:part name="parameters" element="tns:YorumBilgileriniGetir" />
+  </wsdl:message>
+  <wsdl:message name="IDDService_YorumBilgileriniGetir_OutputMessage">
+    <wsdl:part name="parameters" element="tns:YorumBilgileriniGetirResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDDService_CevabinYorumlariniGetir_InputMessage">
+    <wsdl:part name="parameters" element="tns:CevabinYorumlariniGetir" />
+  </wsdl:message>
+  <wsdl:message name="IDDService_CevabinYorumlariniGetir_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CevabinYorumlariniGetirResponse" />
+  </wsdl:message>
   <wsdl:portType name="IDDService">
     <wsdl:operation name="KullaniciKayitEt">
       <wsdl:input wsaw:Action="http://tempuri.org/IDDService/KullaniciKayitEt" message="tns:IDDService_KullaniciKayitEt_InputMessage" />
@@ -107,6 +125,18 @@
     <wsdl:operation name="SorununCevaplariniGetir">
       <wsdl:input wsaw:Action="http://tempuri.org/IDDService/SorununCevaplariniGetir" message="tns:IDDService_SorununCevaplariniGetir_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDDService/SorununCevaplariniGetirResponse" message="tns:IDDService_SorununCevaplariniGetir_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="YorumEkle">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDDService/YorumEkle" message="tns:IDDService_YorumEkle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDDService/YorumEkleResponse" message="tns:IDDService_YorumEkle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="YorumBilgileriniGetir">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDDService/YorumBilgileriniGetir" message="tns:IDDService_YorumBilgileriniGetir_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDDService/YorumBilgileriniGetirResponse" message="tns:IDDService_YorumBilgileriniGetir_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CevabinYorumlariniGetir">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDDService/CevabinYorumlariniGetir" message="tns:IDDService_CevabinYorumlariniGetir_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDDService/CevabinYorumlariniGetirResponse" message="tns:IDDService_CevabinYorumlariniGetir_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IDDService" type="tns:IDDService">
@@ -194,6 +224,33 @@
     </wsdl:operation>
     <wsdl:operation name="SorununCevaplariniGetir">
       <soap:operation soapAction="http://tempuri.org/IDDService/SorununCevaplariniGetir" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="YorumEkle">
+      <soap:operation soapAction="http://tempuri.org/IDDService/YorumEkle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="YorumBilgileriniGetir">
+      <soap:operation soapAction="http://tempuri.org/IDDService/YorumBilgileriniGetir" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CevabinYorumlariniGetir">
+      <soap:operation soapAction="http://tempuri.org/IDDService/CevabinYorumlariniGetir" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
