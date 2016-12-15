@@ -11,6 +11,7 @@ namespace servis
     {
         public DDDBEntities db = new DDDBEntities();
 
+        #region KULLANICI
         public VMKullanici KullaniciBilgileriniGetir(int kimlik)
         {
             try
@@ -92,7 +93,9 @@ namespace servis
 
             return true;
         }
+        #endregion
 
+        #region SORU
         public bool SoruEkle(int soran, string baslik, string metin)
         {
             try
@@ -133,5 +136,50 @@ namespace servis
         {
             return VMSoru.VeriyiIsle(db.Soru.ToList());
         }
+        #endregion
+
+        #region CEVAP
+        public bool CevapEkle(int eklenecekSorununKimligi, int ekleyeninKimligi, string metin)
+        {
+            try
+            {
+                Cevap eklenecekCevap = new Cevap
+                {
+                    VerildigiSoru_Kimlik = eklenecekSorununKimligi,
+                    Yazan_Kimlik = ekleyeninKimligi,
+                    Metin = metin,
+                    CevaplamaTarihi = DateTime.Now,
+                    OnayDurumu = false
+                };
+
+                db.Cevap.Add(eklenecekCevap);
+                db.SaveChanges();
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public VMCevap CevapBilgileriniGetir(int kimlik)
+        {
+            try
+            {
+                var cevap = (from c in db.Cevap where c.Kimlik == kimlik select c).SingleOrDefault();
+
+                return VMCevap.VeriyiIsle(cevap);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public List<VMCevap> SorununCevaplariniGetir(int kimlik)
+        {
+            return VMCevap.VeriyiIsle((from c in db.Cevap where c.VerildigiSoru_Kimlik == kimlik select c).ToList());
+        }
+        #endregion
     }
 }

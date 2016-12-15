@@ -158,12 +158,6 @@
     <Content Include="Service References\DDService\istemci.DDService.VMSoru.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Service References\DDService\DDService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="Service References\DDService\istemci.DDService.Soru.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Service References\DDService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

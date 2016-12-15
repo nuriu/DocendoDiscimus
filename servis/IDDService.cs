@@ -28,5 +28,14 @@ namespace servis
 
         [OperationContract]
         List<VMSoru> SorulariGetir();
+
+        [OperationContract]
+        bool CevapEkle(int eklenecekSorununKimligi, int ekleyeninKimligi, string metin);
+
+        [OperationContract]
+        VMCevap CevapBilgileriniGetir(int kimlik);
+
+        [OperationContract]
+        List<VMCevap> SorununCevaplariniGetir(int kimlik);
     }
 }

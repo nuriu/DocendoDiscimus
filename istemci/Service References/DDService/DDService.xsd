@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:8301/DDService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/servis.ViewModel" />
-  <xs:import schemaLocation="http://localhost:8301/DDService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/servis.Model" />
   <xs:element name="KullaniciKayitEt">
     <xs:complexType>
       <xs:sequence>
@@ -108,15 +107,47 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="dbSorulariGetir">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="dbSorulariGetirResponse">
+  <xs:element name="CevapEkle">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/servis.Model" minOccurs="0" name="dbSorulariGetirResult" nillable="true" type="q5:ArrayOfSoru" />
+        <xs:element minOccurs="0" name="eklenecekSorununKimligi" type="xs:int" />
+        <xs:element minOccurs="0" name="ekleyeninKimligi" type="xs:int" />
+        <xs:element minOccurs="0" name="metin" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CevapEkleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CevapEkleResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CevapBilgileriniGetir">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kimlik" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CevapBilgileriniGetirResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/servis.ViewModel" minOccurs="0" name="CevapBilgileriniGetirResult" nillable="true" type="q5:VMCevap" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SorununCevaplariniGetir">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kimlik" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SorununCevaplariniGetirResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/servis.ViewModel" minOccurs="0" name="SorununCevaplariniGetirResult" nillable="true" type="q6:ArrayOfVMCevap" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -29,4 +29,21 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfVMSoru" nillable="true" type="tns:ArrayOfVMSoru" />
+  <xs:complexType name="VMCevap">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CevaplamaTarihi" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Kimlik" type="xs:int" />
+      <xs:element minOccurs="0" name="Metin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OnayDurumu" type="xs:boolean" />
+      <xs:element minOccurs="0" name="VerildigiSoru_Kimlik" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Yazan_Kimlik" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VMCevap" nillable="true" type="tns:VMCevap" />
+  <xs:complexType name="ArrayOfVMCevap">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VMCevap" nillable="true" type="tns:VMCevap" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVMCevap" nillable="true" type="tns:ArrayOfVMCevap" />
 </xs:schema>
