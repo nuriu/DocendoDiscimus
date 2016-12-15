@@ -132,6 +132,7 @@
     <Compile Include="ViewModel\VMCevap.cs" />
     <Compile Include="ViewModel\VMKullanici.cs" />
     <Compile Include="ViewModel\VMSoru.cs" />
+    <Compile Include="ViewModel\VMYorum.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
