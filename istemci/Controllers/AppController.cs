@@ -112,5 +112,19 @@ namespace istemci.Controllers
                 return Json("Cevap ekleme başarısız.");
             }
         }
+
+        public JsonResult Yorumla(string cevapKimligi, string yorum)
+        {
+            bool durum = servis.YorumEkle(int.Parse(cevapKimligi), int.Parse(Request.Cookies["KullaniciKimligi"].Value), yorum);
+
+            if (durum)
+            {
+                return Json("Yorum ekleme başarılı.");
+            }
+            else
+            {
+                return Json("Yorum ekleme başarısız.");
+            }
+        }
     }
 }
