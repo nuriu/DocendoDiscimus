@@ -129,6 +129,7 @@
       <DependentUpon>DDDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\VMCevap.cs" />
     <Compile Include="ViewModel\VMKullanici.cs" />
     <Compile Include="ViewModel\VMSoru.cs" />
   </ItemGroup>

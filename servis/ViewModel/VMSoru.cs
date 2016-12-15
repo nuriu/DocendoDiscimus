@@ -1,4 +1,5 @@
 ﻿using servis.Model;
+using System;
 using System.Collections.Generic;
 
 namespace servis.ViewModel
@@ -8,7 +9,7 @@ namespace servis.ViewModel
         public int Kimlik { get; set; }
         public string Baslik { get; set; }
         public string Metin { get; set; }
-        public System.DateTime SorulmaTarihi { get; set; }
+        public DateTime SorulmaTarihi { get; set; }
         public int Soran_Kimlik { get; set; }
 
         public static VMSoru VeriyiIsle(Soru ts)
