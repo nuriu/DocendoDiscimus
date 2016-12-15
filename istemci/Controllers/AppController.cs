@@ -56,6 +56,7 @@ namespace istemci.Controllers
 
                 ViewBag.Soru = servis.SoruBilgileriniGetir(id);
                 ViewBag.Sorucu = servis.KullaniciBilgileriniGetir(ViewBag.Soru.Soran_Kimlik);
+                ViewBag.Cevaplar = servis.SorununCevaplariniGetir(id);
 
                 if (ViewBag.Soru == null)
                 {
@@ -95,6 +96,20 @@ namespace istemci.Controllers
             else
             {
                 return Json("Soru ekleme başarısız.");
+            }
+        }
+
+        public JsonResult CevapVer(string soruKimligi, string cevap)
+        {
+            bool durum = servis.CevapEkle(int.Parse(soruKimligi), int.Parse(Request.Cookies["KullaniciKimligi"].Value), cevap);
+
+            if (durum)
+            {
+                return Json("Cevap ekleme başarılı.");
+            }
+            else
+            {
+                return Json("Cevap ekleme başarısız.");
             }
         }
     }

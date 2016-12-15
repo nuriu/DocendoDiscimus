@@ -1,6 +1,7 @@
 ﻿@{
     Layout = "~/Views/Shared/_AppLayout.cshtml";
 }
+@using istemci.DDService;
 
 <div class="row">
     <p style="padding-top:1rem; margin-bottom: -1rem;">
@@ -72,30 +73,35 @@
         <hr class="blue-grey-text text-lighten-1" />
         <div class="card-panel blue-grey darken-2">
             <ul class="collapsible" data-collapsible="accordion">
-                <li>
-                    <div class="collapsible-header" style="padding-top:10px;">
-                        <div class="row left-align">
-                            <img src="@ViewBag.Kullanici.AvatarLink" alt="" class="circle" width="50" style="padding-left:1rem;" />
-                            <span class="valign" style="padding-left:0.25rem;"> @ViewBag.Kullanici.Isim @ViewBag.Kullanici.Soyisim <small style="padding-left:0.25rem;">yazdı;</small></span>
-                        </div>
-                        <div class="row" style="padding-left:1rem;padding-right:1rem;padding-top:-2rem;">
-                            <p class="flow-text" style="text-align:justify;">
-                                Cevap içeriği.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="collapsible-body white" style="padding-left:2rem;">
-                        <ul class="collection">
-                            <li class="collection-item avatar">
-                                <img src="@ViewBag.Sorucu.AvatarLink" alt="" class="circle">
-                                <span class="title">@ViewBag.Sorucu.Isim @ViewBag.Sorucu.Soyisim</span>
-                                <p>
-                                    Yorum içeriği.
+                @foreach (var cevap in ((ICollection<VMCevap>)ViewBag.Cevaplar).Reverse())
+                {
+                    DDServiceClient s = new DDServiceClient();
+                    ViewBag.Cevaplayan = s.KullaniciBilgileriniGetir(Convert.ToInt32(cevap.Yazan_Kimlik));
+                    <li>
+                        <div class="collapsible-header" style="padding-top:10px;">
+                            <div class="row left-align">
+                                <img src="@ViewBag.Cevaplayan.AvatarLink" alt="" class="circle" width="50" style="padding-left:1rem;" />
+                                <span class="valign" style="padding-left:0.25rem;"> @ViewBag.Cevaplayan.Isim @ViewBag.Cevaplayan.Soyisim <small style="padding-left:0.25rem;">yazdı;</small></span>
+                            </div>
+                            <div class="row" style="padding-left:1rem;padding-right:1rem;padding-top:-2rem;">
+                                <p class="flow-text" style="text-align:justify;">
+                                    @cevap.Metin
                                 </p>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+                            </div>
+                        </div>
+                        <div class="collapsible-body white" style="padding-left:2rem;">
+                            <ul class="collection">
+                                <li class="collection-item avatar">
+                                    <img src="@ViewBag.Sorucu.AvatarLink" alt="" class="circle">
+                                    <span class="title">@ViewBag.Sorucu.Isim @ViewBag.Sorucu.Soyisim</span>
+                                    <p>
+                                        Yorum içeriği.
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                }
             </ul>
 
         </div>
@@ -122,7 +128,6 @@
         if (kontrol == true) {
             var veri = {
                 soruKimligi: @ViewBag.Soru.Kimlik,
-                cevaplayanKimligi: @ViewBag.Kullanici.Kimlik,
                 cevap: $("#cevap").val()
             };
 
