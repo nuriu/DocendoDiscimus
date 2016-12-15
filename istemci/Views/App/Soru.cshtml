@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "~/Views/Shared/_AppLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col s12">
+        <h4 class="header deep-purple-text text-darken-1">
+            @ViewBag.Soru.Baslik
+        </h4>
+        <hr class="deep-purple-text text-darken-1" />
+        <div class="card-panel teal">
+            <div class="right-align">
+                <span class="white-text">@ViewBag.Soru.SorulmaTarihi</span>
+            </div>
+            <hr class="white-text" /><br />
+            <span class="white-text" style="padding-left:1rem;">
+                @ViewBag.Soru.Metin
+            </span><br />
+            <hr class="white-text" style="margin-top:2rem;"/>
+            <div class="white-text valign-wrapper right-align">
+                <img src="@ViewBag.Sorucu.AvatarLink" alt="" class="circle" width="50" />
+                <span class="valign right-align" style="padding-left:1rem;"> @ViewBag.Sorucu.Isim @ViewBag.Sorucu.Soyisim</span>
+            </div>
+        </div>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Geri dön", "Anasayfa")
+</p>

@@ -17,11 +17,10 @@
                 ViewBag.Soran = s.KullaniciBilgileriniGetir(soru.Soran_Kimlik);
                 <li class="collection-item avatar">
                     <img src="@ViewBag.Soran.AvatarLink" alt="" class="circle responsive-img">
-                    <span class="title">@ViewBag.Soran.Isim @ViewBag.Soran.Soyisim <small>(@ViewBag.Soran.Eposta)</small></span>
-                    <p class="deep-purple-text text-darken-1" style="font-size:1.5rem;padding:0.75rem;">
-                        @soru.Baslik
+                    <span class="title">@ViewBag.Soran.Isim @ViewBag.Soran.Soyisim <small>(@ViewBag.Soran.Eposta)</small></span><br />
+                    <p style="padding-top:1rem;">
+                        @Html.ActionLink(soru.Baslik, "Soru", "App", new { id = soru.Kimlik }, new { @class = "deep-purple-text text-darken-1", style = "font-size:1.5rem;" })
                     </p>
-                    <a href="#!" class="secondary-content"><i class="medium material-icons deep-purple-text text-darken-1">play_arrow</i></a>
                 </li>
             }
         </ul>
@@ -37,3 +36,13 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    function soruyaGit() {
+        var kimlik = $("a").attr("kimlik");
+        console.log(kimlik);
+        if (kimlik) {
+            $.post("/App/SoruyaYonlendir", kimlik);
+        }
+    }
+</script>

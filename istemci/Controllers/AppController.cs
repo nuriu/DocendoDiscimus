@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using istemci.DDService;
+using System.Net;
 
 namespace istemci.Controllers
 {
@@ -37,6 +38,31 @@ namespace istemci.Controllers
             if (Request.Cookies["KullaniciKimligi"] != null)
             {
                 ViewBag.Title = "Soru Sor";
+                ViewBag.Kullanici = servis.KullaniciBilgileriniGetir(int.Parse(Request.Cookies["KullaniciKimligi"].Value));
+
+                return View();
+            }
+            return RedirectToAction("Anasayfa", "Home");
+        }
+
+        public ActionResult Soru(int id)
+        {
+            if (Request.Cookies["KullaniciKimligi"] != null)
+            {
+                if (id == 0)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+
+                ViewBag.Soru = servis.SoruBilgileriniGetir(id);
+                ViewBag.Sorucu = servis.KullaniciBilgileriniGetir(ViewBag.Soru.Soran_Kimlik);
+
+                if (ViewBag.Soru == null)
+                {
+                    return HttpNotFound();
+                }
+
+                ViewBag.Title = "Soru";
                 ViewBag.Kullanici = servis.KullaniciBilgileriniGetir(int.Parse(Request.Cookies["KullaniciKimligi"].Value));
 
                 return View();
