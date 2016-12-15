@@ -7,6 +7,7 @@
         <a href="/App" class="btn btn-floating btn-large waves-effect waves-light deep-orange darken-1"><i class="material-icons">keyboard_backspace</i></a>
     </p>
 </div>
+
 <div class="row">
     <div class="col s12">
         <h4 class="header blue-grey-text text-darken-1">
@@ -29,3 +30,72 @@
         </div>
     </div>
 </div>
+
+<div class="row">
+    <div class="col s12">
+        <h5 class="blue-grey-text text-darken-1 right-align">
+            Cevap Yazın
+        </h5>
+        <hr class="blue-grey-text text-lighten-1" />
+        <div class="card-panel blue-grey darken-2">
+            <div class="row">
+                <div class="left-align" style="padding-left:1rem; padding-top:1.5rem;">
+                    <div class="white-text valign-wrapper">
+                        <img src="@ViewBag.Kullanici.AvatarLink" alt="" class="circle" width="50" />
+                        <span class="valign" style="padding-left:1rem;"> @ViewBag.Kullanici.Isim @ViewBag.Kullanici.Soyisim <small style="padding-left:0.5rem;">olarak cevap yazıyorsunuz;</small></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <form class="col s12">
+                    <div class="input-field col s12">
+                        <textarea id="cevap" name="Cevap" class="materialize-textarea white-text"></textarea>
+                        <label for="cevap">Cevabınız</label>
+                    </div>
+                </form>
+            </div>
+            <div class="row">
+                <div class="right-align" style="padding-right:2rem;">
+                    <a href="#" class="btn btn-floating btn-large waves-effect waves-light deep-orange darken-1" onclick="temizle()"><i class="material-icons">clear</i></a>
+                    <a href="#" class="btn btn-floating btn-large waves-effect waves-light deep-green darken-1" onclick="cevapla()"><i class="material-icons">add</i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function temizle() {
+        $(':input').removeAttr('checked').removeAttr('selected').not(':button, :submit, :reset, :hidden, :radio, :checkbox').val('').blur();
+    }
+
+    function cevapla() {
+        var kontrol = true;
+        $('input, textarea').each(function () {
+            if ($.trim($(this).val()) == "") {
+                Materialize.toast(this.name + ' alanı boş bırakılamaz!', 3000, 'red rounded');
+                kontrol = false;
+                $(this).addClass("invalid");
+            } else {
+                $(this).removeClass("invalid");
+            }
+        });
+
+        if (kontrol == true) {
+            var veri = {
+                soruKimligi: @ViewBag.Soru.Kimlik,
+                cevaplayanKimligi: @ViewBag.Kullanici.Kimlik,
+                cevap: $("#cevap").val()
+            };
+
+            $.post("/App/CevapVer", veri, function (cevap) {
+                if (cevap == 'Cevap ekleme başarılı.') {
+                    Materialize.toast('Cevap başarıyla eklendi!', 3000, 'green rounded');
+                    window.location = "/App/Soru/" + @ViewBag.Soru.Kimlik;
+                }
+                else
+                    Materialize.toast('Cevap ekleme başarısız!', 3000, 'red rounded');
+            });
+        }
+    }
+</script>
