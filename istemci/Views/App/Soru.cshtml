@@ -1,34 +1,38 @@
 ﻿@{
     Layout = "~/Views/Shared/_AppLayout.cshtml";
+    ViewBag.Title = ViewBag.Soru.Baslik + " - " + ViewBag.Sorucu.Isim + " " + ViewBag.Sorucu.Soyisim;
 }
 @using istemci.DDService;
 
 <div class="row">
-    <p style="padding-top:1rem; margin-bottom: -1rem;">
-        <a href="/App" class="btn btn-floating btn-large waves-effect waves-light deep-orange darken-1"><i class="material-icons">keyboard_backspace</i></a>
-    </p>
+
 </div>
 
 @* <a href="/App/Soru/ + @ViewBag.Soru.Kimlik" class="btn btn-floating btn-large waves-effect waves-light green darken-1"><i class="material-icons">check</i></a> *@
 
 <div class="row">
     <div class="col s12">
-        <h4 class="header blue-grey-text text-darken-1">
-            @ViewBag.Soru.Baslik &nbsp;
-            <small>
-                @if (ViewBag.FS)
-                {
-                <a class="secondary-content"><span class="teal badge white-text">Favori Sorunuz</span></a>
-                }
-            </small>
-        </h4>
+        <nav class="deep-purple darken-1" style="width:100%;">
+            <div class="col s12">
+                <div class="nav-wrapper">
+                    <a href="/App" class="breadcrumb">Sorular</a>
+                    <a href="/App/ @ViewBag.Soru.Kimlik" class="breadcrumb">@ViewBag.Soru.Baslik</a>
+                    <small>
+                        @if (ViewBag.FS)
+                        {
+                        <a class="secondary-content"><span class="teal badge white-text">Favori Sorunuz</span></a>
+                        }
+                    </small>
+                </div>
+            </div>
+        </nav>
         <hr class="blue-grey-text text-lighten-1" />
         <div class="card-panel blue-grey darken-2">
             <div class="right-align">
                 <span class="white-text">@ViewBag.Soru.SorulmaTarihi</span>
             </div>
             <span class="white-text flow-text" style="padding-left:1rem;">
-                " @ViewBag.Soru.Metin "
+                <blockquote> @ViewBag.Soru.Metin </blockquote>
             </span>
             <div class="white-text valign-wrapper" style="padding-top:2rem;">
                 <img src="@ViewBag.Sorucu.AvatarLink" alt="" class="circle" width="50" />
@@ -41,7 +45,7 @@
 <span class="right-align">
     @if (ViewBag.FS)
     {
-    <a class="waves-effect waves-red btn light-red darken-4" onclick="soruyuFavorilerdenCikar()">FAVORİLERDEN ÇIKAR</a>
+    <a class="waves-effect waves-red btn red darken-4" onclick="soruyuFavorilerdenCikar()">FAVORİLERDEN ÇIKAR</a>
     }
     else
     {
@@ -230,7 +234,7 @@
     function soruyuFavorilereEkle() {
         var veri = {
             soruKimligi: @ViewBag.Soru.Kimlik
-        };
+            };
 
         $.post("/App/SoruyuFavorilereEkle", veri, function (sonuc) {
             if (sonuc == 'Soruyu ekleme başarılı.') {
@@ -245,7 +249,7 @@
     function soruyuFavorilerdenCikar() {
         var veri = {
             soruKimligi: @ViewBag.Soru.Kimlik
-        };
+            };
 
         $.post("/App/SoruyuFavorilerdenCikar", veri, function (sonuc) {
             if (sonuc == 'Soruyu cikarma başarılı.') {
