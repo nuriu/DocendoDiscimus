@@ -8,8 +8,6 @@
 
 </div>
 
-@* <a href="/App/Soru/ + @ViewBag.Soru.Kimlik" class="btn btn-floating btn-large waves-effect waves-light green darken-1"><i class="material-icons">check</i></a> *@
-
 <div class="row">
     <div class="col s12">
         <nav class="deep-purple darken-1" style="width:100%;">
@@ -42,7 +40,7 @@
     </div>
 </div>
 
-<span class="right-align">
+<span>
     @if (ViewBag.FS)
     {
     <a class="waves-effect waves-red btn red darken-4" onclick="soruyuFavorilerdenCikar()">FAVORİLERDEN ÇIKAR</a>
@@ -99,12 +97,22 @@
                     DDServiceClient s = new DDServiceClient();
                     ViewBag.Cevaplayan = s.KullaniciBilgileriniGetir(Convert.ToInt32(cevap.Yazan_Kimlik));
                     ViewBag.Yorumlar = s.CevabinYorumlariniGetir(cevap.Kimlik);
+                    ViewBag.FC = s.CevapFavorilerdeMi(ViewBag.Kullanici.Kimlik, cevap.Kimlik);
+                    @* <a href="/App/Soru/ + @ViewBag.Soru.Kimlik" class="btn btn-floating btn-large waves-effect waves-light green darken-1"><i class="material-icons">check</i></a> *@
 
                     <li>
                         <div class="collapsible-header" style="padding-top:10px;">
                             <div class="row left-align">
                                 <img src="@ViewBag.Cevaplayan.AvatarLink" alt="" class="circle" width="50" style="padding-left:1rem;" />
-                                <span class="valign" style="padding-left:0.25rem;"> @ViewBag.Cevaplayan.Isim @ViewBag.Cevaplayan.Soyisim <small style="padding-left:0.25rem;">@cevap.CevaplamaTarihi tarihinde cevapladı;</small></span>
+                                <span class="valign" style="padding-left:0.25rem;">
+                                    @ViewBag.Cevaplayan.Isim @ViewBag.Cevaplayan.Soyisim <small style="padding-left:0.25rem;">@cevap.CevaplamaTarihi tarihinde cevapladı;</small>
+                                    <small>
+                                        @if (ViewBag.FC)
+                                        {
+                                        <a class="secondary-content"><span class="teal badge white-text">Favori Cevabınız</span></a>
+                                        }
+                                    </small>
+                                </span>
                             </div>
                             <div class="row" style="padding-left:1rem;padding-right:1rem;padding-top:-2rem;">
                                 <p class="flow-text" style="text-align:justify;">
@@ -116,6 +124,17 @@
                             <div class="row right-align">
                                 <br />
                                 <a class="waves-effect waves-light btn green darken-1 modal-trigger" href="#yorumEkleModal" onclick="ckimligi(@cevap.Kimlik)">Yorum Ekle &#x21a1;</a>
+
+                                <span>
+                                    @if (ViewBag.FC)
+                                    {
+                                    <a class="waves-effect waves-red btn red darken-4" onclick="cevabiFavorilerdenCikar(@cevap.Kimlik)">FAVORİLERDEN ÇIKAR</a>
+                                    }
+                                    else
+                                    {
+                                    <a class="waves-effect waves-green btn light-green darken-4" onclick="cevabiFavorilereEkle(@cevap.Kimlik)">FAVORİLERE EKLE</a>
+                                    }
+                                </span>
                             </div>
 
                             <hr class="blue-grey-text text-lighten-1" />
@@ -258,6 +277,36 @@
             }
             else
                 Materialize.toast('Soruyu favorilerden çıkarma başarısız!', 3000, 'red rounded');
+        });
+    }
+
+    function cevabiFavorilereEkle(ck) {
+        var veri = {
+            cevapKimligi: ck
+        };
+
+        $.post("/App/CevabiFavorilereEkle", veri, function (sonuc) {
+            if (sonuc == 'Cevabi ekleme başarılı.') {
+                Materialize.toast('Cevap başarıyla favorilerinize eklendi!', 3000, 'green rounded');
+                window.location = "/App/Soru/" + @ViewBag.Soru.Kimlik;
+            }
+            else
+                Materialize.toast('Cevabi favorilere ekleme başarısız!', 3000, 'red rounded');
+        });
+    }
+
+    function cevabiFavorilerdenCikar(ck) {
+        var veri = {
+            cevapKimligi: ck
+        };
+
+        $.post("/App/CevabiFavorilerdenCikar", veri, function (sonuc) {
+            if (sonuc == 'Cevabi cikarma başarılı.') {
+                Materialize.toast('Cevap başarıyla favorilerinizden çıkarıldı!', 3000, 'green rounded');
+                window.location = "/App/Soru/" + @ViewBag.Soru.Kimlik;
+            }
+            else
+                Materialize.toast('Cevabi favorilerden çıkarma başarısız!', 3000, 'red rounded');
         });
     }
 </script>
