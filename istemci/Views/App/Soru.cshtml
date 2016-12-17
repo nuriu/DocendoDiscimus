@@ -9,10 +9,18 @@
     </p>
 </div>
 
+@* <a href="/App/Soru/ + @ViewBag.Soru.Kimlik" class="btn btn-floating btn-large waves-effect waves-light green darken-1"><i class="material-icons">check</i></a> *@
+
 <div class="row">
     <div class="col s12">
         <h4 class="header blue-grey-text text-darken-1">
-            @ViewBag.Soru.Baslik
+            @ViewBag.Soru.Baslik &nbsp;
+            <small>
+                @if (ViewBag.FS)
+                {
+                <a class="secondary-content"><span class="teal badge white-text">Favori Sorunuz</span></a>
+                }
+            </small>
         </h4>
         <hr class="blue-grey-text text-lighten-1" />
         <div class="card-panel blue-grey darken-2">
@@ -29,6 +37,17 @@
         </div>
     </div>
 </div>
+
+<span class="right-align">
+    @if (ViewBag.FS)
+    {
+    <a class="waves-effect waves-red btn light-red darken-4" onclick="soruyuFavorilerdenCikar()">FAVORİLERDEN ÇIKAR</a>
+    }
+    else
+    {
+    <a class="waves-effect waves-green btn light-green darken-4" onclick="soruyuFavorilereEkle()">FAVORİLERE EKLE</a>
+    }
+</span>
 
 <div class="row">
     <div class="col s12">
@@ -206,5 +225,35 @@
                     Materialize.toast('Yorum ekleme başarısız!', 3000, 'red rounded');
             });
         }
+    }
+
+    function soruyuFavorilereEkle() {
+        var veri = {
+            soruKimligi: @ViewBag.Soru.Kimlik
+        };
+
+        $.post("/App/SoruyuFavorilereEkle", veri, function (sonuc) {
+            if (sonuc == 'Soruyu ekleme başarılı.') {
+                Materialize.toast('Soru başarıyla favorilerinize eklendi!', 3000, 'green rounded');
+                window.location = "/App/Soru/" + @ViewBag.Soru.Kimlik;
+            }
+            else
+                Materialize.toast('Soruyu favorilere ekleme başarısız!', 3000, 'red rounded');
+        });
+    }
+
+    function soruyuFavorilerdenCikar() {
+        var veri = {
+            soruKimligi: @ViewBag.Soru.Kimlik
+        };
+
+        $.post("/App/SoruyuFavorilerdenCikar", veri, function (sonuc) {
+            if (sonuc == 'Soruyu cikarma başarılı.') {
+                Materialize.toast('Soru başarıyla favorilerinizden çıkarıldı!', 3000, 'green rounded');
+                window.location = "/App/Soru/" + @ViewBag.Soru.Kimlik;
+            }
+            else
+                Materialize.toast('Soruyu favorilerden çıkarma başarısız!', 3000, 'red rounded');
+        });
     }
 </script>

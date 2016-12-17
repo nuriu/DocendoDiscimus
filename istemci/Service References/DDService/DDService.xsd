@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://dds.somee.com/DDService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/servis.ViewModel" />
+  <xs:import schemaLocation="http://localhost:8301/DDService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/servis.ViewModel" />
   <xs:element name="KullaniciKayitEt">
     <xs:complexType>
       <xs:sequence>
@@ -192,6 +192,124 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/servis.ViewModel" minOccurs="0" name="CevabinYorumlariniGetirResult" nillable="true" type="q8:ArrayOfVMYorum" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SoruyuFavorilereEkle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kullaniciKimlik" type="xs:int" />
+        <xs:element minOccurs="0" name="soruKimlik" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SoruyuFavorilereEkleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SoruyuFavorilereEkleResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CevabiFavorilereEkle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kullaniciKimlik" type="xs:int" />
+        <xs:element minOccurs="0" name="cevapKimlik" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CevabiFavorilereEkleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CevabiFavorilereEkleResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SoruyuFavorilerdenKaldir">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kullaniciKimlik" type="xs:int" />
+        <xs:element minOccurs="0" name="soruKimlik" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SoruyuFavorilerdenKaldirResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SoruyuFavorilerdenKaldirResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CevabiFavorilerdenKaldir">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kullaniciKimlik" type="xs:int" />
+        <xs:element minOccurs="0" name="cevapKimlik" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CevabiFavorilerdenKaldirResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CevabiFavorilerdenKaldirResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SoruFavorilerdeMi">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kullaniciKimlik" type="xs:int" />
+        <xs:element minOccurs="0" name="soruKimlik" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SoruFavorilerdeMiResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SoruFavorilerdeMiResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CevapFavorilerdeMi">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kullaniciKimlik" type="xs:int" />
+        <xs:element minOccurs="0" name="cevapKimlik" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CevapFavorilerdeMiResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CevapFavorilerdeMiResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CevabiOna">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cevapKimlik" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CevabiOnaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CevabiOnaResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CevapOnayiniKaldir">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cevapKimlik" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CevapOnayiniKaldirResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CevapOnayiniKaldirResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

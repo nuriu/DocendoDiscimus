@@ -14,7 +14,8 @@ namespace servis.Model
     
     public partial class FavoriCevaplar
     {
-        public int KullaniciKimlik { get; set; }
-        public int CevapKimlik { get; set; }
+        public int Kimlik { get; set; }
+        public int KullaniciKimligi { get; set; }
+        public int CevapKimligi { get; set; }
     }
 }

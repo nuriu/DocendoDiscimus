@@ -594,6 +594,54 @@ namespace istemci.DDService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/CevabinYorumlariniGetir", ReplyAction="http://tempuri.org/IDDService/CevabinYorumlariniGetirResponse")]
         System.Threading.Tasks.Task<istemci.DDService.VMYorum[]> CevabinYorumlariniGetirAsync(int kimlik);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/SoruyuFavorilereEkle", ReplyAction="http://tempuri.org/IDDService/SoruyuFavorilereEkleResponse")]
+        bool SoruyuFavorilereEkle(int kullaniciKimlik, int soruKimlik);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/SoruyuFavorilereEkle", ReplyAction="http://tempuri.org/IDDService/SoruyuFavorilereEkleResponse")]
+        System.Threading.Tasks.Task<bool> SoruyuFavorilereEkleAsync(int kullaniciKimlik, int soruKimlik);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/CevabiFavorilereEkle", ReplyAction="http://tempuri.org/IDDService/CevabiFavorilereEkleResponse")]
+        bool CevabiFavorilereEkle(int kullaniciKimlik, int cevapKimlik);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/CevabiFavorilereEkle", ReplyAction="http://tempuri.org/IDDService/CevabiFavorilereEkleResponse")]
+        System.Threading.Tasks.Task<bool> CevabiFavorilereEkleAsync(int kullaniciKimlik, int cevapKimlik);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/SoruyuFavorilerdenKaldir", ReplyAction="http://tempuri.org/IDDService/SoruyuFavorilerdenKaldirResponse")]
+        bool SoruyuFavorilerdenKaldir(int kullaniciKimlik, int soruKimlik);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/SoruyuFavorilerdenKaldir", ReplyAction="http://tempuri.org/IDDService/SoruyuFavorilerdenKaldirResponse")]
+        System.Threading.Tasks.Task<bool> SoruyuFavorilerdenKaldirAsync(int kullaniciKimlik, int soruKimlik);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/CevabiFavorilerdenKaldir", ReplyAction="http://tempuri.org/IDDService/CevabiFavorilerdenKaldirResponse")]
+        bool CevabiFavorilerdenKaldir(int kullaniciKimlik, int cevapKimlik);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/CevabiFavorilerdenKaldir", ReplyAction="http://tempuri.org/IDDService/CevabiFavorilerdenKaldirResponse")]
+        System.Threading.Tasks.Task<bool> CevabiFavorilerdenKaldirAsync(int kullaniciKimlik, int cevapKimlik);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/SoruFavorilerdeMi", ReplyAction="http://tempuri.org/IDDService/SoruFavorilerdeMiResponse")]
+        bool SoruFavorilerdeMi(int kullaniciKimlik, int soruKimlik);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/SoruFavorilerdeMi", ReplyAction="http://tempuri.org/IDDService/SoruFavorilerdeMiResponse")]
+        System.Threading.Tasks.Task<bool> SoruFavorilerdeMiAsync(int kullaniciKimlik, int soruKimlik);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/CevapFavorilerdeMi", ReplyAction="http://tempuri.org/IDDService/CevapFavorilerdeMiResponse")]
+        bool CevapFavorilerdeMi(int kullaniciKimlik, int cevapKimlik);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/CevapFavorilerdeMi", ReplyAction="http://tempuri.org/IDDService/CevapFavorilerdeMiResponse")]
+        System.Threading.Tasks.Task<bool> CevapFavorilerdeMiAsync(int kullaniciKimlik, int cevapKimlik);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/CevabiOna", ReplyAction="http://tempuri.org/IDDService/CevabiOnaResponse")]
+        bool CevabiOna(int cevapKimlik);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/CevabiOna", ReplyAction="http://tempuri.org/IDDService/CevabiOnaResponse")]
+        System.Threading.Tasks.Task<bool> CevabiOnaAsync(int cevapKimlik);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/CevapOnayiniKaldir", ReplyAction="http://tempuri.org/IDDService/CevapOnayiniKaldirResponse")]
+        bool CevapOnayiniKaldir(int cevapKimlik);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/CevapOnayiniKaldir", ReplyAction="http://tempuri.org/IDDService/CevapOnayiniKaldirResponse")]
+        System.Threading.Tasks.Task<bool> CevapOnayiniKaldirAsync(int cevapKimlik);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -725,6 +773,70 @@ namespace istemci.DDService {
         
         public System.Threading.Tasks.Task<istemci.DDService.VMYorum[]> CevabinYorumlariniGetirAsync(int kimlik) {
             return base.Channel.CevabinYorumlariniGetirAsync(kimlik);
+        }
+        
+        public bool SoruyuFavorilereEkle(int kullaniciKimlik, int soruKimlik) {
+            return base.Channel.SoruyuFavorilereEkle(kullaniciKimlik, soruKimlik);
+        }
+        
+        public System.Threading.Tasks.Task<bool> SoruyuFavorilereEkleAsync(int kullaniciKimlik, int soruKimlik) {
+            return base.Channel.SoruyuFavorilereEkleAsync(kullaniciKimlik, soruKimlik);
+        }
+        
+        public bool CevabiFavorilereEkle(int kullaniciKimlik, int cevapKimlik) {
+            return base.Channel.CevabiFavorilereEkle(kullaniciKimlik, cevapKimlik);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CevabiFavorilereEkleAsync(int kullaniciKimlik, int cevapKimlik) {
+            return base.Channel.CevabiFavorilereEkleAsync(kullaniciKimlik, cevapKimlik);
+        }
+        
+        public bool SoruyuFavorilerdenKaldir(int kullaniciKimlik, int soruKimlik) {
+            return base.Channel.SoruyuFavorilerdenKaldir(kullaniciKimlik, soruKimlik);
+        }
+        
+        public System.Threading.Tasks.Task<bool> SoruyuFavorilerdenKaldirAsync(int kullaniciKimlik, int soruKimlik) {
+            return base.Channel.SoruyuFavorilerdenKaldirAsync(kullaniciKimlik, soruKimlik);
+        }
+        
+        public bool CevabiFavorilerdenKaldir(int kullaniciKimlik, int cevapKimlik) {
+            return base.Channel.CevabiFavorilerdenKaldir(kullaniciKimlik, cevapKimlik);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CevabiFavorilerdenKaldirAsync(int kullaniciKimlik, int cevapKimlik) {
+            return base.Channel.CevabiFavorilerdenKaldirAsync(kullaniciKimlik, cevapKimlik);
+        }
+        
+        public bool SoruFavorilerdeMi(int kullaniciKimlik, int soruKimlik) {
+            return base.Channel.SoruFavorilerdeMi(kullaniciKimlik, soruKimlik);
+        }
+        
+        public System.Threading.Tasks.Task<bool> SoruFavorilerdeMiAsync(int kullaniciKimlik, int soruKimlik) {
+            return base.Channel.SoruFavorilerdeMiAsync(kullaniciKimlik, soruKimlik);
+        }
+        
+        public bool CevapFavorilerdeMi(int kullaniciKimlik, int cevapKimlik) {
+            return base.Channel.CevapFavorilerdeMi(kullaniciKimlik, cevapKimlik);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CevapFavorilerdeMiAsync(int kullaniciKimlik, int cevapKimlik) {
+            return base.Channel.CevapFavorilerdeMiAsync(kullaniciKimlik, cevapKimlik);
+        }
+        
+        public bool CevabiOna(int cevapKimlik) {
+            return base.Channel.CevabiOna(cevapKimlik);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CevabiOnaAsync(int cevapKimlik) {
+            return base.Channel.CevabiOnaAsync(cevapKimlik);
+        }
+        
+        public bool CevapOnayiniKaldir(int cevapKimlik) {
+            return base.Channel.CevapOnayiniKaldir(cevapKimlik);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CevapOnayiniKaldirAsync(int cevapKimlik) {
+            return base.Channel.CevapOnayiniKaldirAsync(cevapKimlik);
         }
     }
 }

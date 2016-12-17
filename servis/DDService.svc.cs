@@ -148,20 +148,24 @@ namespace servis
                 {
                     FavoriSorular fs = new FavoriSorular
                     {
-                        KullaniciKimlik = kullaniciKimlik,
-                        SoruKimlik = soruKimlik
+                        KullaniciKimligi = kullaniciKimlik,
+                        SoruKimligi = soruKimlik
                     };
 
                     db.FavoriSorular.Add(fs);
                     db.SaveChanges();
-                    return true;
                 }
-                return false;
+                else
+                {
+                    return false;
+                }
             }
-            catch
+            catch (Exception e)
             {
+                throw e;
                 return false;
             }
+            return true;
         }
 
         public bool SoruyuFavorilerdenKaldir(int kullaniciKimlik, int soruKimlik)
@@ -169,24 +173,19 @@ namespace servis
             try
             {
                 var kullanici = (from k in db.Kullanici where k.Kimlik == kullaniciKimlik select k).SingleOrDefault();
-                var soru = (from s in db.Soru where s.Kimlik == soruKimlik select s).SingleOrDefault();
+                var soru = (from s in db.FavoriSorular where s.SoruKimligi == soruKimlik && s.KullaniciKimligi == kullaniciKimlik select s).SingleOrDefault();
 
                 if (kullanici != null && soru != null)
                 {
-                    FavoriSorular fs = new FavoriSorular
-                    {
-                        KullaniciKimlik = kullaniciKimlik,
-                        SoruKimlik = soruKimlik
-                    };
-
-                    db.FavoriSorular.Remove(fs);
+                    db.FavoriSorular.Remove(soru);
                     db.SaveChanges();
                     return true;
                 }
                 return false;
             }
-            catch
+            catch(Exception e)
             {
+                throw e;
                 return false;
             }
         }
@@ -195,7 +194,7 @@ namespace servis
         {
             try
             {
-                var soru = (from fs in db.FavoriSorular where fs.SoruKimlik == soruKimlik && fs.KullaniciKimlik == kullaniciKimlik select fs).SingleOrDefault();
+                var soru = (from fs in db.FavoriSorular where fs.SoruKimligi == soruKimlik && fs.KullaniciKimligi == kullaniciKimlik select fs).SingleOrDefault();
 
                 if (soru != null)
                 {
@@ -264,8 +263,8 @@ namespace servis
                 {
                     FavoriCevaplar fc = new FavoriCevaplar
                     {
-                        KullaniciKimlik = kullaniciKimlik,
-                        CevapKimlik = cevapKimlik
+                        KullaniciKimligi = kullaniciKimlik,
+                        CevapKimligi = cevapKimlik
                     };
 
                     db.FavoriCevaplar.Add(fc);
@@ -285,17 +284,11 @@ namespace servis
             try
             {
                 var kullanici = (from k in db.Kullanici where k.Kimlik == kullaniciKimlik select k).SingleOrDefault();
-                var cevap = (from c in db.Cevap where c.Kimlik == cevapKimlik select c).SingleOrDefault();
+                var cevap = (from c in db.FavoriCevaplar where c.CevapKimligi == cevapKimlik && c.KullaniciKimligi == kullaniciKimlik select c).SingleOrDefault();
 
                 if (kullanici != null && cevap != null)
                 {
-                    FavoriCevaplar fc = new FavoriCevaplar
-                    {
-                        KullaniciKimlik = kullaniciKimlik,
-                        CevapKimlik = cevapKimlik
-                    };
-
-                    db.FavoriCevaplar.Remove(fc);
+                    db.FavoriCevaplar.Remove(cevap);
                     db.SaveChanges();
                     return true;
                 }
@@ -357,7 +350,7 @@ namespace servis
         {
             try
             {
-                var cevap = (from fc in db.FavoriCevaplar where fc.CevapKimlik == cevapKimlik && fc.KullaniciKimlik == kullaniciKimlik select fc).SingleOrDefault();
+                var cevap = (from fc in db.FavoriCevaplar where fc.CevapKimligi == cevapKimlik && fc.KullaniciKimligi == kullaniciKimlik select fc).SingleOrDefault();
 
                 if (cevap != null)
                 {

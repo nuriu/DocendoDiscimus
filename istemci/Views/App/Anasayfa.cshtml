@@ -21,6 +21,10 @@
                     <p style="padding-top:1rem;">
                         @Html.ActionLink(soru.Baslik, "Soru", "App", new { id = soru.Kimlik }, new { @class = "deep-purple-text text-darken-1", style = "font-size:1.5rem;" })
                     </p>
+                    @if (s.SoruFavorilerdeMi(ViewBag.Kullanici.Kimlik, soru.Kimlik))
+                    {
+                        <a class="secondary-content"><span class="teal badge white-text">Favori Sorunuz</span></a>
+                    }
                 </li>
             }
         </ul>

@@ -9,13 +9,13 @@
         <EntityTypeShape EntityType="DDModel.Kullanici" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DDModel.Soru" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DDModel.Yorum" Width="1.5" PointX="7.5" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DDModel.FavoriCevaplar" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DDModel.FavoriSorular" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="DDModel.FK_dbo_Cevap_dbo_Kullanici_Yazan_Kimlik" ManuallyRouted="false" />
         <AssociationConnector Association="DDModel.FK_dbo_Cevap_dbo_Soru_VerildigiSoru_Kimlik" ManuallyRouted="false" />
         <AssociationConnector Association="DDModel.FK_dbo_Yorum_dbo_Cevap_YapildigiCevap_Kimlik" ManuallyRouted="false" />
         <AssociationConnector Association="DDModel.FK_dbo_Soru_dbo_Kullanici_Soran_Kimlik" ManuallyRouted="false" />
         <AssociationConnector Association="DDModel.FK_dbo_Yorum_dbo_Kullanici_Yapan_Kimlik" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DDModel.FavoriCevaplar" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DDModel.FavoriSorular" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

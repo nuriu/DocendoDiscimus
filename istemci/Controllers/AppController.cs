@@ -57,6 +57,7 @@ namespace istemci.Controllers
                 ViewBag.Soru = servis.SoruBilgileriniGetir(id);
                 ViewBag.Sorucu = servis.KullaniciBilgileriniGetir(ViewBag.Soru.Soran_Kimlik);
                 ViewBag.Cevaplar = servis.SorununCevaplariniGetir(id);
+                ViewBag.FS = servis.SoruFavorilerdeMi(int.Parse(Request.Cookies["KullaniciKimligi"].Value), id);
 
                 if (ViewBag.Soru == null)
                 {
@@ -124,6 +125,61 @@ namespace istemci.Controllers
             else
             {
                 return Json("Yorum ekleme başarısız.");
+            }
+        }
+
+        public JsonResult SoruyuFavorilereEkle(string soruKimligi)
+        {
+            bool durum = servis.SoruyuFavorilereEkle(int.Parse(Request.Cookies["KullaniciKimligi"].Value), int.Parse(soruKimligi));
+
+            if (durum)
+            {
+                return Json("Soruyu ekleme başarılı.");
+            }
+            else
+            {
+                return Json("Soruyu ekleme başarısız.");
+            }
+        }
+
+        public JsonResult SoruyuFavorilerdenCikar(string soruKimligi)
+        {
+            bool durum = servis.SoruyuFavorilerdenKaldir(int.Parse(Request.Cookies["KullaniciKimligi"].Value), int.Parse(soruKimligi));
+
+            if (durum)
+            {
+                return Json("Soruyu cikarma başarılı.");
+            }
+            else
+            {
+                return Json("Soruyu cikarma başarısız.");
+            }
+        }
+        public JsonResult CevabiFavorilereEkle(string cevapKimligi)
+        {
+            bool durum = servis.CevabiFavorilereEkle(int.Parse(Request.Cookies["KullaniciKimligi"].Value), int.Parse(cevapKimligi));
+
+            if (durum)
+            {
+                return Json("Cevabi ekleme başarılı.");
+            }
+            else
+            {
+                return Json("Cevabi ekleme başarısız.");
+            }
+        }
+
+        public JsonResult CevabiFavorilerdenCikar(string cevapKimligi)
+        {
+            bool durum = servis.CevabiFavorilerdenKaldir(int.Parse(Request.Cookies["KullaniciKimligi"].Value), int.Parse(cevapKimligi));
+
+            if (durum)
+            {
+                return Json("Cevabi cikarma başarılı.");
+            }
+            else
+            {
+                return Json("Cevabi cikarma başarısız.");
             }
         }
     }

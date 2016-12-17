@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cevap">
           <Key>
             <PropertyRef Name="Kimlik" />
@@ -16,25 +16,21 @@
           <Property Name="Yazan_Kimlik" Type="int" />
           <Property Name="OnayDurumu" Type="bit" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'DDBEntities.dbo.FavoriCevaplar' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="FavoriCevaplar">
           <Key>
-            <PropertyRef Name="KullaniciKimlik" />
-            <PropertyRef Name="CevapKimlik" />
+            <PropertyRef Name="Kimlik" />
           </Key>
-          <Property Name="KullaniciKimlik" Type="int" Nullable="false" />
-          <Property Name="CevapKimlik" Type="int" Nullable="false" />
+          <Property Name="Kimlik" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KullaniciKimligi" Type="int" Nullable="false" />
+          <Property Name="CevapKimligi" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'DDBEntities.dbo.FavoriSorular' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="FavoriSorular">
           <Key>
-            <PropertyRef Name="KullaniciKimlik" />
-            <PropertyRef Name="SoruKimlik" />
+            <PropertyRef Name="Kimlik" />
           </Key>
-          <Property Name="KullaniciKimlik" Type="int" Nullable="false" />
-          <Property Name="SoruKimlik" Type="int" Nullable="false" />
+          <Property Name="Kimlik" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KullaniciKimligi" Type="int" Nullable="false" />
+          <Property Name="SoruKimligi" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Kullanici">
           <Key>
@@ -137,21 +133,11 @@ warning 6002: The table/view 'DDBEntities.dbo.FavoriSorular' does not have a pri
         </Association>
         <EntityContainer Name="DDModelStoreContainer">
           <EntitySet Name="Cevap" EntityType="Self.Cevap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FavoriCevaplar" EntityType="Self.FavoriCevaplar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FavoriSorular" EntityType="Self.FavoriSorular" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kullanici" EntityType="Self.Kullanici" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Soru" EntityType="Self.Soru" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Yorum" EntityType="Self.Yorum" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="FavoriCevaplar" EntityType="Self.FavoriCevaplar" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [FavoriCevaplar].[KullaniciKimlik] AS [KullaniciKimlik], 
-    [FavoriCevaplar].[CevapKimlik] AS [CevapKimlik]
-    FROM [dbo].[FavoriCevaplar] AS [FavoriCevaplar]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="FavoriSorular" EntityType="Self.FavoriSorular" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [FavoriSorular].[KullaniciKimlik] AS [KullaniciKimlik], 
-    [FavoriSorular].[SoruKimlik] AS [SoruKimlik]
-    FROM [dbo].[FavoriSorular] AS [FavoriSorular]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_dbo_Cevap_dbo_Kullanici_Yazan_Kimlik" Association="Self.FK_dbo_Cevap_dbo_Kullanici_Yazan_Kimlik">
             <End Role="Kullanici" EntitySet="Kullanici" />
             <End Role="Cevap" EntitySet="Cevap" />
@@ -173,8 +159,7 @@ warning 6002: The table/view 'DDBEntities.dbo.FavoriSorular' does not have a pri
             <End Role="Yorum" EntitySet="Yorum" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -231,22 +216,6 @@ warning 6002: The table/view 'DDBEntities.dbo.FavoriSorular' does not have a pri
           <Property Name="YapildigiCevap_Kimlik" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Cevap" Relationship="Self.FK_dbo_Yorum_dbo_Cevap_YapildigiCevap_Kimlik" FromRole="Yorum" ToRole="Cevap" />
           <NavigationProperty Name="Kullanici" Relationship="Self.FK_dbo_Yorum_dbo_Kullanici_Yapan_Kimlik" FromRole="Yorum" ToRole="Kullanici" />
-        </EntityType>
-        <EntityType Name="FavoriCevaplar">
-          <Key>
-            <PropertyRef Name="KullaniciKimlik" />
-            <PropertyRef Name="CevapKimlik" />
-          </Key>
-          <Property Name="KullaniciKimlik" Type="Int32" Nullable="false" />
-          <Property Name="CevapKimlik" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="FavoriSorular">
-          <Key>
-            <PropertyRef Name="KullaniciKimlik" />
-            <PropertyRef Name="SoruKimlik" />
-          </Key>
-          <Property Name="KullaniciKimlik" Type="Int32" Nullable="false" />
-          <Property Name="SoruKimlik" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_dbo_Cevap_dbo_Kullanici_Yazan_Kimlik">
           <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="0..1" />
@@ -319,8 +288,6 @@ warning 6002: The table/view 'DDBEntities.dbo.FavoriSorular' does not have a pri
           <EntitySet Name="Kullanici" EntityType="Self.Kullanici" />
           <EntitySet Name="Soru" EntityType="Self.Soru" />
           <EntitySet Name="Yorum" EntityType="Self.Yorum" />
-          <EntitySet Name="FavoriCevaplar" EntityType="Self.FavoriCevaplar" />
-          <EntitySet Name="FavoriSorular" EntityType="Self.FavoriSorular" />
           <AssociationSet Name="FK_dbo_Cevap_dbo_Kullanici_Yazan_Kimlik" Association="Self.FK_dbo_Cevap_dbo_Kullanici_Yazan_Kimlik">
             <End Role="Kullanici" EntitySet="Kullanici" />
             <End Role="Cevap" EntitySet="Cevap" />
@@ -341,7 +308,25 @@ warning 6002: The table/view 'DDBEntities.dbo.FavoriSorular' does not have a pri
             <End Role="Kullanici" EntitySet="Kullanici" />
             <End Role="Yorum" EntitySet="Yorum" />
           </AssociationSet>
+          <EntitySet Name="FavoriCevaplar" EntityType="DDModel.FavoriCevaplar" />
+          <EntitySet Name="FavoriSorular" EntityType="DDModel.FavoriSorular" />
         </EntityContainer>
+        <EntityType Name="FavoriCevaplar">
+          <Key>
+            <PropertyRef Name="Kimlik" />
+          </Key>
+          <Property Name="Kimlik" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KullaniciKimligi" Type="Int32" Nullable="false" />
+          <Property Name="CevapKimligi" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FavoriSorular">
+          <Key>
+            <PropertyRef Name="Kimlik" />
+          </Key>
+          <Property Name="Kimlik" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KullaniciKimligi" Type="Int32" Nullable="false" />
+          <Property Name="SoruKimligi" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -399,16 +384,18 @@ warning 6002: The table/view 'DDBEntities.dbo.FavoriSorular' does not have a pri
           <EntitySetMapping Name="FavoriCevaplar">
             <EntityTypeMapping TypeName="DDModel.FavoriCevaplar">
               <MappingFragment StoreEntitySet="FavoriCevaplar">
-                <ScalarProperty Name="KullaniciKimlik" ColumnName="KullaniciKimlik" />
-                <ScalarProperty Name="CevapKimlik" ColumnName="CevapKimlik" />
+                <ScalarProperty Name="CevapKimligi" ColumnName="CevapKimligi" />
+                <ScalarProperty Name="KullaniciKimligi" ColumnName="KullaniciKimligi" />
+                <ScalarProperty Name="Kimlik" ColumnName="Kimlik" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FavoriSorular">
             <EntityTypeMapping TypeName="DDModel.FavoriSorular">
               <MappingFragment StoreEntitySet="FavoriSorular">
-                <ScalarProperty Name="KullaniciKimlik" ColumnName="KullaniciKimlik" />
-                <ScalarProperty Name="SoruKimlik" ColumnName="SoruKimlik" />
+                <ScalarProperty Name="SoruKimligi" ColumnName="SoruKimligi" />
+                <ScalarProperty Name="KullaniciKimligi" ColumnName="KullaniciKimligi" />
+                <ScalarProperty Name="Kimlik" ColumnName="Kimlik" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
