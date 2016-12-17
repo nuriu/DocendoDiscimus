@@ -13,10 +13,10 @@ namespace servis.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DDDBEntities : DbContext
+    public partial class DDBEntities : DbContext
     {
-        public DDDBEntities()
-            : base("name=DDDBEntities")
+        public DDBEntities()
+            : base("name=DDBEntities")
         {
         }
     

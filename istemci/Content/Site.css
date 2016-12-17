@@ -14,7 +14,7 @@ main {
 }
 
 body#karsilama {
-    background: linear-gradient( rgba(20,20,20, .5), rgba(20,20,20, .75)),url(../../Content/vfun94cuy4o-david-marcu.jpg);
+    background: linear-gradient( rgba(20,20,20, .5), rgba(20,20,20, .75)),url(https://images.unsplash.com/photo-1471506480208-91b3a4cc78be?dpr=1&auto=format&fit=crop&w=1500&h=996&q=80&cs=tinysrgb&crop=);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

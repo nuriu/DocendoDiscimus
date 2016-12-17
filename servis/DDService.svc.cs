@@ -9,7 +9,7 @@ namespace servis
 {
     public class DDService : IDDService
     {
-        public DDDBEntities db = new DDDBEntities();
+        public DDBEntities db = new DDBEntities();
 
         #region KULLANICI
         public VMKullanici KullaniciBilgileriniGetir(int kimlik)
@@ -136,6 +136,78 @@ namespace servis
         {
             return VMSoru.VeriyiIsle(db.Soru.ToList());
         }
+
+        public bool SoruyuFavorilereEkle(int kullaniciKimlik, int soruKimlik)
+        {
+            try
+            {
+                var kullanici = (from k in db.Kullanici where k.Kimlik == kullaniciKimlik select k).SingleOrDefault();
+                var soru = (from s in db.Soru where s.Kimlik == soruKimlik select s).SingleOrDefault();
+
+                if (kullanici != null && soru != null)
+                {
+                    FavoriSorular fs = new FavoriSorular
+                    {
+                        KullaniciKimlik = kullaniciKimlik,
+                        SoruKimlik = soruKimlik
+                    };
+
+                    db.FavoriSorular.Add(fs);
+                    db.SaveChanges();
+                    return true;
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool SoruyuFavorilerdenKaldir(int kullaniciKimlik, int soruKimlik)
+        {
+            try
+            {
+                var kullanici = (from k in db.Kullanici where k.Kimlik == kullaniciKimlik select k).SingleOrDefault();
+                var soru = (from s in db.Soru where s.Kimlik == soruKimlik select s).SingleOrDefault();
+
+                if (kullanici != null && soru != null)
+                {
+                    FavoriSorular fs = new FavoriSorular
+                    {
+                        KullaniciKimlik = kullaniciKimlik,
+                        SoruKimlik = soruKimlik
+                    };
+
+                    db.FavoriSorular.Remove(fs);
+                    db.SaveChanges();
+                    return true;
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool SoruFavorilerdeMi(int kullaniciKimlik, int soruKimlik)
+        {
+            try
+            {
+                var soru = (from fs in db.FavoriSorular where fs.SoruKimlik == soruKimlik && fs.KullaniciKimlik == kullaniciKimlik select fs).SingleOrDefault();
+
+                if (soru != null)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         #endregion
 
         #region CEVAP
@@ -179,6 +251,124 @@ namespace servis
         public List<VMCevap> SorununCevaplariniGetir(int kimlik)
         {
             return VMCevap.VeriyiIsle((from c in db.Cevap where c.VerildigiSoru_Kimlik == kimlik select c).ToList());
+        }
+
+        public bool CevabiFavorilereEkle(int kullaniciKimlik, int cevapKimlik)
+        {
+            try
+            {
+                var kullanici = (from k in db.Kullanici where k.Kimlik == kullaniciKimlik select k).SingleOrDefault();
+                var cevap = (from c in db.Cevap where c.Kimlik == cevapKimlik select c).SingleOrDefault();
+
+                if (kullanici != null && cevap != null)
+                {
+                    FavoriCevaplar fc = new FavoriCevaplar
+                    {
+                        KullaniciKimlik = kullaniciKimlik,
+                        CevapKimlik = cevapKimlik
+                    };
+
+                    db.FavoriCevaplar.Add(fc);
+                    db.SaveChanges();
+                    return true;
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool CevabiFavorilerdenKaldir(int kullaniciKimlik, int cevapKimlik)
+        {
+            try
+            {
+                var kullanici = (from k in db.Kullanici where k.Kimlik == kullaniciKimlik select k).SingleOrDefault();
+                var cevap = (from c in db.Cevap where c.Kimlik == cevapKimlik select c).SingleOrDefault();
+
+                if (kullanici != null && cevap != null)
+                {
+                    FavoriCevaplar fc = new FavoriCevaplar
+                    {
+                        KullaniciKimlik = kullaniciKimlik,
+                        CevapKimlik = cevapKimlik
+                    };
+
+                    db.FavoriCevaplar.Remove(fc);
+                    db.SaveChanges();
+                    return true;
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool CevabiOna(int cevapKimlik)
+        {
+            try
+            {
+                var cevap = (from c in db.Cevap where c.Kimlik == cevapKimlik select c).SingleOrDefault();
+
+                if (cevap != null)
+                {
+                    cevap.OnayDurumu = true;
+
+                    db.Entry(cevap).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                    return true;
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool CevapOnayiniKaldir(int cevapKimlik)
+        {
+            try
+            {
+                var cevap = (from c in db.Cevap where c.Kimlik == cevapKimlik select c).SingleOrDefault();
+
+                if (cevap != null)
+                {
+                    cevap.OnayDurumu = false;
+
+                    db.Entry(cevap).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                    return true;
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool CevapFavorilerdeMi(int kullaniciKimlik, int cevapKimlik)
+        {
+            try
+            {
+                var cevap = (from fc in db.FavoriCevaplar where fc.CevapKimlik == cevapKimlik && fc.KullaniciKimlik == kullaniciKimlik select fc).SingleOrDefault();
+
+                if (cevap != null)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
         }
         #endregion
 

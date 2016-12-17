@@ -19,14 +19,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:8301/DDService.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://dds.somee.com/DDService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="DDService.wsdl" MetadataType="Wsdl" ID="d4c5a0b9-0f70-4927-904e-a5f1ac8524b9" SourceId="1" SourceUrl="http://localhost:8301/DDService.svc?wsdl" />
-    <MetadataFile FileName="DDService.xsd" MetadataType="Schema" ID="466c63e2-5d87-4eea-a815-7b8abf1dc2e5" SourceId="1" SourceUrl="http://localhost:8301/DDService.svc?xsd=xsd0" />
-    <MetadataFile FileName="DDService1.xsd" MetadataType="Schema" ID="685c386a-ffe4-46b2-a4a4-2a92a0375e56" SourceId="1" SourceUrl="http://localhost:8301/DDService.svc?xsd=xsd2" />
-    <MetadataFile FileName="DDService.disco" MetadataType="Disco" ID="224818ba-dc61-4c07-a920-e85e3c3c4125" SourceId="1" SourceUrl="http://localhost:8301/DDService.svc?disco" />
-    <MetadataFile FileName="DDService2.xsd" MetadataType="Schema" ID="8f09578b-5580-4234-bd55-b3ba87422251" SourceId="1" SourceUrl="http://localhost:8301/DDService.svc?xsd=xsd1" />
+    <MetadataFile FileName="DDService3.xsd" MetadataType="Schema" ID="efd92b02-02b9-4fb2-841b-973eef366ab7" SourceId="1" SourceUrl="http://dds.somee.com/DDService.svc?xsd=xsd1" />
+    <MetadataFile FileName="DDService31.xsd" MetadataType="Schema" ID="313d51ee-abaf-43da-9d68-fad2eb242314" SourceId="1" SourceUrl="http://dds.somee.com/DDService.svc?xsd=xsd0" />
+    <MetadataFile FileName="DDService32.xsd" MetadataType="Schema" ID="6628b6a4-6e01-4826-8928-4608334518d3" SourceId="1" SourceUrl="http://dds.somee.com/DDService.svc?xsd=xsd2" />
+    <MetadataFile FileName="DDService1.wsdl" MetadataType="Wsdl" ID="c9c7c07d-d35c-4d9c-a057-55da48a6afe9" SourceId="1" SourceUrl="http://dds.somee.com/DDService.svc?wsdl" />
+    <MetadataFile FileName="DDService1.disco" MetadataType="Disco" ID="b098b353-84e7-4cca-82c5-6bb04e910eaf" SourceId="1" SourceUrl="http://dds.somee.com/DDService.svc?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -137,6 +137,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <None Include="Properties\PublishProfiles\dd.somee.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
@@ -149,9 +150,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\_references.js" />
-    <None Include="Service References\DDService\DDService.disco" />
     <None Include="Service References\DDService\configuration91.svcinfo" />
     <None Include="Service References\DDService\configuration.svcinfo" />
+    <None Include="Service References\DDService\DDService1.disco" />
     <Content Include="Service References\DDService\istemci.DDService.VMKullanici.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -164,11 +165,23 @@
     <Content Include="Service References\DDService\istemci.DDService.VMYorum.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Service References\DDService\DDService1.wsdl" />
+    <None Include="Service References\DDService\DDService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DDService\DDService31.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DDService\DDService32.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\DDService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -183,16 +196,6 @@
     <Content Include="Views\Shared\_AppLayout.cshtml" />
     <Content Include="Views\App\Anasayfa.cshtml" />
     <Content Include="Views\App\Profil.cshtml" />
-    <None Include="Service References\DDService\DDService.wsdl" />
-    <None Include="Service References\DDService\DDService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\DDService\DDService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\DDService\DDService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Views\App\Sor.cshtml" />
     <Content Include="Views\App\Soru.cshtml" />
   </ItemGroup>

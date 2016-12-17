@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DDDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cevap">
           <Key>
             <PropertyRef Name="Kimlik" />
@@ -17,7 +17,7 @@
           <Property Name="OnayDurumu" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DDDB.dbo.FavoriCevaplar' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DDBEntities.dbo.FavoriCevaplar' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="FavoriCevaplar">
           <Key>
             <PropertyRef Name="KullaniciKimlik" />
@@ -27,7 +27,7 @@ warning 6002: The table/view 'DDDB.dbo.FavoriCevaplar' does not have a primary k
           <Property Name="CevapKimlik" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DDDB.dbo.FavoriSorular' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DDBEntities.dbo.FavoriSorular' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="FavoriSorular">
           <Key>
             <PropertyRef Name="KullaniciKimlik" />
@@ -135,7 +135,7 @@ warning 6002: The table/view 'DDDB.dbo.FavoriSorular' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DDDBModelStoreContainer">
+        <EntityContainer Name="DDModelStoreContainer">
           <EntitySet Name="Cevap" EntityType="Self.Cevap" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kullanici" EntityType="Self.Kullanici" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Soru" EntityType="Self.Soru" Schema="dbo" store:Type="Tables" />
@@ -177,7 +177,7 @@ warning 6002: The table/view 'DDDB.dbo.FavoriSorular' does not have a primary ke
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="DDDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="DDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Cevap">
           <Key>
             <PropertyRef Name="Kimlik" />
@@ -314,7 +314,7 @@ warning 6002: The table/view 'DDDB.dbo.FavoriSorular' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DDDBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Cevap" EntityType="Self.Cevap" />
           <EntitySet Name="Kullanici" EntityType="Self.Kullanici" />
           <EntitySet Name="Soru" EntityType="Self.Soru" />
@@ -347,9 +347,9 @@ warning 6002: The table/view 'DDDB.dbo.FavoriSorular' does not have a primary ke
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DDDBModelStoreContainer" CdmEntityContainer="DDDBEntities">
+        <EntityContainerMapping StorageEntityContainer="DDModelStoreContainer" CdmEntityContainer="DDBEntities">
           <EntitySetMapping Name="Cevap">
-            <EntityTypeMapping TypeName="DDDBModel.Cevap">
+            <EntityTypeMapping TypeName="DDModel.Cevap">
               <MappingFragment StoreEntitySet="Cevap">
                 <ScalarProperty Name="Kimlik" ColumnName="Kimlik" />
                 <ScalarProperty Name="Metin" ColumnName="Metin" />
@@ -361,7 +361,7 @@ warning 6002: The table/view 'DDDB.dbo.FavoriSorular' does not have a primary ke
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Kullanici">
-            <EntityTypeMapping TypeName="DDDBModel.Kullanici">
+            <EntityTypeMapping TypeName="DDModel.Kullanici">
               <MappingFragment StoreEntitySet="Kullanici">
                 <ScalarProperty Name="Kimlik" ColumnName="Kimlik" />
                 <ScalarProperty Name="Eposta" ColumnName="Eposta" />
@@ -375,7 +375,7 @@ warning 6002: The table/view 'DDDB.dbo.FavoriSorular' does not have a primary ke
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Soru">
-            <EntityTypeMapping TypeName="DDDBModel.Soru">
+            <EntityTypeMapping TypeName="DDModel.Soru">
               <MappingFragment StoreEntitySet="Soru">
                 <ScalarProperty Name="Kimlik" ColumnName="Kimlik" />
                 <ScalarProperty Name="Baslik" ColumnName="Baslik" />
@@ -386,7 +386,7 @@ warning 6002: The table/view 'DDDB.dbo.FavoriSorular' does not have a primary ke
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Yorum">
-            <EntityTypeMapping TypeName="DDDBModel.Yorum">
+            <EntityTypeMapping TypeName="DDModel.Yorum">
               <MappingFragment StoreEntitySet="Yorum">
                 <ScalarProperty Name="Kimlik" ColumnName="Kimlik" />
                 <ScalarProperty Name="Metin" ColumnName="Metin" />
@@ -397,7 +397,7 @@ warning 6002: The table/view 'DDDB.dbo.FavoriSorular' does not have a primary ke
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FavoriCevaplar">
-            <EntityTypeMapping TypeName="DDDBModel.FavoriCevaplar">
+            <EntityTypeMapping TypeName="DDModel.FavoriCevaplar">
               <MappingFragment StoreEntitySet="FavoriCevaplar">
                 <ScalarProperty Name="KullaniciKimlik" ColumnName="KullaniciKimlik" />
                 <ScalarProperty Name="CevapKimlik" ColumnName="CevapKimlik" />
@@ -405,7 +405,7 @@ warning 6002: The table/view 'DDDB.dbo.FavoriSorular' does not have a primary ke
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FavoriSorular">
-            <EntityTypeMapping TypeName="DDDBModel.FavoriSorular">
+            <EntityTypeMapping TypeName="DDModel.FavoriSorular">
               <MappingFragment StoreEntitySet="FavoriSorular">
                 <ScalarProperty Name="KullaniciKimlik" ColumnName="KullaniciKimlik" />
                 <ScalarProperty Name="SoruKimlik" ColumnName="SoruKimlik" />

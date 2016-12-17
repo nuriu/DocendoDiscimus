@@ -46,5 +46,29 @@ namespace servis
 
         [OperationContract]
         List<VMYorum> CevabinYorumlariniGetir(int kimlik);
+
+        [OperationContract]
+        bool SoruyuFavorilereEkle(int kullaniciKimlik, int soruKimlik);
+
+        [OperationContract]
+        bool CevabiFavorilereEkle(int kullaniciKimlik, int cevapKimlik);
+
+        [OperationContract]
+        bool SoruyuFavorilerdenKaldir(int kullaniciKimlik, int soruKimlik);
+
+        [OperationContract]
+        bool CevabiFavorilerdenKaldir(int kullaniciKimlik, int cevapKimlik);
+
+        [OperationContract]
+        bool SoruFavorilerdeMi(int kullaniciKimlik, int soruKimlik);
+
+        [OperationContract]
+        bool CevapFavorilerdeMi(int kullaniciKimlik, int cevapKimlik);
+
+        [OperationContract]
+        bool CevabiOna(int cevapKimlik);
+
+        [OperationContract]
+        bool CevapOnayiniKaldir(int cevapKimlik);
     }
 }

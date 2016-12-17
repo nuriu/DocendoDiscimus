@@ -73,17 +73,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DDService.svc" />
-    <Content Include="Model\DDDBEntities.Context.tt">
+    <Content Include="Model\DDModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DDDBEntities.edmx</DependentUpon>
-      <LastGenOutput>DDDBEntities.Context.cs</LastGenOutput>
+      <DependentUpon>DDModel.edmx</DependentUpon>
+      <LastGenOutput>DDModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Model\DDDBEntities.tt">
+    <Content Include="Model\DDModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DDDBEntities.edmx</DependentUpon>
-      <LastGenOutput>DDDBEntities.cs</LastGenOutput>
+      <DependentUpon>DDModel.edmx</DependentUpon>
+      <LastGenOutput>DDModel.cs</LastGenOutput>
     </Content>
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DDService.svc.cs">
@@ -96,37 +98,37 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Cevap.cs">
-      <DependentUpon>DDDBEntities.tt</DependentUpon>
+      <DependentUpon>DDModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DDDBEntities.Context.cs">
+    <Compile Include="Model\DDModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DDDBEntities.Context.tt</DependentUpon>
+      <DependentUpon>DDModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DDDBEntities.cs">
+    <Compile Include="Model\DDModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DDDBEntities.tt</DependentUpon>
+      <DependentUpon>DDModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DDDBEntities.Designer.cs">
+    <Compile Include="Model\DDModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DDDBEntities.edmx</DependentUpon>
+      <DependentUpon>DDModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\FavoriCevaplar.cs">
-      <DependentUpon>DDDBEntities.tt</DependentUpon>
+      <DependentUpon>DDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\FavoriSorular.cs">
-      <DependentUpon>DDDBEntities.tt</DependentUpon>
+      <DependentUpon>DDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Kullanici.cs">
-      <DependentUpon>DDDBEntities.tt</DependentUpon>
+      <DependentUpon>DDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Soru.cs">
-      <DependentUpon>DDDBEntities.tt</DependentUpon>
+      <DependentUpon>DDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Yorum.cs">
-      <DependentUpon>DDDBEntities.tt</DependentUpon>
+      <DependentUpon>DDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\VMCevap.cs" />
@@ -139,13 +141,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <EntityDeploy Include="Model\DDDBEntities.edmx">
+    <EntityDeploy Include="Model\DDModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DDDBEntities.Designer.cs</LastGenOutput>
+      <LastGenOutput>DDModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Model\DDDBEntities.edmx.diagram">
-      <DependentUpon>DDDBEntities.edmx</DependentUpon>
+    <Content Include="Model\DDModel.edmx.diagram">
+      <DependentUpon>DDModel.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\dds.somee.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -2,7 +2,7 @@ namespace servis.Migrations
 {
     using System.Data.Entity.Migrations;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<servis.Model.DDDBEntities>
+    internal sealed class Configuration : DbMigrationsConfiguration<Model.DDBEntities>
     {
         public Configuration()
         {
@@ -10,7 +10,7 @@ namespace servis.Migrations
             AutomaticMigrationDataLossAllowed = true;
         }
 
-        protected override void Seed(Model.DDDBEntities context)
+        protected override void Seed(Model.DDBEntities context)
         {
             //  This method will be called after migrating to the latest version.
 
