@@ -182,5 +182,34 @@ namespace istemci.Controllers
                 return Json("Cevabi cikarma başarısız.");
             }
         }
+
+        public JsonResult CevabiOnayla(string cevapKimligi)
+        {
+            bool durum = servis.CevabiOna(int.Parse(cevapKimligi));
+
+            if (durum)
+            {
+                return Json("Cevabi onama başarılı.");
+            }
+            else
+            {
+                return Json("Cevabi onama başarısız.");
+            }
+        }
+
+        public JsonResult CevabinOnayiniKaldir(string cevapKimligi)
+        {
+
+            bool durum = servis.CevapOnayiniKaldir(int.Parse(cevapKimligi));
+
+            if (durum)
+            {
+                return Json("Cevabi cikarma başarılı.");
+            }
+            else
+            {
+                return Json("Cevabi cikarma başarısız.");
+            }
+        }
     }
 }
