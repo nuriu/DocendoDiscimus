@@ -137,6 +137,13 @@ namespace servis
             return VMSoru.VeriyiIsle(db.Soru.ToList());
         }
 
+        public List<VMSoru> SoruAra(string baslik)
+        {
+            return VMSoru.VeriyiIsle((from s in db.Soru
+                                      where s.Baslik.Contains(baslik)
+                                      select s).ToList());
+        }
+
         public bool SoruyuFavorilereEkle(int kullaniciKimlik, int soruKimlik)
         {
             try
@@ -160,9 +167,8 @@ namespace servis
                     return false;
                 }
             }
-            catch (Exception e)
+            catch
             {
-                throw e;
                 return false;
             }
             return true;
@@ -183,9 +189,8 @@ namespace servis
                 }
                 return false;
             }
-            catch(Exception e)
+            catch
             {
-                throw e;
                 return false;
             }
         }
@@ -306,14 +311,29 @@ namespace servis
             {
                 var cevap = (from c in db.Cevap where c.Kimlik == cevapKimlik select c).SingleOrDefault();
 
+
                 if (cevap != null)
                 {
-                    cevap.OnayDurumu = true;
+                    var ayniSorununCevaplari = (from c in db.Cevap where c.VerildigiSoru_Kimlik == cevap.VerildigiSoru_Kimlik select c);
 
-                    db.Entry(cevap).State = EntityState.Modified;
-                    db.SaveChanges();
+                    int onananCevapSayisi = 0;
+                    foreach (var c in ayniSorununCevaplari)
+                    {
+                        if (c.OnayDurumu)
+                        {
+                            onananCevapSayisi++;
+                        }
+                    }
+                    if (onananCevapSayisi < 1)
+                    {
+                        cevap.OnayDurumu = true;
 
-                    return true;
+                        db.Entry(cevap).State = EntityState.Modified;
+                        db.SaveChanges();
+
+                        return true;
+                    }
+                    return false;
                 }
                 return false;
             }

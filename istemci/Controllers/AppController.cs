@@ -211,5 +211,15 @@ namespace istemci.Controllers
                 return Json("Cevabi cikarma başarısız.");
             }
         }
+
+        public JsonResult KullaniciBilgileriniGetir(string kullaniciKimligi)
+        {
+            return Json(servis.KullaniciBilgileriniGetir(int.Parse(kullaniciKimligi)));
+        }
+
+        public JsonResult SoruAra(string soruBasligi)
+        {
+            return Json(servis.SoruAra(soruBasligi));
+        }
     }
 }

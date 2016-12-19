@@ -30,6 +30,9 @@ namespace servis
         List<VMSoru> SorulariGetir();
 
         [OperationContract]
+        List<VMSoru> SoruAra(string baslik);
+
+        [OperationContract]
         bool CevapEkle(int eklenecekSorununKimligi, int ekleyeninKimligi, string metin);
 
         [OperationContract]

@@ -3,15 +3,31 @@
 }
 
 @using istemci.DDService;
+<br />
 
-<div class="col s12 m10 l10">
-    <div id="sorular" class="section scrollspy">
+<div class="row">
+    <div class="col s12 m10 l10">
+        <div id="sorular" class="section scrollspy">
 
-        <h3 class="header deep-purple-text text-darken-1">Hoşgeldiniz!</h3>
-        <p class="caption">Aşağıdaki alana sistemde bulunan son soruları görebilirsiniz.</p>
-        <br />
-        <ul class="collection">
-            @foreach (var soru in ((ICollection<VMSoru>)ViewBag.Sorular).Reverse())
+            <h3 class="header deep-purple-text text-darken-1">Hoşgeldiniz!</h3>
+            <p class="caption">Aşağıdaki alana sistemde bulunan son soruları görebilirsiniz.</p>
+            <br />
+            <div class="row">
+                <form class="col s11">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">search</i>
+                            <input id="soruBaslik" type="text" name="Soru Başlığı" class="validate">
+                            <label for="soruBaslik">Soru Başlığı ile arama yapın.</label>
+                        </div>
+                    </div>
+                </form>
+                <div class="col s1">
+                    <a class="btn btn-floating btn-large waves-effect waves-light teal" onclick="ara()"><i class="material-icons">search</i></a>
+                </div>
+            </div>
+            <ul class="collection">
+                @foreach (var soru in ((ICollection<VMSoru>)ViewBag.Sorular).Reverse())
             {
                 DDServiceClient s = new DDServiceClient();
                 ViewBag.Soran = s.KullaniciBilgileriniGetir(soru.Soran_Kimlik);
@@ -23,25 +39,49 @@
                     </p>
                     @if (s.SoruFavorilerdeMi(ViewBag.Kullanici.Kimlik, soru.Kimlik))
                     {
-                        <a class="secondary-content"><span class="teal badge white-text">Favori Sorunuz</span></a>
+                    <a class="secondary-content"><span class="teal badge white-text">Favori Sorunuz</span></a>
                     }
                 </li>
-            }
-        </ul>
-    </div>
-</div>
-
-<div class="col hide-on-small-only m2 l2">
-    <div class="toc-wrapper">
-        <div style="height: 1px;">
-            <ul class="section table-of-contents">
-                <li><a href="#sorular">Sorular</a></li>
+                }
             </ul>
         </div>
     </div>
 </div>
-
 <script type="text/javascript">
+    function ara() {
+        var kontrol = true;
+        if ($.trim($('input#soruBaslik').val()) == "") {
+            Materialize.toast('Soru Başlığı alanı boş bırakılamaz!', 3000, 'red rounded');
+            kontrol = false;
+            $('input#soruBaslik').addClass("invalid");
+        } else {
+            $('input#soruBaslik').removeClass("invalid");
+        }
+        if (kontrol == true) {
+            var veri = {
+                soruBasligi: $("input#soruBaslik").val()
+            };
+
+            $.post("/App/SoruAra", veri, function (sorular) {
+                $("ul.collection").html("");
+                $.each(sorular, function (i, s) {
+                    var veri2 = {
+                        kullaniciKimligi: s.Soran_Kimlik
+                    }
+                    $.post("/App/KullaniciBilgileriniGetir", veri2, function (k) {
+                        console.log(s, k);
+                        $(".collection").append('<li class="collection-item avatar">\
+                        <img src="' + k.AvatarLink + '" alt="" class="circle responsive-img">\
+                        <span class="title">' + k.Isim + ' ' + k.Soyisim + '<small> (' + k.Eposta + ')</small></span><br />\
+                        <p style="padding-top:1rem;"><a class="deep-purple-text text-darken-1" href="/App/Soru/' + s.Kimlik + '" style="font-size:1.5rem;">' + s.Baslik + '</a>\
+                        </p>\
+                        </li>');
+                    });
+                });
+            });
+        }
+    }
+
     function soruyaGit() {
         var kimlik = $("a").attr("kimlik");
         console.log(kimlik);

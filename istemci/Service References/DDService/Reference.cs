@@ -559,6 +559,12 @@ namespace istemci.DDService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/SorulariGetir", ReplyAction="http://tempuri.org/IDDService/SorulariGetirResponse")]
         System.Threading.Tasks.Task<istemci.DDService.VMSoru[]> SorulariGetirAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/SoruAra", ReplyAction="http://tempuri.org/IDDService/SoruAraResponse")]
+        istemci.DDService.VMSoru[] SoruAra(string baslik);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/SoruAra", ReplyAction="http://tempuri.org/IDDService/SoruAraResponse")]
+        System.Threading.Tasks.Task<istemci.DDService.VMSoru[]> SoruAraAsync(string baslik);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDDService/CevapEkle", ReplyAction="http://tempuri.org/IDDService/CevapEkleResponse")]
         bool CevapEkle(int eklenecekSorununKimligi, int ekleyeninKimligi, string metin);
         
@@ -725,6 +731,14 @@ namespace istemci.DDService {
         
         public System.Threading.Tasks.Task<istemci.DDService.VMSoru[]> SorulariGetirAsync() {
             return base.Channel.SorulariGetirAsync();
+        }
+        
+        public istemci.DDService.VMSoru[] SoruAra(string baslik) {
+            return base.Channel.SoruAra(baslik);
+        }
+        
+        public System.Threading.Tasks.Task<istemci.DDService.VMSoru[]> SoruAraAsync(string baslik) {
+            return base.Channel.SoruAraAsync(baslik);
         }
         
         public bool CevapEkle(int eklenecekSorununKimligi, int ekleyeninKimligi, string metin) {
