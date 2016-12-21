@@ -204,11 +204,11 @@ namespace istemci.Controllers
 
             if (durum)
             {
-                return Json("Cevabi cikarma başarılı.");
+                return Json("Cevabi onamasını kaldırma başarılı.");
             }
             else
             {
-                return Json("Cevabi cikarma başarısız.");
+                return Json("Cevabi onamasını kaldırma başarısız.");
             }
         }
 

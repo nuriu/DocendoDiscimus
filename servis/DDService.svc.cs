@@ -9,7 +9,7 @@ namespace servis
 {
     public class DDService : IDDService
     {
-        public DDBEntities db = new DDBEntities();
+        private DDBEntities db = new DDBEntities();
 
         #region KULLANICI
         public VMKullanici KullaniciBilgileriniGetir(int kimlik)
